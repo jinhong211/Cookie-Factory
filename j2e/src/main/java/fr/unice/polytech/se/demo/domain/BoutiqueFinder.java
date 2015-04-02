@@ -11,7 +11,7 @@ public interface BoutiqueFinder {
 
     //public Boutique findByName(String n);
 
-    public Boutique findById(int n);
+    public Boutique findById(int id);
 
     public Boutique findByAddresse(String addresseBoutique);
 

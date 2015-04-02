@@ -8,7 +8,7 @@ import java.util.List;
  * Created by user on 31/03/15.
  */
 public interface RecetteFinder {
-    public Recette findById(int n);
+    public Recette findById(int id);
 
     public Recette findByName(String n);
 

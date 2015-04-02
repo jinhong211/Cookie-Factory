@@ -49,6 +49,10 @@ public class Boutique implements Serializable {
         return id;
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
+
     @ManyToOne(cascade=CascadeType.ALL,optional=false)
     @JoinColumn(name="ID_RECETTE")
     public Recette getRecette_du_jour(){

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CommandeFinder {
 
-    public Commande findById(long n);
+    public Commande findById(long id);
 
     public List<Commande> findByDate(Date d);
 

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by user on 31/03/15.
  */
 public interface HoraireAtilierFinder {
-    public HoraireAtlier findById(int  n);
+    public HoraireAtlier findById(int  id);
 
     public List<HoraireAtlier> findByIdBoutique(int  c);
 
