@@ -2,6 +2,7 @@ package fr.unice.polytech.se.demo.domain.impl;
 
 import fr.unice.polytech.se.demo.domain.CommandeFinder;
 import fr.unice.polytech.se.demo.domain.CommandeManager;
+import fr.unice.polytech.se.demo.domain.RecetteFinder;
 import fr.unice.polytech.se.demo.entities.Commande;
 import fr.unice.polytech.se.demo.entities.Recette;
 
@@ -25,12 +26,25 @@ public class CommandeManagerBean implements CommandeManager {
     @EJB
     CommandeFinder finder;
 
+    @EJB
+    RecetteFinder finderR;
+
     @Override
     public Commande create(Recette recette,Date date, Integer quantite) {
-        Commande c = new Commande(recette,date, quantite);
-        //Recette recette=new Recette("Coco",10,10);
-        //c.setRecette(recette);
-        entityManager.persist(c);
+
+        Commande c ;
+                //finder.findByDate(date).get(0);
+        Recette r = finderR.findByName(recette.getNom_recette());
+
+        if(r == null) {
+             c = new Commande(recette, date, quantite);
+            entityManager.persist(c);
+        }
+        else {
+             c = new Commande(r, date, quantite);
+            entityManager.persist(c);
+        }
+
         return c;
     }
 

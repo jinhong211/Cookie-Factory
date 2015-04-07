@@ -51,18 +51,11 @@ public class CommandeManagerTest {
 
     @Test
     public void testCreation()  {
-       // Boutique boutique = manager.create("Polytech",new Date(1000),new Date(2000),100);
-        Recette recette=new Recette("Chocolate",10,10);
-               // managerRE.create("Chocolate",10,10);
-       // Recette recette= finderR.findByName("Chocolect");
+
+        Recette recette = managerR.create("Coco",10,10);
 
         Commande commande=managerC.create(recette,new Date(0,0,0), 10);
 
-
-        //commande.setRecette(recette);
-        //assertEquals(Commande.getAddresseBoutique(), "Polytech");
-        //Commande found = finder.findAll().get(0);
-        //assertEquals(found.getId(), commande.getId());
         Commande found = finderC.findAll().get(0);
         assertEquals(found.getQuantite(), commande.getQuantite());
         assertEquals(found.getId(), commande.getId());
