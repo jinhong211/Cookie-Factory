@@ -15,8 +15,7 @@ import java.util.List;
 public class CommandeCartBean implements CommandeCart {
 
     private ArrayList<Commande> _contents = new ArrayList<Commande>();
-
-
+    
     @Override
     public void addCommande(Commande c) {
         _contents.add(c);
