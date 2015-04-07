@@ -31,11 +31,8 @@
         <class>fr.unice.polytech.se.demo.entities.Facon</class>
         <class>fr.unice.polytech.se.demo.entities.InfoPayment</class>
         <class>fr.unice.polytech.se.demo.entities.Ingredient</class>
-        <class>fr.unice.polytech.se.demo.entities.InfoPayment</class>
         <class>fr.unice.polytech.se.demo.entities.Preference</class>
-        <class>fr.unice.polytech.se.demo.entities.Commande</class>
-        <class>fr.unice.polytech.se.demo.entities.Boutique</class>
-        <class>fr.unice.polytech.se.demo.entities.Recette</class>
+        <class>fr.unice.polytech.se.demo.entities.HoraireAtlier</class>
         <properties>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>

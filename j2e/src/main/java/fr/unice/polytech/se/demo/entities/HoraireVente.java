@@ -1,15 +1,14 @@
 package fr.unice.polytech.se.demo.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
  * Created by ding on 31/03/15.
  */
+@Entity
+@Table(name = "HORAIREVENTE")
 public class HoraireVente implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -58,7 +57,7 @@ public class HoraireVente implements Serializable {
     }
 
     @Column(name = "DEBUTLINDI")
-    @NotNull
+  //  @NotNull
     public Integer getDebutLindi(){
         return this.debutLindi;
     }
@@ -67,7 +66,7 @@ public class HoraireVente implements Serializable {
         debutLindi = i;
     }
     @Column(name = "FINLINDI")
-    @NotNull
+   // @NotNull
     public Integer getFinLindi(){
         return this.finLindi;
     }
@@ -76,7 +75,7 @@ public class HoraireVente implements Serializable {
         finLindi = i;
     }
     @Column(name = "DEBUTMARDI")
-    @NotNull
+  //  @NotNull
     public Integer getDebutMardi(){
         return this.debutMardi;
     }
@@ -85,7 +84,7 @@ public class HoraireVente implements Serializable {
         debutMardi = i;
     }
     @Column(name = "FINMARDI")
-    @NotNull
+ //   @NotNull
     public Integer getFinMardi(){
         return this.finMardi;
     }
@@ -94,7 +93,7 @@ public class HoraireVente implements Serializable {
         finMardi = i;
     }
     @Column(name = "DEBUTMERCREDI")
-    @NotNull
+ //   @NotNull
     public Integer getDebutMercredi(){
         return this.debutMercredi;
     }
@@ -103,7 +102,7 @@ public class HoraireVente implements Serializable {
         debutMercredi = i;
     }
     @Column(name = "FINMERCREDI")
-    @NotNull
+  //  @NotNull
     public Integer getFinMercredi(){
         return this.finMercredi;
     }
@@ -112,7 +111,7 @@ public class HoraireVente implements Serializable {
         finMercredi = i;
     }
     @Column(name = "DEBUTJEUDI")
-    @NotNull
+ //   @NotNull
     public Integer getDebutJeudi(){
         return this.debutJeudi;
     }
@@ -121,7 +120,7 @@ public class HoraireVente implements Serializable {
         debutJeudi = i;
     }
     @Column(name = "FINJEUDI")
-    @NotNull
+  //  @NotNull
     public Integer getFinJeudi(){
         return this.finJeudi;
     }
@@ -130,7 +129,7 @@ public class HoraireVente implements Serializable {
         finJeudi = i;
     }
     @Column(name = "DEBUTVENDREDI")
-    @NotNull
+  //  @NotNull
     public Integer getDebutVendredi(){
         return this.debutVendredi;
     }
@@ -139,7 +138,7 @@ public class HoraireVente implements Serializable {
         debutVendredi = i;
     }
     @Column(name = "FINVENDREDI")
-    @NotNull
+  //  @NotNull
     public Integer getFinVendredi(){
         return this.finVendredi;
     }
@@ -148,7 +147,7 @@ public class HoraireVente implements Serializable {
         finVendredi = i;
     }
     @Column(name = "DEBUTSAMEDI")
-    @NotNull
+  //  @NotNull
     public Integer getDebutSamedi(){
         return this.debutSamedi;
     }
@@ -157,7 +156,7 @@ public class HoraireVente implements Serializable {
         debutSamedi = i;
     }
     @Column(name = "FINSAMEDI")
-    @NotNull
+  //  @NotNull
     public Integer getFinSamedi(){
         return this.finSamedi;
     }
@@ -166,7 +165,7 @@ public class HoraireVente implements Serializable {
         finSamedi = i;
     }
     @Column(name = "DEBUTDIMANCHE")
-    @NotNull
+  //  @NotNull
     public Integer getDebutDimanche(){
         return this.debutDimanche;
     }
@@ -175,7 +174,7 @@ public class HoraireVente implements Serializable {
         debutDimanche = i;
     }
     @Column(name = "FINDIMANCHE")
-    @NotNull
+  //  @NotNull
     public Integer getFinDimanche(){
         return this.finDimanche;
     }
