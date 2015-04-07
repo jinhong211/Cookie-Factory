@@ -1,9 +1,9 @@
 package fr.unice.polytech.se.demo;
 
-import fr.unice.polytech.se.demo.domain.RecetteFinder;
-import fr.unice.polytech.se.demo.domain.RecetteManager;
-import fr.unice.polytech.se.demo.domain.impl.RecetteManagerBean;
-import fr.unice.polytech.se.demo.entities.Recette;
+import fr.unice.polytech.se.demo.domain.IngredientFinder;
+import fr.unice.polytech.se.demo.domain.IngredientManager;
+import fr.unice.polytech.se.demo.domain.impl.IngredientManagerBean;
+import fr.unice.polytech.se.demo.entities.Ingredient;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -20,33 +20,35 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by user on 01/04/15.
  */
+
 @RunWith(Arquillian.class)
 
-public class RecetteManagerTest {
+
+public class IngredientManagerTest {
     @Deployment
     public static Archive<?> createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addPackage(Recette.class.getPackage())
+                .addPackage(Ingredient.class.getPackage())
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsWebInfResource("META-INF/persistence.xml", "persistence.xml")
-                .addPackage(RecetteManager.class.getPackage())
-                .addPackage(RecetteManagerBean.class.getPackage());
+                .addPackage(IngredientManager.class.getPackage())
+                .addPackage(IngredientManagerBean.class.getPackage());
     }
 
     @EJB
-    private RecetteManager manager;
+    private IngredientManager manager;
 
     @EJB
-    private RecetteFinder finder;
+    private IngredientFinder finder;
 
     @Test
     public void testCreation()  {
 
-        Recette Recette=manager.create("Chocolect", 10,10);
+        Ingredient ingredient=manager.create("Chocolect", 10);
 
-        Recette found = finder.findByName("Chocolect");
-        assertEquals(found.getNom_recette(), Recette.getNom_recette());
-       assertEquals(found.getId(), Recette.getId());
+        Ingredient found = finder.findByName("Chocolect");
+        assertEquals(found.getNom_Ingredient(), ingredient.getNom_Ingredient());
+        assertEquals(found.getId(), ingredient.getId());
     }
 
 }

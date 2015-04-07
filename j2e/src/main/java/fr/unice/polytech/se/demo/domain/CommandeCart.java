@@ -11,5 +11,7 @@ public interface CommandeCart {
 
     public void addCommande(Commande c);
 
+    public void deleteCommande(Commande c);
+
     public List<Commande> getContents();
 }

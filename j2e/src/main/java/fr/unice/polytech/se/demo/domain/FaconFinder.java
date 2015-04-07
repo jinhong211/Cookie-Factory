@@ -8,11 +8,11 @@ import java.util.List;
  * Created by user on 31/03/15.
  */
 public interface FaconFinder {
-    public Facon findById(int n);
+    public Facon findById(long id);
 
     public Facon findByName(String n);
 
-    public Facon findByTemps(int n);
+    public Facon findByTemps(double time);
 
     public List<Facon> findAll();
 

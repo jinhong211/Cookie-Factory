@@ -26,7 +26,7 @@ public class IngredientFinderBean implements IngredientFinder {
         CriteriaQuery<Ingredient> criteria = builder.createQuery(Ingredient.class);
         Root<Ingredient> from = criteria.from(Ingredient.class);
         criteria.select(from);
-        criteria.where(builder.equal(from.get("name_Ingredient"), name));
+        criteria.where(builder.equal(from.get("nom_Ingredient"), name));
         TypedQuery<Ingredient> query = entityManager.createQuery(criteria);
         try {
             return query.getSingleResult();

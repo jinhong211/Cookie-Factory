@@ -22,6 +22,11 @@ public class CommandeCartBean implements CommandeCart {
     }
 
     @Override
+    public void deleteCommande(Commande c) {
+        _contents.remove(c);
+    }
+
+    @Override
     public List<Commande> getContents() {
         return _contents;
     }

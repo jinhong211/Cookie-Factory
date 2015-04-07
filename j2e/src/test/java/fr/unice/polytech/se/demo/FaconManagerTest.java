@@ -1,9 +1,9 @@
 package fr.unice.polytech.se.demo;
 
-import fr.unice.polytech.se.demo.domain.RecetteFinder;
-import fr.unice.polytech.se.demo.domain.RecetteManager;
-import fr.unice.polytech.se.demo.domain.impl.RecetteManagerBean;
-import fr.unice.polytech.se.demo.entities.Recette;
+import fr.unice.polytech.se.demo.domain.FaconFinder;
+import fr.unice.polytech.se.demo.domain.FaconManager;
+import fr.unice.polytech.se.demo.domain.impl.FaconManagerBean;
+import fr.unice.polytech.se.demo.entities.Facon;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -18,35 +18,35 @@ import javax.ejb.EJB;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by user on 01/04/15.
+ * Created by user on 07/04/15.
  */
+
 @RunWith(Arquillian.class)
 
-public class RecetteManagerTest {
+public class FaconManagerTest {
     @Deployment
     public static Archive<?> createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addPackage(Recette.class.getPackage())
+                .addPackage(Facon.class.getPackage())
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsWebInfResource("META-INF/persistence.xml", "persistence.xml")
-                .addPackage(RecetteManager.class.getPackage())
-                .addPackage(RecetteManagerBean.class.getPackage());
+                .addPackage(FaconManager.class.getPackage())
+                .addPackage(FaconManagerBean.class.getPackage());
     }
 
     @EJB
-    private RecetteManager manager;
+    private FaconManager manager;
 
     @EJB
-    private RecetteFinder finder;
+    private FaconFinder finder;
 
     @Test
     public void testCreation()  {
+        Facon facon =manager.create("griller", 10);
 
-        Recette Recette=manager.create("Chocolect", 10,10);
+        Facon found = finder.findByName("griller");
 
-        Recette found = finder.findByName("Chocolect");
-        assertEquals(found.getNom_recette(), Recette.getNom_recette());
-       assertEquals(found.getId(), Recette.getId());
+        assertEquals(found.getNom_Facon(), facon.getNom_Facon());
+        assertEquals(found.getId(), facon.getId());
     }
-
 }
