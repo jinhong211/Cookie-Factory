@@ -12,7 +12,7 @@ public interface IngredientFinder {
 
     public Ingredient findByPrix(double n);
 
-    public Ingredient findById(long id);
+    public Ingredient findById(long n);
 
     public List<Ingredient> findAll();
 

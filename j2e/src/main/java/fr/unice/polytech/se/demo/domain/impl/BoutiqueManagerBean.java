@@ -37,7 +37,7 @@ public class BoutiqueManagerBean implements BoutiqueManager {
             boutique.setAddresseBoutique(addresseBoutique);
             boutique.setChiffreVente(chiffreVente);
             boutique.setTax(tax);
-            //boutique.setRecette_du_jour(recette_du_jour);
+            boutique.setRecette_du_jour(recette_du_jour);
             entityManager.persist(boutique);
         }
         return boutique;

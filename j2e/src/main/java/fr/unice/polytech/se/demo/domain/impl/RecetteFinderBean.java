@@ -42,7 +42,7 @@ public class RecetteFinderBean implements RecetteFinder {
         CriteriaQuery<Recette> criteria = builder.createQuery(Recette.class);
         Root<Recette> from = criteria.from(Recette.class);
         criteria.select(from);
-        criteria.where(builder.equal(from.get("nom_Facon"), n));
+        criteria.where(builder.equal(from.get("nom_recette"), n));
         TypedQuery<Recette> query = entityManager.createQuery(criteria.select(criteria
                 .from(Recette.class)));
         try {

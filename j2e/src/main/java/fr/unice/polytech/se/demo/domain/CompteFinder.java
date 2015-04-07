@@ -8,7 +8,7 @@ import java.util.List;
  * Created by user on 31/03/15.
  */
 public interface CompteFinder {
-    public Compte findById(int  id);
+    public Compte findById(int  n);
 
     //public Compte findByIdClient(int  c);
 

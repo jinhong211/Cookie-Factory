@@ -53,7 +53,7 @@ public class CommandeManagerTest {
     public void testCreation()  {
        // Boutique boutique = manager.create("Polytech",new Date(1000),new Date(2000),100);
         Recette recette=new Recette("Chocolate",10,10);
-       // Recette recette= managerR.create("Chocolate",10,10);
+               // managerRE.create("Chocolate",10,10);
        // Recette recette= finderR.findByName("Chocolect");
 
         Commande commande=managerC.create(recette,new Date(0,0,0), 10);
