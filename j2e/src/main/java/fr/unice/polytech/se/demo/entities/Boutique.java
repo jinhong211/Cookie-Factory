@@ -26,6 +26,10 @@ public class Boutique implements Serializable {
 
     private Set<Preference> preferences;
 
+    private HoraireVente horaireVente;
+
+    private HoraireAtlier horaireAtlier;
+
     public Boutique(){
 
     }
@@ -102,6 +106,28 @@ public class Boutique implements Serializable {
 
     public void setPreferences(Set<Preference> p){
         preferences = p;
+    }
+
+    @Column(name = "HORAIREVENTE", length = 10)
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ID_HORAIREVENTE")
+    public HoraireVente getHoraireVente(){
+        return horaireVente;
+    }
+
+    public void setHoraireVente(HoraireVente hv){
+        this.horaireVente = hv;
+    }
+
+    @Column(name = "HORAIREATLIER", length = 10)
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ID_HOAIREATLIER")
+    public HoraireAtlier getHoraireAtlier(){
+        return horaireAtlier;
+    }
+
+    public void setHoraireAtlier(HoraireAtlier ha){
+        this.horaireAtlier = ha;
     }
 
 
