@@ -13,8 +13,8 @@ public interface CommandeManager {
 
     public Commande create();
 
-    public Commande create(Recette recette,Date date, Integer quantite);
+    public Commande create(Recette recette, Date date, Integer quantite);
 
-    void addRecette(String recette, double taxe,double q, long id);
+    void addRecette(String recette, double taxe, double q, long id);
 
 }

@@ -1,5 +1,5 @@
-package fr.unice.polytech.se.demo.presentation;
-
+/*package fr.unice.polytech.se.demo.presentation;
+/*
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ import fr.unice.polytech.se.demo.entities.Pet;
 
 @ManagedBean
 public class PetSellerJsfBean {
-
+/
 	private static final int PAGINATION_QUANTITY = 5;
 
 	@EJB
@@ -80,4 +80,4 @@ public class PetSellerJsfBean {
 		this.petName = petName;
 	}
 
-}
+}*/

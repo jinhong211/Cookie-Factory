@@ -10,9 +10,9 @@ import java.util.List;
 public interface InfoPaymentFinder {
     public InfoPayment findById(long id);
 
-    public InfoPayment findByNomClient(String  c);
+    public InfoPayment findByNomClient(String c);
 
-    public InfoPayment findByaddresseClient(String  a);
+    public InfoPayment findByaddresseClient(String a);
 
     public List<InfoPayment> findAll();
 }

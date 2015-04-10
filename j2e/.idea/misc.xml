@@ -34,7 +34,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="IdProvider" IDEtalkID="4F762A23C19A7FBB1DF5EC87A07D16CF" />
+  <component name="IdProvider" IDEtalkID="7CCB4663C25F753BC6530BBB45E23105" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -65,10 +65,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/shrinkwrap-impl-base-1.2.2.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -164,55 +161,12 @@
     </configuration>
     <list size="0" />
   </component>
-  <component name="libraryTable">
-    <library name="shrinkwrap-impl-base-1.2.2">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/Downloads/shrinkwrap-impl-base-1.2.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-  </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="masterDetails">
     <states>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>shrinkwrap-impl-base-1.2.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

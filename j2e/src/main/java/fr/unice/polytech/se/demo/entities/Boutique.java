@@ -57,7 +57,7 @@ public class Boutique implements Serializable {
         this.id = id;
     }
 
-    @ManyToOne(cascade=CascadeType.ALL,optional=false)
+    @ManyToOne(cascade=CascadeType.PERSIST,optional=false)
     @JoinColumn(name="ID_RECETTE")
     public Recette getRecette_du_jour(){
         return recette_du_jour;

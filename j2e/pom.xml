@@ -90,7 +90,7 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.openejb.maven</groupId>
 				<artifactId>tomee-maven-plugin</artifactId>
 				<version>1.6.0</version>
@@ -98,7 +98,18 @@
 					<context>ROOT</context>
 					<deployOpenEjbApplication>true</deployOpenEjbApplication>
 				</configuration>
-			</plugin>
+			</plugin>-->
+            <plugin>
+                <groupId>org.apache.openejb.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>1.7.1</version>
+                <configuration>
+                    <tomeeClassifier>plus</tomeeClassifier>
+                    <args>-Xmx512m -XX:PermSize=256m</args>
+                    <deployOpenEjbApplication>true</deployOpenEjbApplication>
+                </configuration>
+            </plugin>
+
 			<plugin>
 				<groupId>org.apache.openjpa</groupId>
 				<artifactId>openjpa-maven-plugin</artifactId>

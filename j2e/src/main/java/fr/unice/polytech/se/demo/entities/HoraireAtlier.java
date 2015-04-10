@@ -1,32 +1,26 @@
 package fr.unice.polytech.se.demo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
  * Created by ding on 31/03/15.
  */
 @Entity
-@Table(name = "HORAIREATLIER")
+@Table (name = "HORAIREATLIER")
 public class HoraireAtlier implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
 
-    private Integer debutLindi;
-    private Integer finLindi;
-    private Integer debutMardi;
-    private Integer finMardi;
-    private Integer debutMercredi;
-    private Integer finMercredi;
-    private Integer debutJeudi;
-    private Integer finJeudi;
-    private Integer debutVendredi;
-    private Integer finVendredi;
-    private Integer debutSamedi;
+    private Integer debutJour;
+    private Integer finJour;
+/*    private Integer debutSamedi;
     private Integer finSamedi;
     private Integer debutDimanche;
-    private Integer finDimanche;
+    private Integer finDimanche;*/
+
 
     public HoraireAtlier(){
 
@@ -34,7 +28,7 @@ public class HoraireAtlier implements Serializable {
 
     /*public String toString(){
         return "HORAIREATLIER[" + this.id + "]#"
-                +"\nLindi:" + this.debutLindi + "-" + this.finLindi
+                +"\nJour:" + this.debutJour + "-" + this.finJour
                 +"\nMardi:" + this.debutMardi + "-" + this.finMardi
                 +"\nMercredi:" + this.debutMercredi + "-" + this.finMercredi
                 +"\nJeudi:" + this.debutJeudi + "-" + this.finJeudi
@@ -54,97 +48,26 @@ public class HoraireAtlier implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "DEBUTLINDI")
+    @Column(name = "DEBUTJour")
    // @NotNull
-    public Integer getDebutLindi(){
-        return this.debutLindi;
+    public Integer getDebutJour(){
+        return this.debutJour;
     }
 
-    public void setDebutLindi(Integer i){
-        debutLindi = i;
+    public void setDebutJour(Integer i){
+        debutJour = i;
     }
-    @Column(name = "FINLINDI")
+    @Column(name = "FINJour")
   //  @NotNull
-    public Integer getFinLindi(){
-        return this.finLindi;
+    public Integer getFinJour(){
+        return this.finJour;
     }
 
-    public void setFinLindi(Integer i){
-        finLindi = i;
-    }
-    @Column(name = "DEBUTMARDI")
-   // @NotNull
-    public Integer getDebutMardi(){
-        return this.debutMardi;
+    public void setFinJour(Integer i){
+        finJour = i;
     }
 
-    public void setDebutMardi(Integer i){
-        debutMardi = i;
-    }
-    @Column(name = "FINMARDI")
-  //  @NotNull
-    public Integer getFinMardi(){
-        return this.finMardi;
-    }
-
-    public void setFinMardi(Integer i){
-        finMardi = i;
-    }
-    @Column(name = "DEBUTMERCREDI")
- //   @NotNull
-    public Integer getDebutMercredi(){
-        return this.debutMercredi;
-    }
-
-    public void setDebutMercredi(Integer i){
-        debutMercredi = i;
-    }
-    @Column(name = "FINMERCREDI")
-  //  @NotNull
-    public Integer getFinMercredi(){
-        return this.finMercredi;
-    }
-
-    public void setFinMercredi(Integer i){
-        finMercredi = i;
-    }
-    @Column(name = "DEBUTJEUDI")
- //   @NotNull
-    public Integer getDebutJeudi(){
-        return this.debutJeudi;
-    }
-
-    public void setDebutJeudi(Integer i){
-        debutJeudi = i;
-    }
-    @Column(name = "FINJEUDI")
-  //  @NotNull
-    public Integer getFinJeudi(){
-        return this.finJeudi;
-    }
-
-    public void setFinJeudi(Integer i){
-        finJeudi = i;
-    }
-    @Column(name = "DEBUTVENDREDI")
-  //  @NotNull
-    public Integer getDebutVendredi(){
-        return this.debutVendredi;
-    }
-
-    public void setDebutVendredi(Integer i){
-        debutVendredi = i;
-    }
-    @Column(name = "FINVENDREDI")
-  //  @NotNull
-    public Integer getFinVendredi(){
-        return this.finVendredi;
-    }
-
-    public void setFinVendredi(Integer i){
-        finVendredi = i;
-    }
-    @Column(name = "DEBUTSAMEDI")
+/*  @Column(name = "DEBUTSAMEDI")
   //  @NotNull
     public Integer getDebutSamedi(){
         return this.debutSamedi;
@@ -179,5 +102,5 @@ public class HoraireAtlier implements Serializable {
 
     public void setFinDimanche(Integer i){
         finDimanche = i;
-    }
+    }*/
 }

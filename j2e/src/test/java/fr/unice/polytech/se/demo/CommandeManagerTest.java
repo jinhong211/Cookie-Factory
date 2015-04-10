@@ -1,10 +1,8 @@
 package fr.unice.polytech.se.demo;
 
-import fr.unice.polytech.se.demo.domain.CommandeFinder;
-import fr.unice.polytech.se.demo.domain.CommandeManager;
-import fr.unice.polytech.se.demo.domain.RecetteFinder;
-import fr.unice.polytech.se.demo.domain.RecetteManager;
+import fr.unice.polytech.se.demo.domain.*;
 import fr.unice.polytech.se.demo.domain.impl.CommandeManagerBean;
+import fr.unice.polytech.se.demo.entities.Boutique;
 import fr.unice.polytech.se.demo.entities.Commande;
 import fr.unice.polytech.se.demo.entities.Recette;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -49,13 +47,24 @@ public class CommandeManagerTest {
     @EJB
     private RecetteFinder finderR;
 
+    @EJB
+    private BoutiqueManager manager;
+
     @Test
     public void testCreation()  {
+        Recette recette = managerR.create("Chocolate", 10, 10);
+        Boutique boutique = manager.create(recette,"Polytech",100,10);
+        //Recette recette=new Recette("Chocolate",10,10); B
 
-        Recette recette = managerR.create("Coco",10,10);
+       // Recette recette= finderR.findByName("Chocolect");
 
         Commande commande=managerC.create(recette,new Date(0,0,0), 10);
 
+
+        //commande.setRecette(recette);
+        //assertEquals(Commande.getAddresseBoutique(), "Polytech");
+        //Commande found = finder.findAll().get(0);
+        //assertEquals(found.getId(), commande.getId());
         Commande found = finderC.findAll().get(0);
         assertEquals(found.getQuantite(), commande.getQuantite());
         assertEquals(found.getId(), commande.getId());
