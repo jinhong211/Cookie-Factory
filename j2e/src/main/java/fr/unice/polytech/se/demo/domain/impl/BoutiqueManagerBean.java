@@ -43,9 +43,8 @@ public class BoutiqueManagerBean implements BoutiqueManager {
             boutique.setTax(tax);
             if (recette_du_jour != null){
                 boutique.setRecette_du_jour(recette);
-            entityManager.persist(boutique);
+                entityManager.persist(boutique);
             }else{
-
                 boutique.setRecette_du_jour(recette_du_jour);
                 entityManager.persist(boutique);
             }
@@ -60,6 +59,7 @@ public class BoutiqueManagerBean implements BoutiqueManager {
         horaireAtlier.setFinJour(tempsF);
         Boutique boutique = finder.findByAddresse(addresseBoutique);
         Recette recette = finderR.findByName("default");
+
         if (boutique == null) {
             boutique = new Boutique();
             boutique.setAddresseBoutique(addresseBoutique);
@@ -67,14 +67,43 @@ public class BoutiqueManagerBean implements BoutiqueManager {
             boutique.setTax(tax);
             boutique.setHoraireAtlier(horaireAtlier);
             if (recette == null){
-                boutique.setRecette_du_jour(new Recette("default",0,0));
+                recette=new Recette("default",0,0);
+                boutique.setRecette_du_jour(recette);
+                //entityManager.remove(entityManager.merge(recette));
+                //recette.setNom_recette("kkkk");
+                //entityManager.persist(recette);
                 entityManager.persist(boutique);
             }else{
 
                 boutique.setRecette_du_jour(recette);
+                //entityManager.remove(entityManager.merge(recette));
+                //recette.setNom_recette("KKKK");
+                //entityManager.persist(recette);
                 entityManager.persist(boutique);
             }
         }
         return boutique;
+    }
+
+    @Override
+    public Boutique setRecettedujour(Boutique boutique,Recette recette) {
+        Boutique toUpdateb = finder.findByAddresse(boutique.getAddresseBoutique());
+        //System.out.println(toUpdateb);
+        //Recette r = finderR.findByName(recette.getNom_recette());
+        //System.out.println(r);
+        toUpdateb.setTax(999);
+            toUpdateb.setRecette_du_jour(recette);
+           // entityManager.merge(recette);
+        //Boutique toUpdateb2 = finder.findByAddresse(boutique.getAddresseBoutique());
+        //@NamedQuery()
+        //System.out.print(toUpdateb.getTax());
+        //entityManager.merge(r);
+        //System.out.print(recette);
+        //System.out.print(entityManager.contains(recette));
+        entityManager.merge(toUpdateb);
+        //System.out.print(toUpdateb.getTax());
+        //entityManager.flush();
+        //System.out.print(toUpdateb.getTax());
+        return toUpdateb;
     }
 }

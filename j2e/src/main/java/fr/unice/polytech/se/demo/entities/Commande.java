@@ -105,7 +105,7 @@ public class Commande implements Serializable {
         infoPayment = i;
     }
 
-   @OneToOne(cascade = {CascadeType.ALL})
+   @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "ID_BOUTIQUE")
     public Boutique getBoutique(){
         return boutique;

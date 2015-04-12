@@ -30,10 +30,12 @@ public class Boutique implements Serializable {
 
     private HoraireAtlier horaireAtlier;
 
+    private Set<Commande> commandes;
+
     public Boutique(){
 
     }
-
+/*
     public Boutique(Recette recette_du_jour, String addresseBoutique, double tax, Integer chiffreVente){
         this.recette_du_jour = recette_du_jour;
         this.addresseBoutique = addresseBoutique;
@@ -44,7 +46,7 @@ public class Boutique implements Serializable {
     public String toString(){
         return "BOUTIQUE[" + this.id + "]# Recettedujour: " + this.recette_du_jour.toString() + "\naddresseBoutique: " + this.addresseBoutique +
                 "\n tax: " + this.tax + "\nchiffreVente: "+ this.chiffreVente;
-    }
+    }*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -128,6 +130,15 @@ public class Boutique implements Serializable {
 
     public void setHoraireAtlier(HoraireAtlier ha){
         this.horaireAtlier = ha;
+    }
+
+    @OneToMany(mappedBy="boutique",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+    public Set<Commande> getCommandes(){
+        return commandes;
+    }
+
+    public void setCommandes(Set<Commande> commandes){
+        this.commandes = commandes;
     }
 
 

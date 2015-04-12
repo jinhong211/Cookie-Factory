@@ -1,6 +1,10 @@
 package fr.unice.polytech.se.demo.domain;
 
+import fr.unice.polytech.se.demo.entities.Facon;
+import fr.unice.polytech.se.demo.entities.Ingredient;
 import fr.unice.polytech.se.demo.entities.Recette;
+
+import java.util.Set;
 
 /**
  * Created by user on 31/03/15.
@@ -8,7 +12,7 @@ import fr.unice.polytech.se.demo.entities.Recette;
 public interface RecetteManager {
     public Recette create();
 
-    public Recette create(String n, double p, double temps_Utiliser);
+    public Recette create(String n, Set<Ingredient> ingredients,Set<Facon> facons);
 
     Recette addIngredientToRecette(String ingredient, String recette);
 
