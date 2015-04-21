@@ -26,5 +26,6 @@ namespace DAO
         }
     
         public DbSet<Utilisateur> Utilisateur { get; set; }
+        public DbSet<Infomation> Infomation { get; set; }
     }
 }

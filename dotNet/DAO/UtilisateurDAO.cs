@@ -81,5 +81,29 @@ namespace DAO
                 modele.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// Ajout image à utilisateur
+        /// </summary>
+        public void addInfoToUtilisateur(String login1,String nom1,String prenom1,int numero1,String adress1,DateTime date1,int cry)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                u.Infomation.Add(new Infomation { 
+                    nom = nom1,
+                    prenom = prenom1,
+                    numero = numero1,
+                    adress = adress1,
+                    expiration = date1,
+                    cryptogramme = cry
+            }
+                    );
+                modele.SaveChanges();
+            }
+        }
     }
 }

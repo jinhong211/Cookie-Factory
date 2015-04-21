@@ -4,7 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TCFLoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="TCFLoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Infomation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="prenom" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="adress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="expiration" Type="date" Nullable="false" />
+          <Property Name="cryptogramme" Type="int" Nullable="false" />
+          <Property Name="id_Utilisateur" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
             <PropertyRef Name="id" />
@@ -14,11 +27,27 @@
           <Property Name="type" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="passward" Type="varchar" MaxLength="16" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Infomation_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Infomation" Type="Self.Infomation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Infomation">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TCFLoginModelStoreContainer">
+          <EntitySet Name="Infomation" EntityType="Self.Infomation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Infomation_Utilisateur" Association="Self.FK_Infomation_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Infomation" EntitySet="Infomation" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TCFLoginModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -30,10 +59,42 @@
           <Property Name="login" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="passward" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Infomation" Relationship="TCFLoginModel.FK_Infomation_Utilisateur" FromRole="Utilisateur" ToRole="Infomation" />
         </EntityType>
         <EntityContainer Name="TCFModele" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" />
+          <EntitySet Name="Infomation" EntityType="TCFLoginModel.Infomation" />
+          <AssociationSet Name="FK_Infomation_Utilisateur" Association="TCFLoginModel.FK_Infomation_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Infomation" EntitySet="Infomation" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Infomation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="prenom" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="expiration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cryptogramme" Type="Int32" Nullable="false" />
+          <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Infomation_Utilisateur" FromRole="Infomation" ToRole="Utilisateur" />
+        </EntityType>
+        <Association Name="FK_Infomation_Utilisateur">
+          <End Type="TCFLoginModel.Utilisateur" Role="Utilisateur" Multiplicity="1" />
+          <End Type="TCFLoginModel.Infomation" Role="Infomation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Infomation">
+              <PropertyRef Name="id_Utilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -47,6 +108,20 @@
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="passward" ColumnName="passward" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Infomation">
+            <EntityTypeMapping TypeName="TCFLoginModel.Infomation">
+              <MappingFragment StoreEntitySet="Infomation">
+                <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+                <ScalarProperty Name="cryptogramme" ColumnName="cryptogramme" />
+                <ScalarProperty Name="expiration" ColumnName="expiration" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
