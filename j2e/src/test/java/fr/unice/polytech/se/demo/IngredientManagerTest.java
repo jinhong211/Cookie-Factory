@@ -47,6 +47,12 @@ public class IngredientManagerTest {
         Ingredient ingredient=manager.create("Chocolect", 10);
 
         Ingredient found = finder.findByName("Chocolect");
+
+        Ingredient ingredient2=manager.create("Coco", 10);
+
+        Ingredient found2 = finder.findByName("Coco");
+
+        System.out.print(found2.getNom_Ingredient());
         assertEquals(found.getNom_Ingredient(), ingredient.getNom_Ingredient());
         assertEquals(found.getId(), ingredient.getId());
     }

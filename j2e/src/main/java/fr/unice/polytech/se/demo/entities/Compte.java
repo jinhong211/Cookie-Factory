@@ -20,6 +20,8 @@ public class Compte implements Serializable {
 
     private String code;
 
+    private Preference preference;
+
     public Compte(){}
 
     public Compte(double ccc, Integer client, String code){
@@ -71,6 +73,16 @@ public class Compte implements Serializable {
 
     public void setCode(String c){
         code = c;
+    }
+
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_PREFERENCE", unique = true)
+    public Preference getPreference(){
+        return preference;
+    }
+
+    public void setPreference(Preference p){
+        this.preference = p;
     }
 
 

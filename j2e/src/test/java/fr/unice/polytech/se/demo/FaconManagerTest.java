@@ -46,6 +46,8 @@ public class FaconManagerTest {
 
         Facon found = finder.findByName("griller");
 
+        Facon facon2 =manager.create("baker", 10);
+
         assertEquals(found.getNom_Facon(), facon.getNom_Facon());
         assertEquals(found.getId(), facon.getId());
     }

@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -38,7 +39,17 @@ public class RecetteFinderBean implements RecetteFinder {
 
     @Override
     public Recette findByName(String n) {
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        List<Recette> recettes = (List<Recette>) findAll();
+        Recette recette = null;
+        Iterator is = recettes.iterator();
+        while(is.hasNext()) {
+            Recette i = (Recette) is.next();
+            if(i.getNom_recette()==n){
+                recette = i;
+            }
+        }
+        return recette;
+        /*CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Recette> criteria = builder.createQuery(Recette.class);
         Root<Recette> from = criteria.from(Recette.class);
         criteria.select(from);
@@ -49,7 +60,7 @@ public class RecetteFinderBean implements RecetteFinder {
             return query.getSingleResult();
         } catch (Exception e) {
             return null;
-        }
+        }*/
     }
 
     @Override

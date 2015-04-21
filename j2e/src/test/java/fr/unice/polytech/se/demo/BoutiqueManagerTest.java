@@ -16,7 +16,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ejb.EJB;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -87,23 +86,71 @@ public class BoutiqueManagerTest {
 
         facons.add(facon2);
 
+        Ingredient ingredient3=managerI.create("Fraise", 10);
+
+        //Ingredient ingredient2=managerI.create("Coco", 5);
+
+        Set<Ingredient> ingredients2 = new HashSet<Ingredient>();
+
+        ingredients2.add(ingredient3);
+
+        Facon facon3 =managerF.create("main", 10);
+
+        //Facon facon2 =managerF.create("friter", 5);
+
+        Set<Facon> facons2 = new HashSet<Facon>();
+
+        facons2.add(facon3);
+
         Recette recette= managerR.create("Chocolect", ingredients,facons);
+
+        Recette foundr =finderr.findByName("Chocolect");
+        System.out.print(foundr.getNom_recette());
+
+
         //System.out.println(finderr.findByName("Chocolect"));
         //Recette recette=new Recette("Chocolect", 10,10);
 
         Boutique boutique = managerB.create("Polytech",100,10,9,5);
-        boutique = managerB.setRecettedujour(boutique,recette);
-        System.out.println(finder.findByAddresse("Polytech").getRecette_du_jour());
-        System.out.print(boutique.getTax());
-       // Boutique boutique2 = managerB.create("Pppp",100,10,9,5);
+        //Boutique boutique = managerB.create(recette,"Polytech",100,10);
+        //boutique = managerB.setRecettedujour(boutique,recette);
+        //System.out.println(finder.findByAddresse("Polytech").getRecette_du_jour());
+        //System.out.print(boutique.getTax());
+        Boutique boutique2 = managerB.create("Pppp",100,10,9,5);
         //assertEquals(Commande.getAddresseBoutique(), "Polytech");
         //Commande found = finder.findAll().get(0);
         //assertEquals(found.getId(), commande.getId());
         Boutique found = finder.findAll().get(0);
-     //   Boutique found2 = finder.findAll().get(1);
+
+
+       /* Facon facon=finderF.findByName("griller");
+        System.out.print(facon.getNom_Facon());
+        Set<Recette> recettes=facon.getRecettes();
+
+        System.out.print(recettes.size());*/
+       // Iterator rs= facon.getRecettes().iterator();
+
+        /*List<Recette> recettes=new ArrayList<Recette>();
+        while(rs.hasNext()) {
+            Recette i = (Recette) rs.next();
+            recettes.add(i);
+        }
+
+        System.out.print(recettes.get(0).getNom_recette());*/
+        //Recette recette2= managerR.create("Coco", ingredients,facons);
+        //Recette foundr = finderr.findAll().get(0);
+
+
+        Recette recette2= managerR.create("Coco", ingredients2, facons2);
+
+        Recette foundr2 =finderr.findByName("Coco");
+        System.out.print(foundr2.getNom_recette());
+
+        Boutique found2 = finder.findAll().get(1);
+        System.out.print(found2.getAddresseBoutique());
         assertEquals(found.getAddresseBoutique(), boutique.getAddresseBoutique());
         assertEquals(found.getId(), boutique.getId());
-        System.out.print(found.getRecette_du_jour().getNom_recette());
+       // System.out.print(found.getRecette_du_jour().getNom_recette());
         assertEquals(found.getRecette_du_jour().getNom_recette(), boutique.getRecette_du_jour().getNom_recette());
       //  assertEquals(found.getRecette_du_jour().getNom_recette(), boutique.getRecette_du_jour().getNom_recette());
 

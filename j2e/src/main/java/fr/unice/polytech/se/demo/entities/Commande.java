@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by ding on 22/03/15.
@@ -21,11 +20,11 @@ public class Commande implements Serializable {
 
     private Recette recette;
 
-    private Recette personnalise;
-
     private Boutique boutique;
 
     private InfoPayment infoPayment;
+
+    private double price;
 
     public Commande(){
 
@@ -82,18 +81,6 @@ public class Commande implements Serializable {
         recette = r;
     }
 
-    public Recette getPersonnalise(){
-        return personnalise;
-    }
-
-    public void setPersonnalise(String n, Set<Ingredient> i, Set<Facon> f, Integer t, double p){
-        this.personnalise = new Recette();
-        personnalise.setNom_recette(n);
-        personnalise.setIngredients(i);
-        personnalise.setFacons(f);
-        personnalise.setTemps_Utiliser(t);
-        personnalise.setPrix_recette(p);
-    }
 
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "ID_INFOPAYMENT")
@@ -105,7 +92,7 @@ public class Commande implements Serializable {
         infoPayment = i;
     }
 
-   @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "ID_BOUTIQUE")
     public Boutique getBoutique(){
         return boutique;
@@ -113,6 +100,16 @@ public class Commande implements Serializable {
 
     public void setBoutique(Boutique b){
         boutique = b;
+    }
+
+    @Column(name = "prix")
+    @NotNull
+    public double getPrice(){
+        return price;
+    }
+
+    public void setPrice(double price){
+        this.price = price;
     }
 
 

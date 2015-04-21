@@ -58,6 +58,7 @@ public class BoutiqueManagerBean implements BoutiqueManager {
         horaireAtlier.setDebutJour(tempsO);
         horaireAtlier.setFinJour(tempsF);
         Boutique boutique = finder.findByAddresse(addresseBoutique);
+        //Recette recette = finderR.findByName(recette_du_jour.getNom_recette());
         Recette recette = finderR.findByName("default");
 
         if (boutique == null) {

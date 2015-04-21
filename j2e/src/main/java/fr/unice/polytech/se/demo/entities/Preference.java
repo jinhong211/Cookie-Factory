@@ -37,8 +37,7 @@ public class Preference implements Serializable{
         this.id = id;
     }
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "ID_COMPTE")
+    @OneToOne(optional = true, cascade = CascadeType.ALL)
     public Compte getCompte(){
         return compte;
     }

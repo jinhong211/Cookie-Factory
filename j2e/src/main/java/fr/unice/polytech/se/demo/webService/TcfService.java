@@ -17,7 +17,7 @@ public interface TcfService {
 
     @WebMethod
     @WebResult(name="creerBoutique")
-    public boolean creerBoutique(@WebParam(name = "addresseBoutique") String address, @WebParam(name = "tax") double tax, @WebParam(name = "tempsOuv") int to, @WebParam(name = "tempsFer") int tf);
+    public boolean creerBoutique( @WebParam(name = "addresseBoutique") String address, @WebParam(name = "tax") double tax, @WebParam(name = "tempsOuv") int to, @WebParam(name = "tempsFer") int tf);
 
     @WebMethod
     @WebResult(name="existBoutique")

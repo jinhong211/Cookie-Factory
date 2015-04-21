@@ -13,6 +13,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by user on 31/03/15.
@@ -57,13 +59,23 @@ public class CommandeManagerBean implements CommandeManager {
             //entityManager.persist(c);
         }
 
+        Set<Commande> commandes =new HashSet<Commande>();
+
         if(boutique1==null){
-            boutique.setChiffreVente(boutique.getChiffreVente()+1);
+            commandes=boutique.getCommandes();
+            commandes.add(c);
+            boutique.setCommandes(commandes);
+            boutique.setChiffreVente(boutique.getCommandes().size());
             c.setBoutique(boutique);
         }else{
-            boutique1.setChiffreVente(boutique1.getChiffreVente()+1);
+            commandes=boutique1.getCommandes();
+            commandes.add(c);
+            boutique1.setCommandes(commandes);
+            //System.out.print();
+            boutique1.setChiffreVente(boutique1.getCommandes().size());
             c.setBoutique(boutique1);
         }
+        c.setPrice(quantite*recette.getPrix_recette()*(boutique.getTax()+1));
 
         if(infoPayment1==null){
             c.setInfoPayment(infoPayment);

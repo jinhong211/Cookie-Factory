@@ -50,9 +50,9 @@ public class RecetteManagerBean implements RecetteManager {
             iprix += i.getPrix_Ingredient();
             Ingredient ingredient = im.findByName(i.getNom_Ingredient());
             if(ingredient!=null)
-               ingredients1.add(ingredient);
+                ingredients1.add(ingredient);
             else
-               ingredients1.add(i) ;
+                ingredients1.add(i) ;
         }
 
         Set<Facon> facons1 = new HashSet<Facon>();
@@ -81,16 +81,51 @@ public class RecetteManagerBean implements RecetteManager {
             recette.setTemps_Utiliser(ftime);
             entityManager.persist(recette);
         }
+
+        Iterator is2 = ingredients1.iterator();
+        while(is2.hasNext()){
+            Ingredient i=(Ingredient)is2.next();
+
+            System.out.print("kkkkk"+i.getRecettes().size());
+            i.getRecettes().add(recette);
+           // System.out.print("kkkkk"+i.getRecettes().size());
+
+        }
+
+
+        Iterator fs2 = facons1.iterator();
+
+        while(fs2.hasNext()) {
+            Facon f = (Facon) fs2.next();
+
+            f.getRecettes().add(recette);
+        }
+        //recette = rm.findByName(n);
+        //recette.setIngredients(ingredients1);
+        //recette.setFacons(facons1);
+
+        entityManager.merge(recette);
+
+        /*Iterator is3 = ingredients.iterator();
+        while(is2.hasNext()){
+            Ingredient i=(Ingredient)is3.next();
+
+            //System.out.print("kkkkk"+i.getRecettes().size());
+            //i.getRecettes().add(recette);
+            System.out.print("QQQQ"+i.getRecettes().size());
+
+        }*/
         return recette;
+
     }
 
     @Override
     public Recette addIngredientToRecette(String ingredient, String recette) {
         Ingredient i= im.findByName(ingredient);
         Recette r = (Recette) rm.findByName(recette);
-        Set<Ingredient> ingredients = r.getIngredients();
+        /*Set<Ingredient> ingredients = r.getIngredients();
         ingredients.add(i);
-        r.setIngredients(ingredients);
+        r.setIngredients(ingredients);*/
         entityManager.merge(r);
         //entityManager.merge(i);
         return r;
@@ -100,9 +135,9 @@ public class RecetteManagerBean implements RecetteManager {
     public Recette deleteIngredientToRecette(String ingredient, String recette) {
         Ingredient i= im.findByName(ingredient);
         Recette r =(Recette) rm.findByName(recette);
-        Set<Ingredient> ingredients = r.getIngredients();
+        /*Set<Ingredient> ingredients = r.getIngredients();
         ingredients.remove(ingredient);
-        r.setIngredients(ingredients);
+        r.setIngredients(ingredients);*/
         entityManager.merge(r);
         return r;
     }

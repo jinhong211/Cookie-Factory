@@ -96,11 +96,11 @@ public class CommandeManagerTest {
 
         //Boutique boutique = manageB.create(recette,"Polytech",100,10);
 
-        Boutique boutique = manageB.create("Polytech",100,10,9,5);
+        Boutique boutique = manageB.create("Polytech",0.5,10,9,5);
 
         InfoPayment infoPayment = managerIF.create("cc","ac","cb");
 
-       Commande commande=managerC.create(boutique,recette,new Date(0,0,0), 10,infoPayment);
+        Commande commande=managerC.create(boutique,recette,new Date(0,0,0), 10,infoPayment);
 
         //Commande commande=managerC.create(recette,new Date(0,0,0), 10);
 
@@ -109,6 +109,11 @@ public class CommandeManagerTest {
         Commande found = finderC.findAll().get(0);
 
         System.out.print(found.getBoutique().getChiffreVente());
+
+        System.out.print("KKKKK"+found.getPrice());
+
+        assertEquals(found.getRecette().getPrix_recette()*found.getQuantite()* (boutique.getTax()+1), commande.getPrice(),0.001);
+        assertEquals(found.getBoutique().getChiffreVente(), commande.getBoutique().getChiffreVente());
 
         assertEquals(found.getQuantite(), commande.getQuantite());
 
