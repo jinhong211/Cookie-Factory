@@ -126,5 +126,17 @@ namespace Test
             Infomation info = dao.getOneInfoUtilisateur(login, num);
             Assert.IsNull(info);
         }
+
+        [TestMethod]
+        public void TestUpdateInfo()
+        {
+            String login = "admin";
+            int num = 12345;
+            String address = "valbonne";
+            var dao = new UtilisateurDAO();
+            dao.modifyInfoToUtilisateur(login, num, address);
+            Infomation info = dao.getOneInfoUtilisateur(login, num);
+            Assert.AreEqual(address, info.adress);
+        }
     }
 }

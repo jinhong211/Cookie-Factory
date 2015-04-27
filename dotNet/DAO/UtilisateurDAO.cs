@@ -175,5 +175,22 @@ namespace DAO
             }
         }
 
+        /// <summary>
+        /// Modifier infoPayment à utilisateur
+        /// </summary>
+        public void modifyInfoToUtilisateur(String login1,int num1, String adress1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                Infomation info = u.Infomation.ToList<Infomation>().Find(e => e.numero == num1);
+                info.adress = adress1;
+                modele.SaveChanges();
+            }
+        }
+
     }
 }
