@@ -63,7 +63,6 @@ namespace DAO
             {
                 Utilisateur utilisateur = new Utilisateur
                 {
-                    id = this.getListUtilisateurs().Count<Utilisateur>() + 1,
                     login = login1,
                     passward = passward1,
                     type = type1
