@@ -33,6 +33,21 @@ namespace DAO
         }
 
         /// <summary>
+        /// Chercher utilisateur
+        /// </summary>
+        public Utilisateur getUtilisateur(String login1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                return u;
+            }
+        }
+
+        /// <summary>
         /// Ajouter Utilisateur
         /// </summary>
         public void addUtilisateur(String login1, String passward1, String type1)
