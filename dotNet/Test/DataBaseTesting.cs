@@ -94,22 +94,27 @@ namespace Test
             Assert.IsNotNull(info);
             Assert.IsNull(infoNull);
         }
-        /*[TestMethod]
+
+        [TestMethod]
         public void TestAddInfo()
         {
             String login = "admin";
             String nom = "jin";
             String prenom = "hong";
-            int num = 12345;
+            int num = 11111;
             String address = "antibes";
             String date = "09/17";
             int cry = 123;
             var dao = new UtilisateurDAO();
             dao.addInfoToUtilisateur(login, nom, prenom, num, address, date, cry);
-            Utilisateur utilisateur = dao.getUtilisateur(login);
-            var infos = utilisateur.Infomation;
-            Infomation info = infos.
-            Assert.AreEqual(login)
-        }*/
+            Infomation info = dao.getOneInfoUtilisateur(login,num);
+            Assert.AreEqual(nom, info.nom);
+            Assert.AreEqual(prenom, info.prenom);
+            Assert.AreEqual(num, info.numero);
+            Assert.AreEqual(address, info.adress);
+            Assert.AreEqual(date, info.expiration);
+            Assert.AreEqual(cry, info.cryptogramme);
+        }
+
     }
 }

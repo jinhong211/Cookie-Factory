@@ -120,7 +120,7 @@ namespace DAO
         }
 
         /// <summary>
-        /// Liste un infoPayment de l'utilisateur avec numero de la carte
+        /// Un infoPayment de l'utilisateur avec numero de la carte
         /// </summary>
         public Infomation getOneInfoUtilisateur(String login1,int num1)
         {
@@ -154,6 +154,23 @@ namespace DAO
                     cryptogramme = cry
             }
                     );
+                modele.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Supprime infoPayment à utilisateur
+        /// </summary>
+        public void deleteInfoToUtilisateur(String login1,int numero1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                Infomation info = u.Infomation.ToList<Infomation>().Find(e => e.numero == num1);
+                u.Infomation.Remove(info);
                 modele.SaveChanges();
             }
         }

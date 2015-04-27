@@ -10,11 +10,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nom" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="prenom" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="numero" Type="int" Nullable="false" />
           <Property Name="adress" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="expiration" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="expiration" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="cryptogramme" Type="int" Nullable="false" />
           <Property Name="id_Utilisateur" Type="int" Nullable="false" />
         </EntityType>
@@ -74,11 +74,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nom" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="prenom" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="prenom" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="numero" Type="Int32" Nullable="false" />
           <Property Name="adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="expiration" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="expiration" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="cryptogramme" Type="Int32" Nullable="false" />
           <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Infomation_Utilisateur" FromRole="Infomation" ToRole="Utilisateur" />
