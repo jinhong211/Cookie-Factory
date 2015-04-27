@@ -116,5 +116,15 @@ namespace Test
             Assert.AreEqual(cry, info.cryptogramme);
         }
 
+        [TestMethod]
+        public void TestDeleteInfo()
+        {
+            String login = "admin";
+            int num = 12345;
+            var dao = new UtilisateurDAO();
+            dao.deleteInfoToUtilisateur(login, num);
+            Infomation info = dao.getOneInfoUtilisateur(login, num);
+            Assert.IsNull(info);
+        }
     }
 }

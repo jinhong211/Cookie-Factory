@@ -161,7 +161,7 @@ namespace DAO
         /// <summary>
         /// Supprime infoPayment à utilisateur
         /// </summary>
-        public void deleteInfoToUtilisateur(String login1,int numero1)
+        public void deleteInfoToUtilisateur(String login1,int num1)
         {
             using (TCFModele modele = new TCFModele())
             {
@@ -170,7 +170,7 @@ namespace DAO
                               select utilisateur;
                 Utilisateur u = requete.First();
                 Infomation info = u.Infomation.ToList<Infomation>().Find(e => e.numero == num1);
-                u.Infomation.Remove(info);
+                modele.Infomation.Remove(info);
                 modele.SaveChanges();
             }
         }
