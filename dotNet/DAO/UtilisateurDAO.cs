@@ -83,6 +83,9 @@ namespace DAO
                               where utilisateur.login == login1
                               select utilisateur;
                 Utilisateur u = requete.First();
+                foreach(Infomation info in u.Infomation.ToList<Infomation>()){
+                    modele.Infomation.Remove(info);
+                }
                 modele.Utilisateur.Remove(u);
                 modele.SaveChanges();
             }
