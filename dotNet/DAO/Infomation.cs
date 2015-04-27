@@ -19,7 +19,7 @@ namespace DAO
         public string prenom { get; set; }
         public int numero { get; set; }
         public string adress { get; set; }
-        public System.DateTime expiration { get; set; }
+        public string expiration { get; set; }
         public int cryptogramme { get; set; }
         public int id_Utilisateur { get; set; }
     

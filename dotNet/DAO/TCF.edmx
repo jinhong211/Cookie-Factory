@@ -14,7 +14,7 @@
           <Property Name="prenom" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="numero" Type="int" Nullable="false" />
           <Property Name="adress" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="expiration" Type="date" Nullable="false" />
+          <Property Name="expiration" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="cryptogramme" Type="int" Nullable="false" />
           <Property Name="id_Utilisateur" Type="int" Nullable="false" />
         </EntityType>
@@ -78,7 +78,7 @@
           <Property Name="prenom" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="numero" Type="Int32" Nullable="false" />
           <Property Name="adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="expiration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="expiration" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="cryptogramme" Type="Int32" Nullable="false" />
           <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Infomation_Utilisateur" FromRole="Infomation" ToRole="Utilisateur" />

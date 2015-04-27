@@ -72,6 +72,44 @@ namespace Test
             Assert.AreEqual(passward, utilisateur.passward);
             Assert.AreEqual(type, utilisateur.type);
         }
+        [TestMethod]
+        public void TestGetInfo()
+        {
+            String login = "admin";
+            var dao = new UtilisateurDAO();
+            List<Infomation> list = dao.getListInfoUtilisateur(login);
 
+            Assert.IsNotNull(list);
+        }
+
+        [TestMethod]
+        public void TestGetInfoOne()
+        {
+            String login = "admin";
+            int num = 12345;
+            int num2 = 123;
+            var dao = new UtilisateurDAO();
+            Infomation info = dao.getOneInfoUtilisateur(login, num);
+            Infomation infoNull = dao.getOneInfoUtilisateur(login, num2);
+            Assert.IsNotNull(info);
+            Assert.IsNull(infoNull);
+        }
+        /*[TestMethod]
+        public void TestAddInfo()
+        {
+            String login = "admin";
+            String nom = "jin";
+            String prenom = "hong";
+            int num = 12345;
+            String address = "antibes";
+            String date = "09/17";
+            int cry = 123;
+            var dao = new UtilisateurDAO();
+            dao.addInfoToUtilisateur(login, nom, prenom, num, address, date, cry);
+            Utilisateur utilisateur = dao.getUtilisateur(login);
+            var infos = utilisateur.Infomation;
+            Infomation info = infos.
+            Assert.AreEqual(login)
+        }*/
     }
 }

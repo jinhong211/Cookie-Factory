@@ -105,9 +105,39 @@ namespace DAO
         }
 
         /// <summary>
-        /// Ajout image à utilisateur
+        /// Liste tous les infoPayments de l'utilisateur
         /// </summary>
-        public void addInfoToUtilisateur(String login1,String nom1,String prenom1,int numero1,String adress1,DateTime date1,int cry)
+        public List<Infomation> getListInfoUtilisateur(String login1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                return u.Infomation.ToList<Infomation>();
+            }
+        }
+
+        /// <summary>
+        /// Liste un infoPayment de l'utilisateur avec numero de la carte
+        /// </summary>
+        public Infomation getOneInfoUtilisateur(String login1,int num1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                Infomation info = u.Infomation.ToList<Infomation>().Find(e => e.numero == num1);
+                return info;
+            }
+        }
+        /// <summary>
+        /// Ajout infoPayment à utilisateur
+        /// </summary>
+        public void addInfoToUtilisateur(String login1,String nom1,String prenom1,int numero1,String adress1,String date1,int cry)
         {
             using (TCFModele modele = new TCFModele())
             {
@@ -127,5 +157,6 @@ namespace DAO
                 modele.SaveChanges();
             }
         }
+
     }
 }
