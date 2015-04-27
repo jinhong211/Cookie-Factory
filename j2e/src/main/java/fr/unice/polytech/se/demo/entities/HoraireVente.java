@@ -21,12 +21,13 @@ public class HoraireVente implements Serializable {
     private Integer debutDimanche;
     private Integer finDimanche;*/
 
+
     public HoraireVente(){
 
     }
 
     /*public String toString(){
-        return "HORAIREVENTE[" + this.id + "]#"
+        return "HORAIREATLIER[" + this.id + "]#"
                 +"\nJour:" + this.debutJour + "-" + this.finJour
                 +"\nMardi:" + this.debutMardi + "-" + this.finMardi
                 +"\nMercredi:" + this.debutMercredi + "-" + this.finMercredi
@@ -35,7 +36,6 @@ public class HoraireVente implements Serializable {
                 +"\nSamedi:" + this.debutSamedi + "-" + this.finSamedi
                 +"\nDimanche:" + this.debutDimanche + "-" + this.finDimanche;
     }*/
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,7 +49,7 @@ public class HoraireVente implements Serializable {
     }
 
     @Column(name = "DEBUTJour")
-  //  @NotNull
+   // @NotNull
     public Integer getDebutJour(){
         return this.debutJour;
     }
@@ -58,7 +58,7 @@ public class HoraireVente implements Serializable {
         debutJour = i;
     }
     @Column(name = "FINJour")
-   // @NotNull
+  //  @NotNull
     public Integer getFinJour(){
         return this.finJour;
     }
@@ -66,7 +66,8 @@ public class HoraireVente implements Serializable {
     public void setFinJour(Integer i){
         finJour = i;
     }
-/*   @Column(name = "DEBUTSAMEDI")
+
+/*  @Column(name = "DEBUTSAMEDI")
   //  @NotNull
     public Integer getDebutSamedi(){
         return this.debutSamedi;
@@ -76,7 +77,7 @@ public class HoraireVente implements Serializable {
         debutSamedi = i;
     }
     @Column(name = "FINSAMEDI")
-  //  @NotNull
+ //   @NotNull
     public Integer getFinSamedi(){
         return this.finSamedi;
     }
@@ -94,7 +95,7 @@ public class HoraireVente implements Serializable {
         debutDimanche = i;
     }
     @Column(name = "FINDIMANCHE")
-  //  @NotNull
+ //   @NotNull
     public Integer getFinDimanche(){
         return this.finDimanche;
     }

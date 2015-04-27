@@ -4,7 +4,7 @@ import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
 import fr.unice.polytech.se.demo.domain.CreerBoutique;
 import fr.unice.polytech.se.demo.domain.impl.CreerBoutiqueBean;
 import fr.unice.polytech.se.demo.entities.Boutique;
-import fr.unice.polytech.se.demo.entities.HoraireAtlier;
+import fr.unice.polytech.se.demo.entities.HoraireVente;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -56,11 +56,11 @@ public class CreerBoutiqueTest {
         //assertEquals(found.getId(), commande.getId());
         Boutique found = managerF.findAll().get(0);
 
-        HoraireAtlier horaireAtlier =managerCB.createHoraireAtlier();
+        HoraireVente horaireVente =managerCB.createHoraireAtlier();
 
-        HoraireAtlier foundHoraireAtlier = managerCB.findAllHoraireAtlier().get(2);
+        HoraireVente foundHoraireVente = managerCB.findAllHoraireAtlier().get(2);
 
-        Assert.assertEquals(foundHoraireAtlier.getId(), horaireAtlier.getId());
+        Assert.assertEquals(foundHoraireVente.getId(), horaireVente.getId());
 
        /* Facon facon=finderF.findByName("griller");
         System.out.print(facon.getNom_Facon());

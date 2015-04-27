@@ -18,8 +18,6 @@ public class Preference implements Serializable{
 
     private Compte compte;
 
-    private InfoPayment infoPayment;
-
     private Set<Recette> recettes;
 
     private Set<Boutique> boutiques;
@@ -46,16 +44,6 @@ public class Preference implements Serializable{
         compte = c;
     }
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "ID_INFOPAYMENT")
-    public InfoPayment getInfoPayment(){
-        return infoPayment;
-    }
-
-    public void setInfoPayment(InfoPayment p){
-        infoPayment = p;
-    }
-
     @ManyToMany(mappedBy = "preferences")
     public Set<Recette> getRecettes(){
         return recettes;
@@ -66,7 +54,7 @@ public class Preference implements Serializable{
     }
 
     public String toString(){
-        return "PREFERENCE[" + this.id + "]# compte: " + this.compte.toString() + "\ninfopayment: " + this.infoPayment.toString();
+        return "PREFERENCE[" + this.id + "]# compte: " + this.compte.toString();
     }
 
     @ManyToMany(mappedBy = "preferences")

@@ -28,8 +28,6 @@ public class Boutique implements Serializable {
 
     private HoraireVente horaireVente;
 
-    private HoraireAtlier horaireAtlier;
-
     private Set<Commande> commandes;
 
     public Boutique(){
@@ -112,24 +110,13 @@ public class Boutique implements Serializable {
 
     @Column(name = "HORAIREVENTE", length = 10)
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "ID_HORAIREVENTE")
+    @JoinColumn(name = "ID_HOAIREVENTE")
     public HoraireVente getHoraireVente(){
         return horaireVente;
     }
 
-    public void setHoraireVente(HoraireVente hv){
-        this.horaireVente = hv;
-    }
-
-    @Column(name = "HORAIREATLIER", length = 10)
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "ID_HOAIREATLIER")
-    public HoraireAtlier getHoraireAtlier(){
-        return horaireAtlier;
-    }
-
-    public void setHoraireAtlier(HoraireAtlier ha){
-        this.horaireAtlier = ha;
+    public void setHoraireVente(HoraireVente ha){
+        this.horaireVente = ha;
     }
 
     @OneToMany(mappedBy="boutique",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
@@ -140,10 +127,4 @@ public class Boutique implements Serializable {
     public void setCommandes(Set<Commande> commandes){
         this.commandes = commandes;
     }
-
-
-
-
-
-
 }

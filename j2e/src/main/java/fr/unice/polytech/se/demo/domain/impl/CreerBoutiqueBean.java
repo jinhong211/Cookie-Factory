@@ -4,7 +4,6 @@ import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
 import fr.unice.polytech.se.demo.domain.CreerBoutique;
 import fr.unice.polytech.se.demo.domain.ProcessCommand;
 import fr.unice.polytech.se.demo.entities.Boutique;
-import fr.unice.polytech.se.demo.entities.HoraireAtlier;
 import fr.unice.polytech.se.demo.entities.HoraireVente;
 import fr.unice.polytech.se.demo.entities.Recette;
 
@@ -54,9 +53,9 @@ public class CreerBoutiqueBean implements CreerBoutique{
 
     @Override
     public Boutique createBoutique(String addresseBoutique, double tax, Integer chiffreVente,int  tempsO,int tempsF) {
-        HoraireAtlier horaireAtlier=new HoraireAtlier();
-        horaireAtlier.setDebutJour(tempsO);
-        horaireAtlier.setFinJour(tempsF);
+        HoraireVente horaireVente =new HoraireVente();
+        horaireVente.setDebutJour(tempsO);
+        horaireVente.setFinJour(tempsF);
         Boutique boutique = finder.findByAddresse(addresseBoutique);
         //Recette recette = finderR.findByName(recette_du_jour.getNom_recette());
         Recette recette = finderR.findByNameRecette("default");
@@ -66,7 +65,7 @@ public class CreerBoutiqueBean implements CreerBoutique{
             boutique.setAddresseBoutique(addresseBoutique);
             boutique.setChiffreVente(chiffreVente);
             boutique.setTax(tax);
-            boutique.setHoraireAtlier(horaireAtlier);
+            boutique.setHoraireVente(horaireVente);
             if (recette == null){
                 recette=new Recette("default",0,0);
                 boutique.setRecette_du_jour(recette);
@@ -109,23 +108,23 @@ public class CreerBoutiqueBean implements CreerBoutique{
     }
 
     @Override
-    public HoraireAtlier createHoraireAtlier() {
+    public HoraireVente createHoraireAtlier() {
 
-        HoraireAtlier c=new HoraireAtlier();
+        HoraireVente c=new HoraireVente();
         entityManager.persist(c);
 
         return c;
     }
 
     @Override
-    public HoraireAtlier findByIdHoraireAtlier(long id) {
+    public HoraireVente findByIdHoraireAtlier(long id) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<HoraireAtlier> criteria = builder.createQuery(HoraireAtlier.class);
-        Root<HoraireAtlier> from = criteria.from(HoraireAtlier.class);
+        CriteriaQuery<HoraireVente> criteria = builder.createQuery(HoraireVente.class);
+        Root<HoraireVente> from = criteria.from(HoraireVente.class);
         criteria.select(from);
         criteria.where(builder.equal(from.get("id"), id));
-        TypedQuery<HoraireAtlier> query = entityManager.createQuery(criteria.select(criteria
-                .from(HoraireAtlier.class)));
+        TypedQuery<HoraireVente> query = entityManager.createQuery(criteria.select(criteria
+                .from(HoraireVente.class)));
         try {
             return query.getSingleResult();
         } catch (Exception e) {
@@ -134,11 +133,11 @@ public class CreerBoutiqueBean implements CreerBoutique{
     }
 
     @Override
-    public List<HoraireAtlier> findAllHoraireAtlier() {
+    public List<HoraireVente> findAllHoraireAtlier() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<HoraireAtlier> cq = cb.createQuery(HoraireAtlier.class);
-        TypedQuery<HoraireAtlier> allQuery = entityManager.createQuery(cq.select(cq
-                .from(HoraireAtlier.class)));
+        CriteriaQuery<HoraireVente> cq = cb.createQuery(HoraireVente.class);
+        TypedQuery<HoraireVente> allQuery = entityManager.createQuery(cq.select(cq
+                .from(HoraireVente.class)));
 
         return allQuery.getResultList();
     }

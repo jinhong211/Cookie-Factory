@@ -1,7 +1,6 @@
 package fr.unice.polytech.se.demo.domain;
 
 import fr.unice.polytech.se.demo.entities.Boutique;
-import fr.unice.polytech.se.demo.entities.HoraireAtlier;
 import fr.unice.polytech.se.demo.entities.HoraireVente;
 import fr.unice.polytech.se.demo.entities.Recette;
 
@@ -15,11 +14,11 @@ public interface CreerBoutique {
     public Boutique createBoutique(String addresseBoutique, double tax, Integer chiffreVente, int tempsOuv, int tempsFer);
     public Boutique setRecettedujourduBoutique(Boutique boutique, Recette recette) ;
 
-    public HoraireAtlier createHoraireAtlier();
+    public HoraireVente createHoraireAtlier();
 
-    public HoraireAtlier findByIdHoraireAtlier(long id);
+    public HoraireVente findByIdHoraireAtlier(long id);
 
-    public List<HoraireAtlier> findAllHoraireAtlier();
+    public List<HoraireVente> findAllHoraireAtlier();
 
     public HoraireVente createHoraireVente();
 

@@ -29,7 +29,7 @@
         <class>fr.unice.polytech.se.demo.entities.Ingredient</class>
         <class>fr.unice.polytech.se.demo.entities.Preference</class>
         <class>fr.unice.polytech.se.demo.entities.HoraireVente</class>
-        <class>fr.unice.polytech.se.demo.entities.HoraireAtlier</class>
+        <class>fr.unice.polytech.se.demo.entities.HoraireVente</class>
         <properties>
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
