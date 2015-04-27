@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public interface ProcessCommand {
 
-    public Commande createCommande(Boutique boutique, Recette recette, Date date, Integer quantite, InfoPayment infoPayment);
+    public Commande createCommande(Boutique boutique, Recette recette, Date date, Integer quantite);
 
     public Commande createCommande(Recette recette, Date date, Integer quantite);
 
@@ -45,7 +45,7 @@ public interface ProcessCommand {
 
     public List<Recette> findAllRecette();
 
-    public List<Recette> findLastRecette(int n, int startIndex);
+    //public List<Recette> findLastRecette(int n, int startIndex);
 
     public Ingredient createIngredient(String name, double t);
 

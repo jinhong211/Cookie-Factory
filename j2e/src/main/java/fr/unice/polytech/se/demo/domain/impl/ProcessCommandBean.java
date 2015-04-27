@@ -27,8 +27,6 @@ public class ProcessCommandBean implements ProcessCommand {
     @EJB
     ProcessCommand finderP;
 
-    @EJB
-    InfoPaymentFinder finderI;
 
 /*    @EJB
     CommandeFinder finder;
@@ -48,9 +46,9 @@ public class ProcessCommandBean implements ProcessCommand {
     */
 
     @Override
-    public Commande createCommande(Boutique boutique,Recette recette, Date date, Integer quantite,InfoPayment infoPayment) {
+    public Commande createCommande(Boutique boutique,Recette recette, Date date, Integer quantite) {
 
-        InfoPayment infoPayment1 = finderI.findByaddresseClient(infoPayment.getAddresse_Client());
+       // InfoPayment infoPayment1 = finderI.findByaddresseClient(infoPayment.getAddresse_Client());
 
 
         Boutique boutique1 = findeB.findByAddresse(boutique.getAddresseBoutique());
@@ -87,11 +85,11 @@ public class ProcessCommandBean implements ProcessCommand {
         }
         c.setPrice(quantite*recette.getPrix_recette()*(boutique.getTax()+1));
 
-        if(infoPayment1==null){
+        /*if(infoPayment1==null){
             c.setInfoPayment(infoPayment);
         }else {
             c.setInfoPayment(infoPayment1);
-        }
+        }*/
 
         entityManager.persist(c);
         return c;
@@ -265,7 +263,7 @@ public class ProcessCommandBean implements ProcessCommand {
             entityManager.persist(recette);
         }
 
-        Iterator is2 = ingredients1.iterator();
+       /* Iterator is2 = ingredients1.iterator();
         while(is2.hasNext()){
             Ingredient i=(Ingredient)is2.next();
 
@@ -287,7 +285,7 @@ public class ProcessCommandBean implements ProcessCommand {
         //recette.setIngredients(ingredients1);
         //recette.setFacons(facons1);
 
-        entityManager.merge(recette);
+        entityManager.merge(recette);*/
 
         /*Iterator is3 = ingredients.iterator();
         while(is2.hasNext()){
@@ -409,7 +407,7 @@ public class ProcessCommandBean implements ProcessCommand {
         return allQuery.getResultList();
     }
 
-    @Override
+    /*@Override
     public List<Recette> findLastRecette(int n, int startIndex) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Recette> criteria = builder.createQuery(Recette.class);
@@ -427,7 +425,7 @@ public class ProcessCommandBean implements ProcessCommand {
         } catch (Exception e) {
             return null;
         }
-    }
+    }*/
 
     @Override
     public Ingredient createIngredient(String name, double t) {

@@ -3,7 +3,8 @@ package fr.unice.polytech.se.demo;
 import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
 import fr.unice.polytech.se.demo.domain.CreerBoutique;
 import fr.unice.polytech.se.demo.domain.ProcessCommand;
-import fr.unice.polytech.se.demo.domain.impl.ProcessCommandBean;
+import fr.unice.polytech.se.demo.domain.Statique;
+import fr.unice.polytech.se.demo.domain.impl.StatiqueBean;
 import fr.unice.polytech.se.demo.entities.*;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -19,22 +20,23 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import static junit.framework.TestCase.assertEquals;
-
 /**
- * Created by user on 22/04/15.
+ * Created by user on 27/04/15.
  */
 @RunWith(Arquillian.class)
-public class ProcessCommandeTest {
+public class StatiqueTest {
     @Deployment
     public static Archive<?> createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addPackage(ProcessCommand.class.getPackage())
+                .addPackage(Statique.class.getPackage())
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsWebInfResource("META-INF/persistence.xml", "persistence.xml")
-                .addPackage(ProcessCommand.class.getPackage())
-                .addPackage(ProcessCommandBean.class.getPackage());
+                .addPackage(Statique.class.getPackage())
+                .addPackage(StatiqueBean.class.getPackage());
     }
+
+    @EJB
+    private Statique managerS;
 
     @EJB
     private ProcessCommand managerPC;
@@ -46,11 +48,8 @@ public class ProcessCommandeTest {
     @EJB
     private BoutiqueFinder managerF;
 
-
-
     @Test
-    public void testCreation()  {
-
+    public void testCreation() {
         Ingredient ingredient1=managerPC.createIngredient("Chocolect", 10);
 
         Ingredient ingredient2=managerPC.createIngredient("Coco", 5);
@@ -98,25 +97,9 @@ public class ProcessCommandeTest {
 
         Commande commande=managerPC.createCommande(boutique, recette, new Date(0, 0, 0), 10);
 
-        //Commande commande=managerC.create(recette,new Date(0,0,0), 10);
+        int s = managerS.getChriffeVenteBoutiques();
 
-        // Commande commande=managerC.create(new Date(0,0,0), 10);
-
-        Commande found = managerPC.findAllCommande().get(0);
-
-        System.out.print(found.getBoutique().getChiffreVente());
-
-        System.out.print("KKKKK"+found.getPrice());
-
-        assertEquals(found.getRecette().getPrix_recette()*found.getQuantite()* (boutique.getTax()+1), commande.getPrice(),0.001);
-        assertEquals(found.getBoutique().getChiffreVente(), commande.getBoutique().getChiffreVente());
-
-        assertEquals(found.getQuantite(), commande.getQuantite());
-
-        //assertEquals(found.getInfoPayment().getAddresse_Client(), commande.getInfoPayment().getAddresse_Client());
-
-        assertEquals(found.getId(), commande.getId());
+        System.out.print(s);
     }
-
 
 }
