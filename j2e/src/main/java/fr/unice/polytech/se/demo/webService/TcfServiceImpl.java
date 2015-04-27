@@ -18,7 +18,7 @@ import java.util.Set;
 @Stateless
 public class TcfServiceImpl implements TcfService {
 
-    @EJB
+    /*@EJB
     BoutiqueManager boutiqueManager;
 
     @EJB
@@ -198,6 +198,6 @@ public class TcfServiceImpl implements TcfService {
             } else {
                 return false;
             }
-    }
+    }*/
 
 }

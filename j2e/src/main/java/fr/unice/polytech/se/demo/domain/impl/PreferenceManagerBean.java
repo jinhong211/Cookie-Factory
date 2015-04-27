@@ -1,6 +1,6 @@
 package fr.unice.polytech.se.demo.domain.impl;
 
-import fr.unice.polytech.se.demo.domain.HoraireVenteFinder;
+import fr.unice.polytech.se.demo.domain.CreerBoutique;
 import fr.unice.polytech.se.demo.domain.PreferenceManager;
 import fr.unice.polytech.se.demo.entities.Preference;
 
@@ -19,7 +19,7 @@ public class PreferenceManagerBean implements PreferenceManager {
     EntityManager entityManager;
 
     @EJB
-    HoraireVenteFinder finder ;
+    CreerBoutique finder ;
 
 
     @Override

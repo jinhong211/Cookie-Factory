@@ -2,22 +2,14 @@
 
 package fr.unice.polytech.se.demo.webService;
 
-import fr.unice.polytech.se.demo.entities.*;
-
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebResult;
 import javax.jws.WebService;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 @WebService
 public interface TcfService {
-
+/*
     @WebMethod
     @WebResult(name="creerBoutique")
-    public boolean creerBoutique(@WebParam(name = "addresseBoutique") String address, @WebParam(name = "tax") double tax, @WebParam(name = "tempsOuv") int to, @WebParam(name = "tempsFer") int tf);
+    public boolean creerBoutique( @WebParam(name = "addresseBoutique") String address, @WebParam(name = "tax") double tax, @WebParam(name = "tempsOuv") int to, @WebParam(name = "tempsFer") int tf);
 
     @WebMethod
     @WebResult(name="existBoutique")
@@ -86,5 +78,5 @@ public interface TcfService {
     @WebMethod
     @WebResult(name="creerCommande")
     public boolean creerCommande(@WebParam(name = "boutique")Boutique boutique,@WebParam(name = "recette")Recette recette, @WebParam(name = "date")Date date, @WebParam(name = "quantite")Integer quantite,@WebParam(name = "infoPayment")InfoPayment infoPayment);
-
+*/
 }
