@@ -29,15 +29,20 @@ namespace Test
             Assert.IsNotNull(utilisateur);
         }
 
-        /*public void TestAdd()
+        [TestMethod]
+        public void TestAdd()
         {
             String login = "jinhong";
             String passward = "jinhong";
             String type = "USER";
-            var utilisateur1 = new UtilisateurDAO();
-            utilisateur1.addUtilisateur(login, passward, type);
+            var dao = new UtilisateurDAO();
+            dao.addUtilisateur(login, passward, type);
+            Utilisateur utilisateur = dao.getUtilisateur(login);
+
+            Assert.IsNotNull(utilisateur);
             
-            
-        }*/
+        }
+
+
     }
 }
