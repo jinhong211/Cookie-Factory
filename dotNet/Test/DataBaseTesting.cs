@@ -58,6 +58,20 @@ namespace Test
             Assert.IsNull(utilisateur);
         }
 
+        [TestMethod]
+        public void TestUpdate()
+        {
+            String login = "admin";
+            String passward = "passward";
+            String type = "USER";
+            var dao = new UtilisateurDAO();
+            dao.modifyUtilisateur(login, passward, type);
+            Utilisateur utilisateur = dao.getUtilisateur(login);
+
+            Assert.AreEqual(login, utilisateur.login);
+            Assert.AreEqual(passward, utilisateur.passward);
+            Assert.AreEqual(type, utilisateur.type);
+        }
 
     }
 }
