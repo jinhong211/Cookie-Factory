@@ -23,10 +23,14 @@ namespace Test
         public void TestGetOne()
         {
             String login = "admin";
+            String loginfaut = "add";
             var dao = new UtilisateurDAO();
-            Utilisateur utilisateur = dao.getUtilisateur(login);
 
-            Assert.IsNotNull(utilisateur);
+            Utilisateur utilisateur1 = dao.getUtilisateur(login);
+            Utilisateur utilisateur2 = dao.getUtilisateur(loginfaut);
+
+            Assert.IsNotNull(utilisateur1);
+            Assert.IsNull(utilisateur2);
         }
 
         [TestMethod]
@@ -41,6 +45,17 @@ namespace Test
 
             Assert.IsNotNull(utilisateur);
             
+        }
+
+        [TestMethod]
+        public void TestDelete()
+        {
+            String login = "admin";
+            var dao = new UtilisateurDAO();
+            dao.removeUtilisateur(login);
+            Utilisateur utilisateur = dao.getUtilisateur(login);
+
+            Assert.IsNull(utilisateur);
         }
 
 

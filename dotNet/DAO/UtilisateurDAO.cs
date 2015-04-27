@@ -42,8 +42,15 @@ namespace DAO
                 var requete = from utilisateur in modele.Utilisateur
                               where utilisateur.login == login1
                               select utilisateur;
-                Utilisateur u = requete.First();
-                return u;
+                if (requete.Count() == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    Utilisateur u = requete.First();
+                    return u;
+                }
             }
         }
 
