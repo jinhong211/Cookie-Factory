@@ -14,8 +14,15 @@ namespace WcfServiceTCF
         public String createAccount(String login, String passward, String type)
         {
             var dao = new UtilisateurDAO();
-            dao.addUtilisateur(login, passward, type);
-            return "User" + login + "created";
+            if (dao.getUtilisateur(login) == null)
+            {
+                dao.addUtilisateur(login, passward, type);
+                return "User " + login + " created";
+            }
+            else
+            {
+                return "User " + login + " exists";
+            }
         }
     }
 }

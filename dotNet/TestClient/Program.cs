@@ -12,6 +12,8 @@ namespace TestClient
             ServiceReference1.ServiceTCFClient userServiceStub = new
 ServiceReference1.ServiceTCFClient();
             Console.WriteLine(userServiceStub.createAccount("dingding","dd123","USER"));
+            Console.WriteLine(userServiceStub.createAccount("smallbirdking", "sbk123", "USER"));
+            Console.ReadLine();
         }
     }
 }
