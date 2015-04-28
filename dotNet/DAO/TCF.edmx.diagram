@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b6b7fe264f984f1cb8bad8c4958f5f5f" Name="Diagram1">
-        <EntityTypeShape EntityType="TCFLoginModel.Utilisateur" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TCFLoginModel.Infomation" Width="1.5" PointX="4" PointY="0.625" />
+        <EntityTypeShape EntityType="TCFLoginModel.Infomation" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="TCFLoginModel.Utilisateur" Width="1.5" PointX="0.75" PointY="1.375" />
         <AssociationConnector Association="TCFLoginModel.FK_Infomation_Utilisateur" />
       </Diagram>
     </edmx:Diagrams>
