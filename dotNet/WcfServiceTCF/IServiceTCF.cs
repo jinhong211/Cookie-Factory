@@ -22,14 +22,14 @@ namespace WcfServiceTCF
         [OperationContract]
         String getListAccount();
         [OperationContract]
-        String getListInfoAccount();
+        String getListInfoAccount(String login);
         [OperationContract]
-        String addInfoAccount();
+        String addInfoAccount(String login, String nom, String prenom, int numero, String address, String exp, int cry);
         [OperationContract]
-        String deleteInfoAccount();
+        String deleteInfoAccount(String login, int numero);
         [OperationContract]
-        String updateInfoAccount();
+        String updateInfoAccount(String login, int numero, String address);
         [OperationContract]
-        String getInfoAccount();
+        String getInfoAccount(String login, int numero);
     }
 }
