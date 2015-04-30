@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServiceTCF" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8087/ServiceTCF.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8087/ServiceTCF.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServiceTCF_createAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:createAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_createAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_deleteAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_deleteAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_updateAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_updateAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_loginAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:loginAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_loginAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:loginAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_getListAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:getListAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_getListAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getListAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_getListInfoAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:getListInfoAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_getListInfoAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getListInfoAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_addInfoAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:addInfoAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_addInfoAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addInfoAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_deleteInfoAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteInfoAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_deleteInfoAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteInfoAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_updateInfoAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateInfoAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_updateInfoAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateInfoAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_getInfoAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInfoAccount" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_getInfoAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInfoAccountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServiceTCF">
+    <wsdl:operation name="createAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/createAccount" message="tns:IServiceTCF_createAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/createAccountResponse" message="tns:IServiceTCF_createAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/deleteAccount" message="tns:IServiceTCF_deleteAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/deleteAccountResponse" message="tns:IServiceTCF_deleteAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/updateAccount" message="tns:IServiceTCF_updateAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/updateAccountResponse" message="tns:IServiceTCF_updateAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="loginAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/loginAccount" message="tns:IServiceTCF_loginAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/loginAccountResponse" message="tns:IServiceTCF_loginAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getListAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/getListAccount" message="tns:IServiceTCF_getListAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/getListAccountResponse" message="tns:IServiceTCF_getListAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getListInfoAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/getListInfoAccount" message="tns:IServiceTCF_getListInfoAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/getListInfoAccountResponse" message="tns:IServiceTCF_getListInfoAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addInfoAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/addInfoAccount" message="tns:IServiceTCF_addInfoAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/addInfoAccountResponse" message="tns:IServiceTCF_addInfoAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteInfoAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/deleteInfoAccount" message="tns:IServiceTCF_deleteInfoAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/deleteInfoAccountResponse" message="tns:IServiceTCF_deleteInfoAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateInfoAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/updateInfoAccount" message="tns:IServiceTCF_updateInfoAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/updateInfoAccountResponse" message="tns:IServiceTCF_updateInfoAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/getInfoAccount" message="tns:IServiceTCF_getInfoAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/getInfoAccountResponse" message="tns:IServiceTCF_getInfoAccount_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServiceTCF" type="tns:IServiceTCF">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/createAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/deleteAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/updateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loginAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/loginAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/getListAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListInfoAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/getListInfoAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addInfoAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/addInfoAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteInfoAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/deleteInfoAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateInfoAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/updateInfoAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAccount">
+      <soap:operation soapAction="http://tempuri.org/IServiceTCF/getInfoAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceTCF">
+    <wsdl:port name="BasicHttpBinding_IServiceTCF" binding="tns:BasicHttpBinding_IServiceTCF">
+      <soap:address location="http://localhost:8087/ServiceTCF.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
