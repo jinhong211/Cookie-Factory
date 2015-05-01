@@ -44,4 +44,13 @@ public class ResponsableTCFServiceImpl implements ResponsableTCFService{
     public int getStatistiqueGlobal() {
         return statistiqueBean.getChiffreVenteBoutiques();
     }
+
+    @Override
+    public boolean boutiqueIsExist(String address) {
+        Boutique boutique = boutiqueFinder.findByAddresse(address);
+        if(boutique != null){
+            return true;
+        }
+        return false;
+    }
 }

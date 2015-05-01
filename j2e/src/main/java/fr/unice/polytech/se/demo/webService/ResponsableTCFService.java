@@ -17,4 +17,8 @@ public interface ResponsableTCFService {
     @WebMethod
     @WebResult(name="statistiqueGlobal")
     public int getStatistiqueGlobal();
+
+    @WebMethod
+    @WebResult(name="existBoutique")
+    public boolean boutiqueIsExist(@WebParam(name = "addresseBoutique") String address);
 }

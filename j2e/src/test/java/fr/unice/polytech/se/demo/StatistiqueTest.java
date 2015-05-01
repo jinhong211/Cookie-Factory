@@ -97,7 +97,7 @@ public class StatistiqueTest {
 
         Commande commande=managerPC.createCommande(boutique, recette, new Date(0, 0, 0), 10);
 
-        int s = managerS.getChriffeVenteBoutiques();
+        int s = managerS.getChiffreVenteBoutiques();
 
         System.out.print(s);
     }
