@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Security.Principal;
+using System.Security.Permissions;
 using DAO;
 
 namespace WcfServiceTCF
@@ -11,6 +13,7 @@ namespace WcfServiceTCF
 
     public class ServiceTCF : IServiceTCF
     {
+
         public String createAccount(String login, String passward, String type)
         {
             var dao = new UtilisateurDAO();
@@ -24,7 +27,7 @@ namespace WcfServiceTCF
                 return "User " + login + " exists";
             }
         }
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "admin")]
         public String deleteAccount(String login)
         {
             var dao = new UtilisateurDAO();
@@ -38,9 +41,12 @@ namespace WcfServiceTCF
                 return "User " + login + " doesn't exist";
             }
         }
-
-        public String updateAccount(String login,String passward,String type)
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String updateAccount(String passward,String type)
         {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
             var dao = new UtilisateurDAO();
             if (dao.getUtilisateur(login) != null)
             {
@@ -72,7 +78,7 @@ namespace WcfServiceTCF
                 return "User " + login + " doesn't exist";
             }
         }
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "admin")]
         public String getListAccount()
         {
             String result = "";
@@ -86,8 +92,12 @@ namespace WcfServiceTCF
             }
                 return result;
         }
-        public String getListInfoAccount(String login)
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String getListInfoAccount()
         {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
             String result = "";
             var dao = new UtilisateurDAO();
             if (dao.getUtilisateur(login) != null)
@@ -110,9 +120,12 @@ namespace WcfServiceTCF
             }
             return result;
         }
-
-        public String getInfoAccount(String login,int numero)
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String getInfoAccount(int numero)
         {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
             String result = "";
             var dao = new UtilisateurDAO();
             if (dao.getUtilisateur(login) != null)
@@ -139,9 +152,12 @@ namespace WcfServiceTCF
             }
             return result;
         }
-
-        public String addInfoAccount(String login,String nom,String prenom,int numero,String address,String exp,int cry)
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String addInfoAccount(String nom,String prenom,int numero,String address,String exp,int cry)
         {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
             String result = "";
             var dao = new UtilisateurDAO();
             if (dao.getUtilisateur(login) != null)
@@ -169,8 +185,12 @@ namespace WcfServiceTCF
             }
             return result;
         }
-        public String deleteInfoAccount(String login,int numero)
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String deleteInfoAccount(int numero)
         {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
             String result = "";
             var dao = new UtilisateurDAO();
             if (dao.getUtilisateur(login) != null)
@@ -192,8 +212,13 @@ namespace WcfServiceTCF
             }
             return result;
         }
-        public String updateInfoAccount(String login,int numero, String address)
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String updateInfoAccount(int numero, String address)
         {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
             String result = "";
             var dao = new UtilisateurDAO();
             if (dao.getUtilisateur(login) != null)
@@ -223,5 +248,9 @@ namespace WcfServiceTCF
             }
             return result;
         }
+        public String getRoles(String username){
+            var dao = new UtilisateurDAO();
+            return dao.getUtilisateur(username).type;
+        } 
     }
 }

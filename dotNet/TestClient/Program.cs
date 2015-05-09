@@ -11,7 +11,11 @@ namespace TestClient
         {
             ServiceTCF.ServiceTCFClient userServiceStub = new
 ServiceTCF.ServiceTCFClient();
-            Console.WriteLine(userServiceStub.getListAccount());
+            userServiceStub.ClientCredentials.UserName.UserName = "dingding";
+            userServiceStub.ClientCredentials.UserName.Password = "dd123";
+            //userServiceStub.createAccount("dingding", "dd123", "user");
+            Console.WriteLine(userServiceStub.addInfoAccount("Ding", "Feng", 1234567, "Valbonne", "11/17", 123));
+            /*Console.WriteLine(userServiceStub.getListAccount());
             Console.WriteLine(userServiceStub.createAccount("dingding","dd123","USER"));
             Console.WriteLine(userServiceStub.createAccount("dingding", "dd123", "USER"));
             Console.WriteLine(userServiceStub.createAccount("smallbirdking", "sbk123", "USER"));
@@ -39,7 +43,7 @@ ServiceTCF.ServiceTCFClient();
             Console.WriteLine(userServiceStub.updateInfoAccount("dingding",1234567,"Antibes"));
             Console.WriteLine(userServiceStub.updateInfoAccount("dingding",1111111,"Antibes"));
             Console.WriteLine(userServiceStub.updateInfoAccount("smallbirdking",1111111,"Antibes"));
-            Console.WriteLine(userServiceStub.getListInfoAccount("dingding"));
+            Console.WriteLine(userServiceStub.getListInfoAccount("dingding"));*/
             Console.ReadLine();
         }
     }

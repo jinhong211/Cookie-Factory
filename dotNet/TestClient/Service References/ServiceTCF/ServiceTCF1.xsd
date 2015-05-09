@@ -33,7 +33,6 @@
   <xs:element name="updateAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="passward" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -75,9 +74,7 @@
   </xs:element>
   <xs:element name="getListInfoAccount">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="getListInfoAccountResponse">
@@ -90,7 +87,6 @@
   <xs:element name="addInfoAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nom" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="prenom" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="numero" type="xs:int" />
@@ -110,7 +106,6 @@
   <xs:element name="deleteInfoAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="numero" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -125,7 +120,6 @@
   <xs:element name="updateInfoAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="numero" type="xs:int" />
         <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -141,7 +135,6 @@
   <xs:element name="getInfoAccount">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="numero" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
