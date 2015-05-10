@@ -1,0 +1,6 @@
+D:\project\private\dotNet\TestClient\bin\Debug\TestClient.exe.config
+D:\project\private\dotNet\TestClient\bin\Debug\TestClient.exe
+D:\project\private\dotNet\TestClient\bin\Debug\TestClient.pdb
+D:\project\private\dotNet\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+D:\project\private\dotNet\TestClient\obj\Debug\TestClient.exe
+D:\project\private\dotNet\TestClient\obj\Debug\TestClient.pdb

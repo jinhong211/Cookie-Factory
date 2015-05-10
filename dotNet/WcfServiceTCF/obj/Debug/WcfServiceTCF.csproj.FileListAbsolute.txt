@@ -1,0 +1,11 @@
+D:\project\private\dotNet\WcfServiceTCF\bin\WcfServiceTCF.dll.config
+D:\project\private\dotNet\WcfServiceTCF\bin\WcfServiceTCF.dll
+D:\project\private\dotNet\WcfServiceTCF\bin\WcfServiceTCF.pdb
+D:\project\private\dotNet\WcfServiceTCF\bin\DAO.dll
+D:\project\private\dotNet\WcfServiceTCF\bin\EntityFramework.dll
+D:\project\private\dotNet\WcfServiceTCF\bin\DAO.pdb
+D:\project\private\dotNet\WcfServiceTCF\bin\EntityFramework.xml
+D:\project\private\dotNet\WcfServiceTCF\bin\zh-Hans\EntityFramework.resources.dll
+D:\project\private\dotNet\WcfServiceTCF\obj\Debug\WcfServiceTCF.csprojResolveAssemblyReference.cache
+D:\project\private\dotNet\WcfServiceTCF\obj\Debug\WcfServiceTCF.dll
+D:\project\private\dotNet\WcfServiceTCF\obj\Debug\WcfServiceTCF.pdb
