@@ -8,6 +8,7 @@ import fr.unice.polytech.se.demo.entities.HoraireVente;
 import fr.unice.polytech.se.demo.entities.Recette;
 
 import javax.ejb.EJB;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +22,7 @@ import java.util.List;
  * Created by user on 22/04/15.
  */
 @Stateless
+@Remote
 public class CreerBoutiqueBean implements CreerBoutique{
     @PersistenceContext
     EntityManager entityManager;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>Creer Une Boutique</h1><br />
+    </div>
+
+    <div>
+        <h:form>
+            <div>
+                <h:outputText value="Adresse: " style="font-weight:bold" />
+                <h:inputText value="#{responsableTCFJsf.adresseBoutique}" />
+            </div>
+            <h:commandButton value="button" type="button" action="#{responsableTCFJsf.setAdresseBoutique()}"/>
+        </h:form>
+    </div>
+
+    <div>
+        <h:outputText value="#{responsableTCFJsf.getAdresseBoutique()}" />
+    </div>
+
+</body>
+</html>

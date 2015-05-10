@@ -25,7 +25,7 @@
               version="2.0">
 
   <navigation-rule>
-    <from-view-id>/ResponsableBoutiqueDisplay.xhtml</from-view-id>
+    <from-view-id>/ResponsableTCFCreerBoutiqueDisplay.xhtml</from-view-id>
     <navigation-case>
       <from-outcome>success</from-outcome>
       <to-view-id>/</to-view-id>

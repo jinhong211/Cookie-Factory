@@ -1,6 +1,6 @@
 package fr.unice.polytech.se.demo.webService;
 
-import fr.unice.polytech.se.demo.domain.impl.RecettesduBoutiqueBean;
+import fr.unice.polytech.se.demo.domain.RecettesduBoutique;
 import fr.unice.polytech.se.demo.entities.Commande;
 
 import javax.ejb.EJB;
@@ -12,11 +12,11 @@ import java.util.Set;
 /**
  * Created by ding on 30/04/15.
  */
-@WebService(targetNamespace = "http://www.polytech.unice.fr/tcf")
+@WebService(targetNamespace = "http://www.polytech.unice.fr/ResponsableBoutique")
 @Stateless
 public class ResponsableBoutiqueServiceImpl implements ResponsableBoutiqueService{
     @EJB
-    RecettesduBoutiqueBean recettesduBoutiqueBean;
+    RecettesduBoutique recettesduBoutiqueBean;
 
 
     @Override
