@@ -1,0 +1,6 @@
+C:\Users\user\Source\Repos\private\dotNet\TestClient\bin\Debug\TestClient.exe.config
+C:\Users\user\Source\Repos\private\dotNet\TestClient\bin\Debug\TestClient.exe
+C:\Users\user\Source\Repos\private\dotNet\TestClient\bin\Debug\TestClient.pdb
+C:\Users\user\Source\Repos\private\dotNet\TestClient\obj\Debug\TestClient.exe
+C:\Users\user\Source\Repos\private\dotNet\TestClient\obj\Debug\TestClient.pdb
+C:\Users\user\Source\Repos\private\dotNet\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache

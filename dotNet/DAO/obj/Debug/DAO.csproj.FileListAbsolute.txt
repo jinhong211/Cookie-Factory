@@ -1,0 +1,9 @@
+C:\Users\user\Source\Repos\private\dotNet\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Users\user\Source\Repos\private\dotNet\DAO\bin\Debug\DAO.dll.config
+C:\Users\user\Source\Repos\private\dotNet\DAO\bin\Debug\DAO.dll
+C:\Users\user\Source\Repos\private\dotNet\DAO\bin\Debug\DAO.pdb
+C:\Users\user\Source\Repos\private\dotNet\DAO\bin\Debug\EntityFramework.dll
+C:\Users\user\Source\Repos\private\dotNet\DAO\bin\Debug\EntityFramework.xml
+C:\Users\user\Source\Repos\private\dotNet\DAO\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\user\Source\Repos\private\dotNet\DAO\obj\Debug\DAO.dll
+C:\Users\user\Source\Repos\private\dotNet\DAO\obj\Debug\DAO.pdb
