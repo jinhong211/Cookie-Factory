@@ -5,11 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string userName = Request.Form["username"].ToString();
+       /* string userName = Request.Form["username"].ToString();
         string userPwd = Request.Form["userpwd"].ToString();
         if (userName != null && userPwd != null)
         {
@@ -25,6 +26,34 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Write("登陆失败");
             }
+        }*/
+    }
+
+    protected void btnHello_Click2(object sender, EventArgs e)
+    {
+        String ss = Request.QueryString["name"];
+        //判断输入是否为空
+
+        //proxy = new ServiceTCF.ServiceTCFClient();
+        if (ss != "")
+        {
+
+            //不为空，则在控件lblText中输出 "Hello + (输入的内容) + ！"
+
+            //lblText.Text = proxy.ClientCredentials.UserName.UserName = IDinput.Text;
+            //lblText.Text = proxy.ClientCredentials.UserName.Password = PWinput.Text;
+
+            lblText2.Text = ss;
+            //Server.Transfer("login.aspx", false);
+        }
+
+        else
+        {
+
+            //为空时，则在控件lblText中输出 "请重新输入！"
+
+            lblText2.Text = "请重新输入！";
+
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TestClient.ServiceTCF {
         string deleteAccount(string login);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/updateAccount", ReplyAction="http://tempuri.org/IServiceTCF/updateAccountResponse")]
-        string updateAccount(string login, string passward, string type);
+        string updateAccount(string passward, string type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/loginAccount", ReplyAction="http://tempuri.org/IServiceTCF/loginAccountResponse")]
         string loginAccount(string login, string passward);
@@ -31,19 +31,19 @@ namespace TestClient.ServiceTCF {
         string getListAccount();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getListInfoAccount", ReplyAction="http://tempuri.org/IServiceTCF/getListInfoAccountResponse")]
-        string getListInfoAccount(string login);
+        string getListInfoAccount();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/addInfoAccount", ReplyAction="http://tempuri.org/IServiceTCF/addInfoAccountResponse")]
-        string addInfoAccount(string login, string nom, string prenom, int numero, string address, string exp, int cry);
+        string addInfoAccount(string nom, string prenom, int numero, string address, string exp, int cry);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/deleteInfoAccount", ReplyAction="http://tempuri.org/IServiceTCF/deleteInfoAccountResponse")]
-        string deleteInfoAccount(string login, int numero);
+        string deleteInfoAccount(int numero);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/updateInfoAccount", ReplyAction="http://tempuri.org/IServiceTCF/updateInfoAccountResponse")]
-        string updateInfoAccount(string login, int numero, string address);
+        string updateInfoAccount(int numero, string address);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getInfoAccount", ReplyAction="http://tempuri.org/IServiceTCF/getInfoAccountResponse")]
-        string getInfoAccount(string login, int numero);
+        string getInfoAccount(int numero);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -81,8 +81,8 @@ namespace TestClient.ServiceTCF {
             return base.Channel.deleteAccount(login);
         }
         
-        public string updateAccount(string login, string passward, string type) {
-            return base.Channel.updateAccount(login, passward, type);
+        public string updateAccount(string passward, string type) {
+            return base.Channel.updateAccount(passward, type);
         }
         
         public string loginAccount(string login, string passward) {
@@ -93,24 +93,24 @@ namespace TestClient.ServiceTCF {
             return base.Channel.getListAccount();
         }
         
-        public string getListInfoAccount(string login) {
-            return base.Channel.getListInfoAccount(login);
+        public string getListInfoAccount() {
+            return base.Channel.getListInfoAccount();
         }
         
-        public string addInfoAccount(string login, string nom, string prenom, int numero, string address, string exp, int cry) {
-            return base.Channel.addInfoAccount(login, nom, prenom, numero, address, exp, cry);
+        public string addInfoAccount(string nom, string prenom, int numero, string address, string exp, int cry) {
+            return base.Channel.addInfoAccount(nom, prenom, numero, address, exp, cry);
         }
         
-        public string deleteInfoAccount(string login, int numero) {
-            return base.Channel.deleteInfoAccount(login, numero);
+        public string deleteInfoAccount(int numero) {
+            return base.Channel.deleteInfoAccount(numero);
         }
         
-        public string updateInfoAccount(string login, int numero, string address) {
-            return base.Channel.updateInfoAccount(login, numero, address);
+        public string updateInfoAccount(int numero, string address) {
+            return base.Channel.updateInfoAccount(numero, address);
         }
         
-        public string getInfoAccount(string login, int numero) {
-            return base.Channel.getInfoAccount(login, numero);
+        public string getInfoAccount(int numero) {
+            return base.Channel.getInfoAccount(numero);
         }
     }
 }

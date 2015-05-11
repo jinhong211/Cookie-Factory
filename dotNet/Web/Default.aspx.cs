@@ -1,94 +1,52 @@
-﻿
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
-using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Data.OleDb;
+using ServiceTCF;
 
-
-namespace lsj
+public partial class _Default : System.Web.UI.Page
 {
-　/// <summary>
-　/// Summary description for WebForm1.
-　/// </summary>
-　public class WebForm1 : System.Web.UI.Page
-　{
-　　protected System.Web.UI.WebControls.Label Label1;
-　　protected System.Web.UI.WebControls.Label Label2;
-　　protected System.Web.UI.WebControls.TextBox Userid;
-　　protected System.Web.UI.WebControls.Button LogButton;
-　　protected System.Web.UI.WebControls.TextBox Pwd;
-　　protected System.Web.UI.WebControls.Label Msg;
-　　protected System.Web.UI.HtmlControls.HtmlForm Form1;　　
-　　protected System.Web.UI.WebControls.RequiredFieldValidator rfvUserid;
-　　protected System.Web.UI.WebControls.RequiredFieldValidator rfvPwd;
-　　public string strConnection;
-　　OleDbConnection myConn;
+    //ServiceTCF.ServiceTCFClient proxy;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+ 
+      /*  if (!IsPostBack)
+        {
+            proxy = new ServiceTCF.ServiceTCFClient();
 
-　　public WebForm1()
-　　{
-　　　Page.Init += new System.EventHandler(Page_Init);
-　　}
+        }*/
+    }
+    protected void btnHello_Click(object sender, EventArgs e)
+    {
 
+        //判断输入是否为空
 
-  private void Page_Load(object sender, System.EventArgs e);
-　　
+        //proxy = new ServiceTCF.ServiceTCFClient();
+        if (IDinput.Text != "" && PWinput.Text != "")
+        {
 
+            //不为空，则在控件lblText中输出 "Hello + (输入的内容) + ！"
 
-　　private void Page_Init(object sender, EventArgs e)
-　　{
-InitializeComponent();
-string strConnection="Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+Server.MapPath(".")+"..user.mdb;";
-//user.mdb放在与aspx文件同一目录下
-myConn=new OleDbConnection(strConnection);
-　　}
+            //lblText.Text = proxy.ClientCredentials.UserName.UserName = IDinput.Text;
+            //lblText.Text = proxy.ClientCredentials.UserName.Password = PWinput.Text;
 
+            lblText.Text = "Hello " + IDinput.Text +PWinput.Text;
+            string s_url;
+            s_url = "login.aspx?name=" + lblText.Text;
+            Response.Redirect(s_url); 
+            //Server.Transfer("login.aspx", true);
+        }
 
-　　private void InitializeComponent()
-　　{
-this.LogButton.Click += new System.EventHandler(this.LogButton_Click);
-this.Load += new System.EventHandler(this.Page_Load);
-　　}
+        else
+        {
 
-　　private void LogButton_Click(object sender, System.EventArgs e)
-　　{
-string userid,pwd;
-userid=Userid.Text;
-pwd=Pwd.Text;
-string mySel="SELECT count(*) as iCount from user where UserID=userid ";
+            //为空时，则在控件lblText中输出 "请重新输入！"
 
-OleDbCommand myCmd1=new OleDbCommand(mySel,myConn);
-myCmd1.Connection.Open();
-OleDbDataReader Dr1;
-Dr1=myCmd1.ExecuteReader();
-Dr1.Read();
-string Count=Dr1["iCount"].ToString();
-Dr1.Close();
-myCmd1.Connection.Close();
-string DrPwd,DrRoles;
-if(Count!="0")
-{
-　mySel="SELECT * from user where UserID=userid";
-　OleDbCommand myCmd=new OleDbCommand(mySel,myConn);
-　myCmd.Connection.Open();
-　OleDbDataReader Dr;
-　Dr=myCmd.ExecuteReader();
-　Dr.Read();
-　DrPwd=Dr["Password"].ToString();
-　Dr.Close();
-　if(DrPwd==pwd)
-     Msg.Text = "登录sccess.";
-　　else
-  Msg.Text="登录密码错.";
-}
-else
-　　Msg.Text="没有这个用户.";
-　　}
-　}
+            lblText.Text = "请重新输入！";
+
+        }
+
+    }
 }
