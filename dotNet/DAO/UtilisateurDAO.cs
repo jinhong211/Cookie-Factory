@@ -86,6 +86,10 @@ namespace DAO
                 foreach(Infomation info in u.Infomation.ToList<Infomation>()){
                     modele.Infomation.Remove(info);
                 }
+                foreach (Historique hist in u.Historique.ToList<Historique>())
+                {
+                    modele.Historique.Remove(hist);
+                }
                 modele.Utilisateur.Remove(u);
                 modele.SaveChanges();
             }
@@ -194,6 +198,103 @@ namespace DAO
                 modele.SaveChanges();
             }
         }
+        /// <summary>
+        /// Liste tous les historique
+        /// </summary>
+        public List<Historique> getListHitorique()
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from historique in modele.Historique
+                              select historique;
+                return requete.ToList<Historique>();
+            }
+        }
+        /// <summary>
+        /// Liste tous les historiques de Payments de l'utilisateur
+        /// </summary>
+        public List<Historique> getListHistUtilisateur(String login1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                return u.Historique.ToList<Historique>();
+            }
+        }
 
+        /// <summary>
+        /// Un Historique de Payment de l'utilisateur avec numero de la commande
+        /// </summary>
+        public Historique getOneHistUtilisateur(String login1, int commande)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                Historique hist = u.Historique.ToList<Historique>().Find(e => e.commande == commande);
+                return hist;
+            }
+        }
+        /// <summary>
+        /// Ajout historique de Payment à utilisateur
+        /// </summary>
+        public void addHistToUtilisateur(String login1, int commande1, float prix1,String time1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                u.Historique.Add(new Historique
+                {
+                    commande = commande1,
+                    prix = prix1,
+                    time = time1
+                }
+                    );
+                modele.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Supprime historique de Payment de l'utilisateur
+        /// </summary>
+        public void deleteHistToUtilisateur(String login1, int commande1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                Historique hist = u.Historique.ToList<Historique>().Find(e => e.commande == commande1);
+                modele.Historique.Remove(hist);
+                modele.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Modifier historique de Payment de l'utilisateur
+        /// </summary>
+        public void modifyHistToUtilisateur(String login1, int commande1, float prix1, String time1)
+        {
+            using (TCFModele modele = new TCFModele())
+            {
+                var requete = from utilisateur in modele.Utilisateur
+                              where utilisateur.login == login1
+                              select utilisateur;
+                Utilisateur u = requete.First();
+                Historique hist = u.Historique.ToList<Historique>().Find(e => e.commande == commande1);
+                hist.prix = prix1;
+                hist.time = time1;
+                modele.SaveChanges();
+            }
+        }
     }
 }

@@ -138,5 +138,75 @@ namespace Test
             Infomation info = dao.getOneInfoUtilisateur(login, num);
             Assert.AreEqual(address, info.adress);
         }
+        [TestMethod]
+        public void TestGetListHist()
+        {
+            var dao = new UtilisateurDAO();
+            List<Historique> historiqueList = dao.getListHitorique();
+
+            Assert.IsNotNull(historiqueList);
+        }
+
+        [TestMethod]
+        public void TestGetUserHistoriqueList()
+        {
+            String login = "admin";
+            var dao = new UtilisateurDAO();
+            List<Historique> list = dao.getListHistUtilisateur(login);
+
+            Assert.IsNotNull(list);
+        }
+
+        [TestMethod]
+        public void TestGetHistoriqueOne()
+        {
+            String login = "admin";
+            int commande = 12345;
+            int commande2 = 123;
+            var dao = new UtilisateurDAO();
+            Historique hist = dao.getOneHistUtilisateur(login, commande);
+            Historique histNull = dao.getOneHistUtilisateur(login, commande2);
+            Assert.IsNotNull(hist);
+            Assert.IsNull(histNull);
+        }
+
+        [TestMethod]
+        public void TestAddHistorique()
+        {
+            String login = "admin";
+            int commande = 11111;
+            float prix = 12.22F;
+            String time = "2015-05-11@23:53";
+            var dao = new UtilisateurDAO();
+            dao.addHistToUtilisateur(login, commande,prix,time);
+            Historique info = dao.getOneHistUtilisateur(login, commande);
+            Assert.AreEqual(prix, info.prix);
+            Assert.AreEqual(time, info.time);
+        }
+
+        [TestMethod]
+        public void TestDeleteHistorique()
+        {
+            String login = "admin";
+            int commande = 12345;
+            var dao = new UtilisateurDAO();
+            dao.deleteHistToUtilisateur(login, commande);
+            Historique hist = dao.getOneHistUtilisateur(login, commande);
+            Assert.IsNull(hist);
+        }
+
+        [TestMethod]
+        public void TestUpdateHistorique()
+        {
+            String login = "admin";
+            int commande = 12345;
+            float prix = 12.12F;
+            String time = "2015-05-15@23:58";
+            var dao = new UtilisateurDAO();
+            dao.modifyHistToUtilisateur(login, commande, prix,time);
+            Historique hist = dao.getOneHistUtilisateur(login, commande);
+            Assert.AreEqual(prix, hist.prix);
+            Assert.AreEqual(time, hist.time);
+        }
     }
 }

@@ -25,5 +25,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Historique">
+      <EntityTypeMapping TypeName="TCFLoginModel.Historique">
+        <MappingFragment StoreEntitySet="Historique">
+          <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+          <ScalarProperty Name="commande" ColumnName="commande" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

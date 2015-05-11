@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TCFLoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Historique">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="commande" Type="int" Nullable="false" />
+    <Property Name="prix" Type="real" Nullable="false" />
+    <Property Name="time" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_utilisateur" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Infomation">
     <Key>
       <PropertyRef Name="id" />
@@ -22,6 +32,18 @@
     <Property Name="type" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="passward" Type="varchar" MaxLength="16" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Historique_Historique">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Historique" Type="Self.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="id_utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Infomation_Utilisateur">
     <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
     <End Role="Infomation" Type="Self.Infomation" Multiplicity="*" />
@@ -35,8 +57,13 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TCFLoginModelStoreContainer">
+    <EntitySet Name="Historique" EntityType="Self.Historique" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Infomation" EntityType="Self.Infomation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Historique_Historique" Association="Self.FK_Historique_Historique">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Historique" EntitySet="Historique" />
+    </AssociationSet>
     <AssociationSet Name="FK_Infomation_Utilisateur" Association="Self.FK_Infomation_Utilisateur">
       <End Role="Utilisateur" EntitySet="Utilisateur" />
       <End Role="Infomation" EntitySet="Infomation" />
