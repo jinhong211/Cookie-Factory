@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-<head>
-    <title></title>
-</head>
-<body>
-    <div>
-        <h1>Creer Une Boutique</h1><br />
-    </div>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml">
+    <ui:define name="content">
 
-    <div>
-        <h:form>
-            <div>
-                <h:outputText value="Adresse: " style="font-weight:bold" />
-                <h:inputText value="#{responsableTCFJsf.adresseBoutique}" />
-            </div>
-            <h:commandButton value="button" type="button" action="#{responsableTCFJsf.setAdresseBoutique()}"/>
-        </h:form>
-    </div>
+        <div>
+            <h1>Creer Une Boutique</h1><br />
+        </div>
 
-    <div>
-        <h:outputText value="#{responsableTCFJsf.getAdresseBoutique()}" />
-    </div>
+        <div class="form-group">
+            <h:form role="form">
+                <div class="form-group">
+                    <label for="adresse">Address:</label>
+                    <h:inputText id="adresse" styleClass="form-control" value="#{responsableTCFJsf.adresseBoutique}" />
+                </div>
 
-</body>
-</html>
+                <div class="form-group">
+                    <label for="tax">Tax:</label>
+                    <h:inputText id="tax" styleClass="form-control" value="#{responsableTCFJsf.tax}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="tempsOuvert">Temps Ouvert:</label>
+                    <h:inputText id="tempsOuvert" styleClass="form-control" value="#{responsableTCFJsf.tempsO}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="tempsFerme">Temps Ferme:</label>
+                    <h:inputText id="tempsFerme" styleClass="form-control" value="#{responsableTCFJsf.tempsF}" />
+                </div>
+
+                <h:commandButton value="Creer Boutique" styleClass="btn btn-primary" action="#{responsableTCFJsf.creerBoutique}" render="outputAdresse">
+                </h:commandButton>
+            </h:form>
+        </div>
+
+        <div class="form-group">
+            <h:outputText id="outputAdresse" value="#{responsableTCFJsf.allBoutique}" />
+        </div>
+
+    </ui:define>
+</ui:composition>
