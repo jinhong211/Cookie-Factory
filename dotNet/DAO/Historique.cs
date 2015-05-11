@@ -12,20 +12,14 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Utilisateur
+    public partial class Historique
     {
-        public Utilisateur()
-        {
-            this.Infomation = new HashSet<Infomation>();
-            this.Historique = new HashSet<Historique>();
-        }
-    
         public int id { get; set; }
-        public string login { get; set; }
-        public string type { get; set; }
-        public string passward { get; set; }
+        public int commande { get; set; }
+        public float prix { get; set; }
+        public string time { get; set; }
+        public int id_utilisateur { get; set; }
     
-        public virtual ICollection<Infomation> Infomation { get; set; }
-        public virtual ICollection<Historique> Historique { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
     }
 }

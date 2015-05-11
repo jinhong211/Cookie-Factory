@@ -27,5 +27,6 @@ namespace DAO
     
         public DbSet<Infomation> Infomation { get; set; }
         public DbSet<Utilisateur> Utilisateur { get; set; }
+        public DbSet<Historique> Historique { get; set; }
     }
 }

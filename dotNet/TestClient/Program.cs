@@ -13,7 +13,6 @@ namespace TestClient
 ServiceTCF.ServiceTCFClient();
             userServiceStub.ClientCredentials.UserName.UserName = "dingding";
             userServiceStub.ClientCredentials.UserName.Password = "dd123";
-            //userServiceStub.createAccount("dingding", "dd123", "user");
             Console.WriteLine(userServiceStub.addInfoAccount("Ding", "Feng", 1234567, "Valbonne", "11/17", 123));
             /*Console.WriteLine(userServiceStub.getListAccount());
             Console.WriteLine(userServiceStub.createAccount("dingding","dd123","USER"));

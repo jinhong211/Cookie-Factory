@@ -13,7 +13,6 @@ namespace WcfServiceTCF
 
     public class ServiceTCF : IServiceTCF
     {
-
         public String createAccount(String login, String passward, String type)
         {
             var dao = new UtilisateurDAO();
