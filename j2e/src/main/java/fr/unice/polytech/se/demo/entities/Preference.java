@@ -16,7 +16,7 @@ public class Preference implements Serializable{
 
     private Long id;
 
-    private Compte compte;
+    private int id_compte;
 
     private Set<Recette> recettes;
 
@@ -35,13 +35,12 @@ public class Preference implements Serializable{
         this.id = id;
     }
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    public Compte getCompte(){
-        return compte;
+    public int getCompte(){
+        return id_compte;
     }
 
-    public void setCompte(Compte c){
-        compte = c;
+    public void setCompte(int c){
+        id_compte = c;
     }
 
     @ManyToMany(mappedBy = "preferences")
@@ -54,7 +53,7 @@ public class Preference implements Serializable{
     }
 
     public String toString(){
-        return "PREFERENCE[" + this.id + "]# compte: " + this.compte.toString();
+        return "PREFERENCE[" + this.id + "]# compte: " + this.id_compte;
     }
 
     @ManyToMany(mappedBy = "preferences")

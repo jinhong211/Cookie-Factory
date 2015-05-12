@@ -20,4 +20,6 @@ public interface ClientSansCompteService {
     @WebMethod
     @WebResult(name = "creerRecette")
     public boolean creerRecette(@WebParam(name = "recetteNom") String n, @WebParam(name = "ingredients") Set<String> ingredients, @WebParam(name = "facons") Set<String> facons);
+
+
 }
