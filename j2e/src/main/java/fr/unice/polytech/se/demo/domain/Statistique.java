@@ -7,4 +7,6 @@ public interface Statistique {
 
     public int getChiffreVenteBoutiques();
 
+    public int getChiffreVenteBoutique(String adresseboutique);
+
 }
