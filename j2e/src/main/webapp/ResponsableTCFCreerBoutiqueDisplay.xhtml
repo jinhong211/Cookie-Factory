@@ -34,6 +34,7 @@
 
                 <h:commandButton value="Creer Boutique" styleClass="btn btn-primary" action="#{responsableTCFJsf.creerBoutique}" render="outputAdresse">
                 </h:commandButton>
+                <h:outputText id="error" value="#{responsableTCFJsf.errorMessage}" render="#{responsableTCFJsf.errorMessage != null}" style="color:red"/>
             </h:form>
         </div>
 

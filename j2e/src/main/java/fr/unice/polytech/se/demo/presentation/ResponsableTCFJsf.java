@@ -30,6 +30,8 @@ public class ResponsableTCFJsf implements Serializable{
     private int chiffreVent = 0;
     private int tempsO, tempsF;
 
+    private String errorMessage = null;
+
     public void setAdresseBoutique(String ab){
         this.adresseBoutique = ab;
     }
@@ -63,14 +65,26 @@ public class ResponsableTCFJsf implements Serializable{
     }
 
     public void creerBoutique(){
-        creerBoutique.createBoutique(adresseBoutique, tax, 0, tempsO, tempsF);
+        if(adresseBoutique.isEmpty()){
+            this.errorMessage = "Addresse non vide!";
+        } else if ((tax - 0) < 0.0001){
+            this.errorMessage = "Tax non vide!";
+        } else if(tempsO == 0){
+            this.errorMessage = "Temps ouvert non vide!";
+        } else if(tempsF == 0){
+            this.errorMessage = "Temps ferme non vide!";
+        } else if(tempsF < tempsO){
+            this.errorMessage = "Temps ferme invalide!";
+        } else {
+            creerBoutique.createBoutique(adresseBoutique, tax, 0, tempsO, tempsF);
+        }
     }
 
     public ArrayList<String> getAllBoutique(){
         String s = "";
         ArrayList<String> ss = new ArrayList<String>();
-        creerBoutique.createBoutique("Polytech",2.2,0,6,10);
-        creerBoutique.createBoutique("Antibes",1.3,0,10,12);
+       // creerBoutique.createBoutique("Polytech",2.2,0,6,10);
+       // creerBoutique.createBoutique("Antibes",1.3,0,10,12);
         List<Boutique> boutiques = boutiqueFinder.findAll();
         for(Boutique b : boutiques){
             s += b.getAddresseBoutique();
@@ -85,6 +99,10 @@ public class ResponsableTCFJsf implements Serializable{
 
     public void setChiffreVent(int cv) throws Exception{
         this.chiffreVent = cv;
+    }
+
+    public String getErrorMessage(){
+        return errorMessage;
     }
 
 

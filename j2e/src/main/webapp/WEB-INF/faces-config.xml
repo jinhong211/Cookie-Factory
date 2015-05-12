@@ -23,7 +23,7 @@
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
               version="2.0">
-
+<!--
   <navigation-rule>
     <from-view-id>/ResponsableTCFCreerBoutiqueDisplay.xhtml</from-view-id>
     <navigation-case>
@@ -31,6 +31,14 @@
       <to-view-id>/</to-view-id>
     </navigation-case>
   </navigation-rule>
+-->
+    <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>creerBoutique</from-outcome>
+            <to-view-id>/ResponsableTCFCreerBoutiqueDisplay.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 <!--
   <navigation-rule>
     <from-view-id>/result.xhtml</from-view-id>
