@@ -18,5 +18,5 @@
 -->
 <%@ page session="false" %>
 <%
-  response.sendRedirect("ResponsableTCFLog.jsf");
+  response.sendRedirect("ResponsableTCFCreerBoutiqueDisplay.jsf");
 %>

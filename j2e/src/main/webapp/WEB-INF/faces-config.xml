@@ -37,6 +37,7 @@
         <navigation-case>
             <from-outcome>creerBoutique</from-outcome>
             <to-view-id>/ResponsableTCFCreerBoutiqueDisplay.xhtml</to-view-id>
+            <redirect />
         </navigation-case>
     </navigation-rule>
 <!--
