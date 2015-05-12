@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92f0d4a4-57ec-4c33-b260-415863d0e7cd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/CompteFinder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/CompteManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/Statique.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/impl/StatiqueBean.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/entities/Compte.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/fr/unice/polytech/se/demo/StatiqueTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/fr/unice/polytech/se/demo/entities/Preference.class" afterPath="$PROJECT_DIR$/target/classes/fr/unice/polytech/se/demo/entities/Preference.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/Statistique.java" afterPath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/Statistique.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/impl/StatistiqueBean.java" afterPath="$PROJECT_DIR$/src/main/java/fr/unice/polytech/se/demo/domain/impl/StatistiqueBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/fr/unice/polytech/se/demo/StatistiqueTest.java" afterPath="$PROJECT_DIR$/src/test/java/fr/unice/polytech/se/demo/StatistiqueTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo.iml" afterPath="$PROJECT_DIR$/demo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -1113,7 +1103,7 @@
       <workItem from="1431384186961" duration="562000" />
       <workItem from="1431384772812" duration="6676000" />
       <workItem from="1431414230602" duration="12285000" />
-      <workItem from="1431467106226" duration="3952000" />
+      <workItem from="1431467106226" duration="4041000" />
     </task>
     <task id="LOCAL-00001" summary="add statique">
       <created>1430160819655</created>
@@ -1121,11 +1111,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430160819655</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add functiob in statique">
+      <created>1431471113662</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1431471113662</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266141000" />
+    <option name="totallyTimeSpent" value="266230000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1237,7 +1233,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="add statique" />
-    <option name="LAST_COMMIT_MESSAGE" value="add statique" />
+    <MESSAGE value="add functiob in statique" />
+    <option name="LAST_COMMIT_MESSAGE" value="add functiob in statique" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
