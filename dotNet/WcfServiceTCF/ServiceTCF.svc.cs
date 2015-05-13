@@ -13,6 +13,7 @@ namespace WcfServiceTCF
 
     public class ServiceTCF : IServiceTCF
     {
+        [PrincipalPermission(SecurityAction.Demand, Role = "custom")]
         public String createAccount(String login, String passward, String type)
         {
             var dao = new UtilisateurDAO();
@@ -57,7 +58,6 @@ namespace WcfServiceTCF
                 return "User " + login + " doesn't exist";
             }
         }
-
         public String loginAccount(String login, String passward)
         {
             var dao = new UtilisateurDAO();
@@ -250,6 +250,82 @@ namespace WcfServiceTCF
         public String getRoles(String username){
             var dao = new UtilisateurDAO();
             return dao.getUtilisateur(username).type;
-        } 
+        }
+
+        public int getID(String username)
+        {
+            var dao = new UtilisateurDAO();
+            return dao.getUtilisateur(username).id;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "admin")]
+        public String getListHistorique()
+        {
+            String result = "";
+            var dao = new UtilisateurDAO();
+            for (int i = 0; i < dao.getListHitorique().Count<Historique>(); i++)
+            {
+                result = result + "User: " + dao.getListHitorique()[i].id_utilisateur;
+                result = result + " Commande NO.: " + dao.getListHitorique()[i].commande;
+                result = result + " Price: " + dao.getListHitorique()[i].prix;
+                result = result + " Time: " + dao.getListHitorique()[i].time;
+                result = result + "\n";
+            }
+            return result;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = "user")]
+        public String getListHistoriqueUser()
+        {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            String login = ssc.PrimaryIdentity.Name;
+            String result = "";
+            var dao = new UtilisateurDAO();
+            if (dao.getUtilisateur(login) != null)
+            {
+                result = result + "User: " + login + "'s command informations:\n";
+                for (int i = 0; i < dao.getListHistUtilisateur(login).Count<Historique>(); i++)
+                {
+                    result = result + "User: " + login;
+                    result = result + " Commande NO.: " + dao.getListHistUtilisateur(login)[i].commande;
+                    result = result + " Price: " + dao.getListHistUtilisateur(login)[i].prix;
+                    result = result + " Time: " + dao.getListHistUtilisateur(login)[i].time;
+                    result = result + "\n";
+                }
+            }
+            else
+            {
+                return "User " + login + " doesn't exist";
+            }
+            return result;
+        }
+        public String addHistAccount(String login,int commande, float prix, String time)
+        {
+            
+            String result = "";
+            var dao = new UtilisateurDAO();
+            if (dao.getUtilisateur(login) != null)
+            {
+                if (dao.getOneHistUtilisateur(login, commande) == null)
+                {
+                    dao.addHistToUtilisateur(login, commande,prix,time);
+                    result = result + "User: " + login;
+                    result = result + " Commande NO.: " + dao.getOneHistUtilisateur(login, commande).commande;
+                    result = result + " Price: " + dao.getOneHistUtilisateur(login, commande).prix;
+                    result = result + " Time: " + dao.getOneHistUtilisateur(login, commande).time;
+                    result = result + "added\n";
+                }
+                else
+                {
+                    return "User " + login + "'s command: " + commande + " already exists";
+                }
+            }
+            else
+            {
+                return "User " + login + " doesn't exist";
+            }
+            return result;
+        }
     }
 }

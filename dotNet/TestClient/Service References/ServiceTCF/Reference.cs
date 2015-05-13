@@ -44,6 +44,21 @@ namespace TestClient.ServiceTCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getInfoAccount", ReplyAction="http://tempuri.org/IServiceTCF/getInfoAccountResponse")]
         string getInfoAccount(int numero);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getRoles", ReplyAction="http://tempuri.org/IServiceTCF/getRolesResponse")]
+        string getRoles(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getID", ReplyAction="http://tempuri.org/IServiceTCF/getIDResponse")]
+        int getID(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getListHistorique", ReplyAction="http://tempuri.org/IServiceTCF/getListHistoriqueResponse")]
+        string getListHistorique();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/getListHistoriqueUser", ReplyAction="http://tempuri.org/IServiceTCF/getListHistoriqueUserResponse")]
+        string getListHistoriqueUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/addHistAccount", ReplyAction="http://tempuri.org/IServiceTCF/addHistAccountResponse")]
+        string addHistAccount(string login, int commande, float prix, string time);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +126,26 @@ namespace TestClient.ServiceTCF {
         
         public string getInfoAccount(int numero) {
             return base.Channel.getInfoAccount(numero);
+        }
+        
+        public string getRoles(string username) {
+            return base.Channel.getRoles(username);
+        }
+        
+        public int getID(string username) {
+            return base.Channel.getID(username);
+        }
+        
+        public string getListHistorique() {
+            return base.Channel.getListHistorique();
+        }
+        
+        public string getListHistoriqueUser() {
+            return base.Channel.getListHistoriqueUser();
+        }
+        
+        public string addHistAccount(string login, int commande, float prix, string time) {
+            return base.Channel.addHistAccount(login, commande, prix, time);
         }
     }
 }

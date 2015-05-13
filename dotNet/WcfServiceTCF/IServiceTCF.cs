@@ -31,5 +31,15 @@ namespace WcfServiceTCF
         String updateInfoAccount(int numero, String address);
         [OperationContract]
         String getInfoAccount(int numero);
+        [OperationContract]
+        String getRoles(String username);
+        [OperationContract]
+        int getID(String username);
+        [OperationContract]
+        String getListHistorique();
+        [OperationContract]
+        String getListHistoriqueUser();
+        [OperationContract]
+        String addHistAccount(String login,int commande,float prix,String time);
     }
 }

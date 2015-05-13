@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6e57b64b-63c4-4318-a3bb-3b93cd614ace" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="aa989606-3660-4f92-b706-02349050b147" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,9 +21,9 @@
     <MetadataSource Address="http://localhost:8087/ServiceTCF.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceTCF.wsdl" MetadataType="Wsdl" ID="e41e9ef0-dc07-4b91-a0e7-6997f1d122af" SourceId="1" SourceUrl="http://localhost:8087/ServiceTCF.svc?wsdl" />
-    <MetadataFile FileName="ServiceTCF.xsd" MetadataType="Schema" ID="026c54ed-8992-4241-af10-25765d5da357" SourceId="1" SourceUrl="http://localhost:8087/ServiceTCF.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceTCF1.xsd" MetadataType="Schema" ID="0e4a3565-fe2d-4328-bf1f-0b3afd24f794" SourceId="1" SourceUrl="http://localhost:8087/ServiceTCF.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceTCF.wsdl" MetadataType="Wsdl" ID="44352ed4-f8e7-4f8e-a372-84cee3deeee4" SourceId="1" SourceUrl="http://localhost:8087/ServiceTCF.svc?wsdl" />
+    <MetadataFile FileName="ServiceTCF.xsd" MetadataType="Schema" ID="64ebdaf6-f46e-41b2-97e5-9040d7b8ec95" SourceId="1" SourceUrl="http://localhost:8087/ServiceTCF.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceTCF1.xsd" MetadataType="Schema" ID="672edc57-8986-4621-a9bd-bfcabf86b6ef" SourceId="1" SourceUrl="http://localhost:8087/ServiceTCF.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
