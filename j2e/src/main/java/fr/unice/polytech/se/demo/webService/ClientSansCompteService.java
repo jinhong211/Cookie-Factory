@@ -4,6 +4,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,5 +22,7 @@ public interface ClientSansCompteService {
     @WebResult(name = "creerRecette")
     public boolean creerRecette(@WebParam(name = "recetteNom") String n, @WebParam(name = "ingredients") Set<String> ingredients, @WebParam(name = "facons") Set<String> facons);
 
-
+    @WebMethod
+    @WebResult(name = "preferenceDansCompte")
+    public boolean creerPreferenceCompte(@WebParam(name = "recettes") ArrayList<String> recettes, @WebParam(name = "boutiques") ArrayList<String> boutiques, @WebParam(name = "compteId") int id_compte);
 }

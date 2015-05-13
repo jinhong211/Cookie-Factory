@@ -11,6 +11,4 @@ public interface RecettesduBoutique {
 
     Set<Commande> getRecettesduBoutique(String adresseBoutique);
 
-    int getStatistiqueBoutique(String adresseBoutique);
-
 }

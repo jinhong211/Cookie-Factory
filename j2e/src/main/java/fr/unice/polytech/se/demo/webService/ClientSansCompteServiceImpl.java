@@ -10,6 +10,7 @@ import fr.unice.polytech.se.demo.entities.Recette;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -69,6 +70,11 @@ public class ClientSansCompteServiceImpl implements ClientSansCompteService{
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean creerPreferenceCompte(ArrayList<String> recettes, ArrayList<String> boutiques, int id_compte) {
+        return false;
     }
 
 

@@ -1,6 +1,7 @@
 package fr.unice.polytech.se.demo.webService;
 
 import fr.unice.polytech.se.demo.domain.RecettesduBoutique;
+import fr.unice.polytech.se.demo.domain.Statistique;
 import fr.unice.polytech.se.demo.entities.Commande;
 
 import javax.ejb.EJB;
@@ -18,6 +19,9 @@ public class ResponsableBoutiqueServiceImpl implements ResponsableBoutiqueServic
     @EJB
     RecettesduBoutique recettesduBoutiqueBean;
 
+    @EJB
+    Statistique statistique;
+
 
     @Override
     public ArrayList<String> getListCommande(String adresseBoutique) {
@@ -31,6 +35,6 @@ public class ResponsableBoutiqueServiceImpl implements ResponsableBoutiqueServic
 
     @Override
     public int getStatistiqueBoutique(String adresseBoutique) {
-        return recettesduBoutiqueBean.getStatistiqueBoutique(adresseBoutique);
+        return statistique.getChiffreVenteBoutique(adresseBoutique);
     }
 }

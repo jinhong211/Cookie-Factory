@@ -27,9 +27,4 @@ public class RecettesduBoutiqueBean implements RecettesduBoutique{
         return commandes;
     }
 
-    @Override
-    public int getStatistiqueBoutique(String adresseBoutique){
-        Boutique boutique = findeB.findByAddresse(adresseBoutique);
-        return boutique.getCommandes().size();
-    }
 }
