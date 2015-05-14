@@ -1,5 +1,6 @@
-/home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/Facon.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/webService/ClientSansCompteServiceImpl.java
+/home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/Facon.java
+/home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/presentation/ResponsableBoutiqueJsf.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/webService/ResponsableTCFService.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/impl/ProcessCommandBean.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/impl/StatistiqueBean.java
@@ -11,8 +12,8 @@
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/webService/ClientAvecCompteServiceImpl.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/CreerBoutique.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/webService/ClientSansCompteService.java
-/home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/HoraireVente.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/Commande.java
+/home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/HoraireVente.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/impl/BoutiqueFinderBean.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/RecettesduBoutique.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/impl/RecettesduBoutiqueBean.java
@@ -25,6 +26,7 @@
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/impl/PreferenceManagerBean.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/impl/PreferenceFinderBean.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/Boutique.java
+/home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/startup/StartupBean.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/Ingredient.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/entities/Preference.java
 /home/ding/Documents/TCF/j2e/src/main/java/fr/unice/polytech/se/demo/domain/ProcessCommand.java

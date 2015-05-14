@@ -24,7 +24,7 @@ public class Boutique implements Serializable {
 
     private Integer chiffreVente;
 
-    private Set<Preference> preferences;
+    private Preference preference;
 
     private HoraireVente horaireVente;
 
@@ -96,16 +96,16 @@ public class Boutique implements Serializable {
         chiffreVente = cv;
     }
 
-    @ManyToMany(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
     /*@AssociationTable(table = @Table(name = "BOUTIQUE_PREFERENCE"),
             joinColumns = {@JoinColumn(name = "ID_BOUTIQUE",referencedColumnName="ID_BOUTIQUE")},
             inverseJoinColumns = {@JoinColumn(name = "ID_PREFERENCE",referencedColumnName="ID_PREFERENCE")})*/
-    public Set<Preference> getPreferences(){
-        return preferences;
+    public Preference getPreference(){
+        return preference;
     }
 
-    public void setPreferences(Set<Preference> p){
-        preferences = p;
+    public void setPreference(Preference p){
+        preference = p;
     }
 
     @Column(name = "HORAIREVENTE", length = 10)

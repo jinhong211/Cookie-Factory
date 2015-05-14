@@ -35,8 +35,8 @@
     <navigation-rule>
         <from-view-id>/index.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>creerBoutique</from-outcome>
-            <to-view-id>/ResponsableTCFCreerBoutiqueDisplay.xhtml</to-view-id>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/BoutiqueStatistique.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>

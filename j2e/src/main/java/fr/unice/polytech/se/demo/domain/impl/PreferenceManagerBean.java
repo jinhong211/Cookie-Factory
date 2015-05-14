@@ -23,9 +23,10 @@ public class PreferenceManagerBean implements PreferenceManager {
 
 
     @Override
-    public Preference create() {
+    public Preference create(int compte) {
 
         Preference c=new Preference();
+        c.setCompte(compte);
         entityManager.persist(c);
 
         return c;

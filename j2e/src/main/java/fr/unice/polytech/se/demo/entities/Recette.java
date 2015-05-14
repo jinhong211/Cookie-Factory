@@ -14,7 +14,7 @@ public class Recette implements Serializable{
     private String nom_recette;
     private Set<Ingredient> ingredients;
     private Set<Facon> facons;
-    private Set<Preference> preferences;
+    private Preference preference;
     private double temps_Utiliser;
     private double prix_recette;
     private Set<Commande> commandes;
@@ -79,16 +79,16 @@ public class Recette implements Serializable{
         prix_recette = pr;
     }
 
-    @ManyToMany(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
    /* @AssociationTable(table = @Table(name = "PREFERENCE_RECETTE"),
             joinColumns = {@JoinColumn(name = "ID_RECETTE",referencedColumnName="ID_RECETTE")},
             inverseJoinColumns = {@JoinColumn(name = "ID_PREFERENCE",referencedColumnName="ID_PREFERENCE")})*/
-    public Set<Preference> getPreferences(){
-        return preferences;
+    public Preference getPreference(){
+        return preference;
     }
 
-    public void setPreferences(Set<Preference> p){
-        preferences = p;
+    public void setPreference(Preference p){
+        preference = p;
     }
 
     @ManyToMany(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)

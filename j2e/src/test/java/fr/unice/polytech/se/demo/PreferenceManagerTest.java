@@ -41,9 +41,11 @@ public class PreferenceManagerTest {
 
     @Test
     public void testCreation()  {
-        Preference facon =manager.create();
+        Preference facon =manager.create(10);
 
         Preference found = finder.findAll().get(0);
+
+        //Preference found = finder.findById(10);
 
         assertEquals(found.getId(), facon.getId());
     }

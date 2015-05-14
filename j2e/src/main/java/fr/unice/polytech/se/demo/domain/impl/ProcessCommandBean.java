@@ -76,11 +76,12 @@ public class ProcessCommandBean implements ProcessCommand {
             boutique.setChiffreVente(boutique.getCommandes().size());
             c.setBoutique(boutique);
         }else{
-            commandes=boutique1.getCommandes();
-            commandes.add(c);
-            boutique1.setCommandes(commandes);
+            Set<Commande> commandes2=boutique1.getCommandes();
+            //commandes.size();
+//            commandes.add(c);
+            boutique1.setCommandes(commandes2);
             //System.out.print();
-            boutique1.setChiffreVente(boutique1.getCommandes().size());
+//            boutique1.setChiffreVente(boutique1.getCommandes().size());
             c.setBoutique(boutique1);
         }
         c.setPrice(quantite*recette.getPrix_recette()*(boutique.getTax()+1));

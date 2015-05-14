@@ -6,5 +6,5 @@ import fr.unice.polytech.se.demo.entities.Preference;
  * Created by user on 31/03/15.
  */
 public interface PreferenceManager {
-    public Preference create();
+    public Preference create(int compte);
 }

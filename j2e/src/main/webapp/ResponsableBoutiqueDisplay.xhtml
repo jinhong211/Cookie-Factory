@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-<head>
-    <title></title>
-</head>
-<body>
-    <div>
-        <h1>HELLO World</h1>
-    </div>
-</body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div>
+            <h1>Boutique Statistique</h1><br />
+        </div>
+        <h:form role="form">
+            <div class="form-group">
+
+                <h:selectOneMenu styleClass="form-control" value="#{responsableBoutiqueJsf.adresseBoutique}">
+                    <f:selectItems value="#{responsableBoutiqueJsf.selectBoutiqueMenu}" />
+                </h:selectOneMenu>
+
+            </div>
+
+            <h:commandButton styleClass="btn btn-primary" value="Select Store" action="BoutiqueStatistique" />
+        </h:form>
+
+    </ui:define>
+</ui:composition>

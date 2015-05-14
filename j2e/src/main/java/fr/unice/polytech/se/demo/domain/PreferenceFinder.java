@@ -8,7 +8,7 @@ import java.util.List;
  * Created by user on 31/03/15.
  */
 public interface PreferenceFinder {
-    public Preference findById(long id);
+    public Preference findById(int id);
 
     public List<Preference> findAll();
 

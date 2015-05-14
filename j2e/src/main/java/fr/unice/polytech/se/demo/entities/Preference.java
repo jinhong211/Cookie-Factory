@@ -1,6 +1,7 @@
 package fr.unice.polytech.se.demo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -35,6 +36,8 @@ public class Preference implements Serializable{
         this.id = id;
     }
 
+    @Column(name = "IDCOMPTE", length = 10)
+    @NotNull
     public int getCompte(){
         return id_compte;
     }
@@ -43,7 +46,7 @@ public class Preference implements Serializable{
         id_compte = c;
     }
 
-    @ManyToMany(mappedBy = "preferences")
+    @OneToMany(mappedBy = "preference")
     public Set<Recette> getRecettes(){
         return recettes;
     }
@@ -56,7 +59,7 @@ public class Preference implements Serializable{
         return "PREFERENCE[" + this.id + "]# compte: " + this.id_compte;
     }
 
-    @ManyToMany(mappedBy = "preferences")
+    @OneToMany(mappedBy = "preference")
     public Set<Boutique> getBoutiques(){
         return boutiques;
     }

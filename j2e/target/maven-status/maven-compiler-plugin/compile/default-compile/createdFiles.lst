@@ -10,6 +10,7 @@ fr/unice/polytech/se/demo/domain/impl/ProcessCommandBean.class
 fr/unice/polytech/se/demo/entities/Ingredient.class
 fr/unice/polytech/se/demo/entities/Recette.class
 fr/unice/polytech/se/demo/webService/ResponsableTCFServiceImpl.class
+fr/unice/polytech/se/demo/presentation/ResponsableBoutiqueJsf.class
 fr/unice/polytech/se/demo/domain/impl/BoutiqueFinderBean.class
 fr/unice/polytech/se/demo/domain/impl/CreerBoutiqueBean.class
 fr/unice/polytech/se/demo/webService/ClientSansCompteServiceImpl.class
@@ -28,5 +29,6 @@ fr/unice/polytech/se/demo/domain/CreerBoutique.class
 fr/unice/polytech/se/demo/entities/Commande.class
 fr/unice/polytech/se/demo/webService/TcfServiceImpl.class
 fr/unice/polytech/se/demo/entities/Facon.class
+fr/unice/polytech/se/demo/startup/StartupBean.class
 fr/unice/polytech/se/demo/domain/ProcessCommand.class
 fr/unice/polytech/se/demo/webService/ClientAvecCompteServiceImpl.class

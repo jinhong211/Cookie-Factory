@@ -4,6 +4,7 @@ import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
 import fr.unice.polytech.se.demo.domain.CreerBoutique;
 import fr.unice.polytech.se.demo.domain.ProcessCommand;
 import fr.unice.polytech.se.demo.entities.Boutique;
+import fr.unice.polytech.se.demo.entities.Commande;
 import fr.unice.polytech.se.demo.entities.HoraireVente;
 import fr.unice.polytech.se.demo.entities.Recette;
 
@@ -16,7 +17,9 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by user on 22/04/15.
@@ -42,11 +45,13 @@ public class CreerBoutiqueBean implements CreerBoutique{
             boutique.setAddresseBoutique(addresseBoutique);
             boutique.setChiffreVente(chiffreVente);
             boutique.setTax(tax);
+
             if (recette_du_jour != null){
                 boutique.setRecette_du_jour(recette);
                 entityManager.persist(boutique);
             }else{
                 boutique.setRecette_du_jour(recette_du_jour);
+
                 entityManager.persist(boutique);
             }
         }
@@ -61,7 +66,7 @@ public class CreerBoutiqueBean implements CreerBoutique{
         Boutique boutique = finder.findByAddresse(addresseBoutique);
         //Recette recette = finderR.findByName(recette_du_jour.getNom_recette());
         Recette recette = finderR.findByNameRecette("default");
-
+        Set<Commande> commandes = new HashSet<Commande>();
         if (boutique == null) {
             boutique = new Boutique();
             boutique.setAddresseBoutique(addresseBoutique);
@@ -71,6 +76,7 @@ public class CreerBoutiqueBean implements CreerBoutique{
             if (recette == null){
                 recette=new Recette("default",0,0);
                 boutique.setRecette_du_jour(recette);
+                boutique.setCommandes(commandes);
                 //entityManager.remove(entityManager.merge(recette));
                 //recette.setNom_recette("kkkk");
                 //entityManager.persist(recette);
@@ -78,6 +84,7 @@ public class CreerBoutiqueBean implements CreerBoutique{
             }else{
 
                 boutique.setRecette_du_jour(recette);
+                boutique.setCommandes(commandes);
                 //entityManager.remove(entityManager.merge(recette));
                 //recette.setNom_recette("KKKK");
                 //entityManager.persist(recette);
