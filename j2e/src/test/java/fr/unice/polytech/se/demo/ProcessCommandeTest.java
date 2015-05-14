@@ -96,24 +96,20 @@ public class ProcessCommandeTest {
 
         Boutique boutique = managerCB.createBoutique("Polytech", 0.5, 10, 9, 5);
 
-        Boutique boutique2 = managerCB.createBoutique("Sophia", 0.5, 10, 9, 5);
-
-
         Commande commande=managerPC.createCommande(boutique, recette, new Date(0, 0, 0), 10);
 
-        Commande commande2=managerPC.createCommande(boutique,recette, new Date(0, 0, 0), 10);
+        //Commande commande=managerC.create(recette,new Date(0,0,0), 10);
 
         // Commande commande=managerC.create(new Date(0,0,0), 10);
 
         Commande found = managerPC.findAllCommande().get(0);
-        Commande found2 = managerPC.findAllCommande().get(1);
 
         System.out.print(found.getBoutique().getChiffreVente());
 
         System.out.print("KKKKK"+found.getPrice());
 
         assertEquals(found.getRecette().getPrix_recette()*found.getQuantite()* (boutique.getTax()+1), commande.getPrice(),0.001);
-       // assertEquals(found.getBoutique().getChiffreVente(), commande.getBoutique().getChiffreVente());
+        assertEquals(found.getBoutique().getChiffreVente(), commande.getBoutique().getChiffreVente());
 
         assertEquals(found.getQuantite(), commande.getQuantite());
 
