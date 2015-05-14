@@ -1,5 +1,5 @@
 package fr.unice.polytech.tcf;
-
+/*
 import stub.Boutique;
 import stub.Recette;
 import stub.TcfServiceImplService;
@@ -14,8 +14,9 @@ import java.util.List;
 /**
  * Created by ding on 10/04/15.
  */
-public class UtilisateurEntree {
 
+public class UtilisateurEntree {
+/*
     private static void showRespMenu(){
         System.out.println("--------------------CHOISEZ VOTRE ACTION-------------------");
         System.out.println("----------------[1] CREER UNE BOUTIQUE---------------------");
@@ -44,7 +45,7 @@ public class UtilisateurEntree {
 
     private static void responsableAction(stub.TcfService port) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-        Responsable responsable = new Responsable();
+        ResponsableTCF responsableTCF = new ResponsableTCF();
         showRespMenu();
         String action = bufferRead.readLine();
         int actionI = 0;
@@ -68,11 +69,11 @@ public class UtilisateurEntree {
         if(actionI == 4){
             return;
         } else if(actionI == 1){
-            System.out.println(responsable.creerBoutique(port));
+            System.out.println(responsableTCF.creerBoutique(port));
         } else if(actionI == 2){
-            System.out.println(responsable.creerIngredient(port));
+            System.out.println(responsableTCF.creerIngredient(port));
         } else if(actionI == 3){
-            System.out.println(responsable.creerFacon(port));
+            System.out.println(responsableTCF.creerFacon(port));
         }
     }
 
@@ -322,5 +323,5 @@ public class UtilisateurEntree {
 
     }
 
-
+*/
 }

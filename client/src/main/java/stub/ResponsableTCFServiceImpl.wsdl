@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/Responsabletcf" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webService.demo.se.polytech.unice.fr/" name="ResponsableTCFServiceImplService" targetNamespace="http://www.polytech.unice.fr/Responsabletcf">
+  <wsdl:import location="http://localhost:8080/demo/webservices/ResponsableTCFServiceImpl?wsdl=ResponsableTCFService.wsdl" namespace="http://webService.demo.se.polytech.unice.fr/">
+    </wsdl:import>
+  <wsdl:binding name="ResponsableTCFServiceImplServiceSoapBinding" type="ns1:ResponsableTCFService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getStatistiqueGlobal">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatistiqueGlobal">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatistiqueGlobalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="boutiqueIsExist">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="boutiqueIsExist">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="boutiqueIsExistResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerBoutiqueResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResponsableTCFServiceImplService">
+    <wsdl:port binding="tns:ResponsableTCFServiceImplServiceSoapBinding" name="ResponsableTCFServiceImplPort">
+      <soap:address location="http://localhost:8080/demo/webservices/ResponsableTCFServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

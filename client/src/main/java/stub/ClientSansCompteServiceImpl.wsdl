@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.polytech.unice.fr/ClientSansCompte" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webService.demo.se.polytech.unice.fr/" name="ClientSansCompteServiceImplService" targetNamespace="http://www.polytech.unice.fr/ClientSansCompte">
+  <wsdl:import location="http://localhost:8080/demo/webservices/ClientSansCompteServiceImpl?wsdl=ClientSansCompteService.wsdl" namespace="http://webService.demo.se.polytech.unice.fr/">
+    </wsdl:import>
+  <wsdl:binding name="ClientSansCompteServiceImplServiceSoapBinding" type="ns1:ClientSansCompteService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="creerRecette">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerRecette">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerRecetteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="passerCommand">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="passerCommand">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="passerCommandResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerPreferenceCompte">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerPreferenceCompte">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerPreferenceCompteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientSansCompteServiceImplService">
+    <wsdl:port binding="tns:ClientSansCompteServiceImplServiceSoapBinding" name="ClientSansCompteServiceImplPort">
+      <soap:address location="http://localhost:8080/demo/webservices/ClientSansCompteServiceImpl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

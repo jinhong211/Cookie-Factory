@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerRecetteResponse complex type.
+ * <p>Java class for passerCommandResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="creerRecetteResponse">
+ * &lt;complexType name="passerCommandResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="creerRecette" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="passerCommand" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,27 +26,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "creerRecetteResponse", propOrder = {
-    "creerRecette"
+@XmlType(name = "passerCommandResponse", propOrder = {
+    "passerCommand"
 })
-public class CreerRecetteResponse {
+public class PasserCommandResponse {
 
-    protected boolean creerRecette;
+    protected boolean passerCommand;
 
     /**
-     * Gets the value of the creerRecette property.
+     * Gets the value of the passerCommand property.
      * 
      */
-    public boolean isCreerRecette() {
-        return creerRecette;
+    public boolean isPasserCommand() {
+        return passerCommand;
     }
 
     /**
-     * Sets the value of the creerRecette property.
+     * Sets the value of the passerCommand property.
      * 
      */
-    public void setCreerRecette(boolean value) {
-        this.creerRecette = value;
+    public void setPasserCommand(boolean value) {
+        this.passerCommand = value;
     }
 
 }

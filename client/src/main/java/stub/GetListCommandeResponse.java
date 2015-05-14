@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAllFaconResponse complex type.
+ * <p>Java class for getListCommandeResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getAllFaconResponse">
+ * &lt;complexType name="getListCommandeResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="allFacon" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listCommande" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,26 +28,26 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAllFaconResponse", propOrder = {
-    "allFacon"
+@XmlType(name = "getListCommandeResponse", propOrder = {
+    "listCommande"
 })
-public class GetAllFaconResponse {
+public class GetListCommandeResponse {
 
-    protected List<String> allFacon;
+    protected List<String> listCommande;
 
     /**
-     * Gets the value of the allFacon property.
+     * Gets the value of the listCommande property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the allFacon property.
+     * This is why there is not a <CODE>set</CODE> method for the listCommande property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAllFacon().add(newItem);
+     *    getListCommande().add(newItem);
      * </pre>
      * 
      * 
@@ -57,11 +57,11 @@ public class GetAllFaconResponse {
      * 
      * 
      */
-    public List<String> getAllFacon() {
-        if (allFacon == null) {
-            allFacon = new ArrayList<String>();
+    public List<String> getListCommande() {
+        if (listCommande == null) {
+            listCommande = new ArrayList<String>();
         }
-        return this.allFacon;
+        return this.listCommande;
     }
 
 }
