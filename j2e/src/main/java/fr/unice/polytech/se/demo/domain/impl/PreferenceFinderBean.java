@@ -21,14 +21,13 @@ public class PreferenceFinderBean implements PreferenceFinder{
     EntityManager entityManager;
 
     @Override
-    public Preference findById(int id) {
+    public Preference findById(int id_compte) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Preference> criteria = builder.createQuery(Preference.class);
         Root<Preference> from = criteria.from(Preference.class);
         criteria.select(from);
-        criteria.where(builder.equal(from.get("id_compte"), id));
-        TypedQuery<Preference> query = entityManager.createQuery(criteria.select(criteria
-                .from(Preference.class)));
+        criteria.where(builder.equal(from.get("compte"), id_compte));
+        TypedQuery<Preference> query = entityManager.createQuery(criteria);
         try {
             return query.getSingleResult();
         } catch (Exception e) {

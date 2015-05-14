@@ -17,7 +17,7 @@ public class Preference implements Serializable{
 
     private Long id;
 
-    private int id_compte;
+    private int compte;
 
     private Set<Recette> recettes;
 
@@ -25,6 +25,7 @@ public class Preference implements Serializable{
 
     public Preference(){}
 
+    public Preference(int id_compte){this.compte = id_compte; System.out.print(this.compte);}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_PREFERENCE",length = 32)
@@ -36,17 +37,17 @@ public class Preference implements Serializable{
         this.id = id;
     }
 
-    @Column(name = "IDCOMPTE", length = 10)
+    @Column(name = "COMPTE", length = 10)
     @NotNull
     public int getCompte(){
-        return id_compte;
+        return compte;
     }
 
     public void setCompte(int c){
-        id_compte = c;
+        compte = c;
     }
 
-    @OneToMany(mappedBy = "preference")
+    @ManyToMany(mappedBy = "preferences")
     public Set<Recette> getRecettes(){
         return recettes;
     }
@@ -56,10 +57,10 @@ public class Preference implements Serializable{
     }
 
     public String toString(){
-        return "PREFERENCE[" + this.id + "]# compte: " + this.id_compte;
+        return "PREFERENCE[" + this.id + "]# idcompte: " + this.compte;
     }
 
-    @OneToMany(mappedBy = "preference")
+  //  @ManyToMany(mappedBy = "preferences")
     public Set<Boutique> getBoutiques(){
         return boutiques;
     }

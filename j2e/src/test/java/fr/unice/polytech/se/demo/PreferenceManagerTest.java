@@ -1,8 +1,11 @@
 package fr.unice.polytech.se.demo;
 
+import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
+import fr.unice.polytech.se.demo.domain.CreerBoutique;
 import fr.unice.polytech.se.demo.domain.PreferenceFinder;
 import fr.unice.polytech.se.demo.domain.PreferenceManager;
 import fr.unice.polytech.se.demo.domain.impl.PreferenceManagerBean;
+import fr.unice.polytech.se.demo.entities.Boutique;
 import fr.unice.polytech.se.demo.entities.Preference;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -34,6 +37,14 @@ public class PreferenceManagerTest {
     }
 
     @EJB
+
+    private CreerBoutique managerCB;
+
+    @EJB
+
+    private BoutiqueFinder managerF;
+
+    @EJB
     private PreferenceManager manager;
 
     @EJB
@@ -41,12 +52,27 @@ public class PreferenceManagerTest {
 
     @Test
     public void testCreation()  {
-        Preference facon =manager.create(10);
+        Boutique boutique = managerCB.createBoutique("Polytech", 100, 10, 9, 5);
+
+        Boutique boutique2 = managerCB.createBoutique("Pppp", 100, 10, 9, 5);
+
+        //Boutique foundB = managerF.findAll().get(0);
+
+        //int integer = new Long(10);
+        Preference preference =manager.create(10);
+
+        preference = manager.addBoutique(boutique,10);
+
 
         Preference found = finder.findAll().get(0);
-
         //Preference found = finder.findById(10);
 
-        assertEquals(found.getId(), facon.getId());
+
+
+
+        System.out.println(preference.getBoutiques().size());
+        assertEquals(found.getBoutiques().size(), preference.getBoutiques().size());
+        assertEquals(found.getId(), preference.getId());
+        assertEquals(found.getCompte(), preference.getCompte());
     }
 }
