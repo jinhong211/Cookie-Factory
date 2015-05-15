@@ -70,8 +70,8 @@ public interface ClientSansCompteService {
 
     /**
      * 
-     * @param recettes
      * @param boutiques
+     * @param recette
      * @param compteId
      * @return
      *     returns boolean
@@ -81,10 +81,10 @@ public interface ClientSansCompteService {
     @RequestWrapper(localName = "creerPreferenceCompte", targetNamespace = "http://webService.demo.se.polytech.unice.fr/", className = "stub.CreerPreferenceCompte")
     @ResponseWrapper(localName = "creerPreferenceCompteResponse", targetNamespace = "http://webService.demo.se.polytech.unice.fr/", className = "stub.CreerPreferenceCompteResponse")
     public boolean creerPreferenceCompte(
-        @WebParam(name = "recettes", targetNamespace = "")
-        List<String> recettes,
+        @WebParam(name = "recette", targetNamespace = "")
+        String recette,
         @WebParam(name = "boutiques", targetNamespace = "")
-        List<String> boutiques,
+        String boutiques,
         @WebParam(name = "compteId", targetNamespace = "")
         int compteId);
 

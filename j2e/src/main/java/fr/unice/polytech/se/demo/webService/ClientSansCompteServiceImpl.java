@@ -1,6 +1,7 @@
 package fr.unice.polytech.se.demo.webService;
 
 import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
+import fr.unice.polytech.se.demo.domain.PreferenceManager;
 import fr.unice.polytech.se.demo.domain.ProcessCommand;
 import fr.unice.polytech.se.demo.entities.Boutique;
 import fr.unice.polytech.se.demo.entities.Facon;
@@ -10,9 +11,9 @@ import fr.unice.polytech.se.demo.entities.Recette;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,12 +29,22 @@ public class ClientSansCompteServiceImpl implements ClientSansCompteService{
     @EJB
     private ProcessCommand processCommand;
 
+    @EJB
+    private PreferenceManager preferenceManager;
+
     @Override
     public boolean passerCommand(String ab, String r, Date d, int q) {
-        Boutique boutique;
-        Recette recette;
-        boutique = boutiqueFinder.findByAddresse(ab);
-        recette = processCommand.findByNameRecette(r);
+        Boutique boutique = boutiqueFinder.findByAddresse(ab);
+        Recette recette = null;
+        List<Recette> recettes = processCommand.findAllRecette();
+        for(Recette re : recettes){
+            if(re.getNom_recette().equals(r)){
+                recette = processCommand.findByNameRecette(re.getNom_recette());
+                break;
+            }
+        }
+
+        System.out.println(recette);
         if(boutique != null && recette != null){
             if(processCommand.createCommande(boutique,recette,d,q) != null){
                 return true;
@@ -73,8 +84,24 @@ public class ClientSansCompteServiceImpl implements ClientSansCompteService{
     }
 
     @Override
-    public boolean creerPreferenceCompte(ArrayList<String> recettes, ArrayList<String> boutiques, int id_compte) {
-        return false;
+    public boolean creerPreferenceCompte(String recette, String boutique, int id_compte) {
+
+        Boutique boutique1 = boutiqueFinder.findByAddresse(boutique);
+        Recette recette1 = null;
+        List<Recette> recettes = processCommand.findAllRecette();
+        for(Recette re : recettes){
+            if(re.getNom_recette().equals(recette)){
+                recette1 = processCommand.findByNameRecette(re.getNom_recette());
+                break;
+            }
+        }
+
+        if(boutique1 != null && recette1 != null){
+            preferenceManager.create(id_compte, boutique1,recette1);
+            return true;
+        } else{
+            return false;
+        }
     }
 
 

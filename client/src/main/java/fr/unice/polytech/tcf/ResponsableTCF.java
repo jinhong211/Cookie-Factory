@@ -1,18 +1,14 @@
 package fr.unice.polytech.tcf;
 
-import stub.ResponsableTCFServiceImplService;
-
-import javax.xml.ws.BindingProvider;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 
 /**
  * Created by ding on 09/04/15.
  */
 public class ResponsableTCF {
-
+/*
     public static void main(String[] args) throws IOException {
         // Dynamically building the targeted web service location (default to localhost if not provided)
         String host = ( args.length == 0 ? "localhost" : args[0]);
@@ -32,13 +28,13 @@ public class ResponsableTCF {
 
         log(port);
 
-    }
+    }*/
 
-    public static void getStatistiqueG(stub.ResponsableTCFService port){
+    public void getStatistiqueG(stub.ResponsableTCFService port){
         System.out.println(""+ port.getStatistiqueGlobal()+"$");
     }
 
-    public static void log(stub.ResponsableTCFService port) throws IOException {
+    public void log(stub.ResponsableTCFService port) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         showMenu();
         String action = bufferRead.readLine();
@@ -69,7 +65,7 @@ public class ResponsableTCF {
         }
     }
 
-    public static boolean creerBoutique(stub.ResponsableTCFService port) throws IOException {
+    public boolean creerBoutique(stub.ResponsableTCFService port) throws IOException {
         try {
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
             boolean error = true;
@@ -286,7 +282,7 @@ public class ResponsableTCF {
         return false;
     }*/
 
-    private static void showMenu(){
+    private void showMenu(){
         System.out.println("--------------------CREER BOUTIQUE MENU--------------------");
         System.out.println("----------------[1] POUR CREER UNE BOUTIQUE----------------");
         System.out.println("----------------[2] POUR VOIR LE CHIFFRE D'AFFAIRE---------");

@@ -1,20 +1,15 @@
 package fr.unice.polytech.tcf;
 
-import stub.ResponsableBoutiqueServiceImplService;
-import stub.TcfServiceImplService;
-
-import javax.xml.ws.BindingProvider;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.List;
 
 /**
  * Created by ding on 10/04/15.
  */
 public class ResponsableBoutique {
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
         // Dynamically building the targeted web service location (default to localhost if not provided)
         String host = ( args.length == 0 ? "localhost" : args[0]);
         String address = "http://"+host+":8080/demo/webservices/ResponsableBoutiqueServiceImpl";
@@ -34,12 +29,13 @@ public class ResponsableBoutique {
 
         // Dynamically setting the address where the web service is really deployed
         ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+        ((BindingProvider) port1).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address1);
 
         log(port,port1);
 
-    }
+    }*/
 
-    public static void log(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
+    public void log(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         showMenu();
         String action = bufferRead.readLine();
@@ -70,7 +66,7 @@ public class ResponsableBoutique {
         }
     }
 
-    public static void getCommandes(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
+    public void getCommandes(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
         System.out.println("-----------------------------------------------------------");
@@ -126,7 +122,7 @@ public class ResponsableBoutique {
         }
     }
 
-    public static void getChiffreVente(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
+    public void getChiffreVente(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("------------------CHIFFRE VENTE DE BOUTIQUE----------------");
         System.out.println("-----------------------------------------------------------");
@@ -214,7 +210,7 @@ public class ResponsableBoutique {
         }
     }
 */
-    private static void showMenu(){
+    private void showMenu(){
         System.out.println("--------------L'AFFICHAGE DE CHIFFRE VENTE MENU------------");
         System.out.println("----------------[1] LISTE DE COMMANDE----------------------");
         System.out.println("----------------[2] CHIFFRE D'AFFAIRE DE BOUTIQUE----------");

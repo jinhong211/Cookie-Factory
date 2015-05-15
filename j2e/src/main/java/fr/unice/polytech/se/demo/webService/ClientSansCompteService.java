@@ -4,7 +4,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -24,5 +23,5 @@ public interface ClientSansCompteService {
 
     @WebMethod
     @WebResult(name = "preferenceDansCompte")
-    public boolean creerPreferenceCompte(@WebParam(name = "recettes") ArrayList<String> recettes, @WebParam(name = "boutiques") ArrayList<String> boutiques, @WebParam(name = "compteId") int id_compte);
+    public boolean creerPreferenceCompte(@WebParam(name = "recette") String recette, @WebParam(name = "boutiques") String boutique, @WebParam(name = "compteId") int id_compte);
 }

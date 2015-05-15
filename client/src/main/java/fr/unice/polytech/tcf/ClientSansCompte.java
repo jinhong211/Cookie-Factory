@@ -1,84 +1,139 @@
 package fr.unice.polytech.tcf;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
 /**
  * Created by ding on 10/04/15.
  */
 public class ClientSansCompte {
 /*
-    public boolean paserCommand(stub.TcfService port){
-        Commande commande = null;
-        Recette recette = null;
-        Boutique boutique = null;
+    public static void main(String[] args) throws IOException {
+        // Dynamically building the targeted web service location (default to localhost if not provided)
+        String host = ( args.length == 0 ? "localhost" : args[0]);
+        String address = "http://"+host+":8080/demo/webservices/ClientSansCompteServiceImpl";
+        URL wsdlLocation = null;
+        String address1 = "http://"+host+":8080/demo/webservices/TcfServiceImpl";
+        URL wsdlLocation1 = null;
+        try { wsdlLocation = new URL(address + "?wsdl"); } catch (Exception e) { System.exit(0); }
+        try { wsdlLocation1 = new URL(address1 + "?wsdl"); } catch (Exception e) { System.exit(0); }
+
+        // Instantiating the client stub code
+        stub.ClientSansCompteServiceImplService srv = new ClientSansCompteServiceImplService(wsdlLocation);
+        stub.TcfServiceImplService srv1 = new TcfServiceImplService(wsdlLocation1);
+        // stub.TcfServiceImplService srv = new TcfServiceImplService(wsdlLocation); // dynamic WSDL location
+        stub.ClientSansCompteService port = srv.getClientSansCompteServiceImplPort();
+        stub.TcfService port1 = srv1.getTcfServiceImplPort();
+        // stub.TcfService port = srv.getTcfServiceImplPort();
+
+        // Dynamically setting the address where the web service is really deployed
+        ((BindingProvider) port).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address);
+        ((BindingProvider) port1).getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, address1);
+
+        log(port, port1);
+
+    }
+*/
+    public void log(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("---------BIENVENUE, VOUS VOULEZ FAIRE UNE COMMANDE---------");
+        System.out.println("----------------[1] POUR COMMANDER-------------------------");
+        System.out.println("----------------[2] CREER UN COMPTE------------------------");
+        System.out.println("----------------[0] POUR ABANDONNER------------------------");
+        System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
+        System.out.println("-----------------------------------------------------------");
+        String veux = bufferRead.readLine();
+        if("0".equals(veux))return;
+        while (!"1".equals(veux) && !"2".equals(veux)){
+            System.err.println("#####################ACTION INCONNUE#######################");
+            System.out.println("----------------[1] POUR COMMANDER-------------------------");
+            System.out.println("----------------[2] CREER UN COMPTE------------------------");
+            System.out.println("----------------[0] POUR ABANDONNER------------------------");
+            System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
+            System.out.println("-----------------------------------------------------------");
+            veux = bufferRead.readLine();
+            if(veux.equals("0"))return;
+        }
+        if("1".equals(veux)){
+            System.out.println(paserCommand(port,port1));
+        } else if("2".equals(veux)){
+            System.out.println(creerCompte(port,port1));
+        }
+    }
+
+    public boolean creerCompte(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("------------------- CREER UN COMPTE------------------------");
+        String boutique = choisirBoutique(port1);
+        String recette = choisirRecette(port1);
+        if(port.creerPreferenceCompte(recette,boutique,1)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean paserCommand(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+
+        String boutique = null, recette = null;
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.println("---------BIENVENUE, VOUS VOULEZ FAIRE UNE COMMANDE---------");
             System.out.println("----------------[1] POUR COMMANDER-------------------------");
             System.out.println("----------------[0] POUR ABANDONNER------------------------");
-            System.out.println("--------------INSERER L'ADDRESSE DE BOUTIQUE---------------");
+            System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
             System.out.println("-----------------------------------------------------------");
             String veux = bufferRead.readLine();
-            if(veux.equals("0"))return false;
-            while (!veux.equals("1")){
+            if("0".equals(veux))return false;
+            while (!"1".equals(veux)){
                 System.err.println("#####################ACTION INCONNUE#######################");
                 System.out.println("----------------[1] POUR COMMANDER-------------------------");
                 System.out.println("----------------[0] POUR ABANDONNER------------------------");
-                System.out.println("--------------INSERER L'ADDRESSE DE BOUTIQUE---------------");
+                System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
                 System.out.println("-----------------------------------------------------------");
                 veux = bufferRead.readLine();
                 if(veux.equals("0"))return false;
             }
 
-            boutique = choisirBoutique(port);
-            if (boutique == null){
-                System.err.println("###################COMMANDE ABANDONNER#####################");
-                return false;
-            }
-
-            showRecetteMainMenu();
-            String action = bufferRead.readLine();
-            while (!"1".equals(action) && !"2".equals(action) && !"0".equals(action)){
-                System.err.println("######################ACTION INVALIDE######################");
+                boutique = choisirBoutique(port1);
+                String action;
                 showRecetteMainMenu();
                 action = bufferRead.readLine();
-            }
-            if ("O".equals(action)){
-                System.err.println("###################COMMANDE ABANDONNER#####################");
-                return false;
-            } else if("2".equals(action)){
-                recette = creerRecette(port);
-            } else if ("1".equals(action)){
-                recette = choisirRecette(port);
-            }
-            if (recette == null){
-                System.err.println("###################COMMANDE ABANDONNER#####################");
-                return false;
-            }
+                while (!"1".equals(action) && !"2".equals(action) && !"0".equals(action)) {
+                    System.err.println("######################ACTION INVALIDE######################");
+                    showRecetteMainMenu();
+                    action = bufferRead.readLine();
+                }
+                if ("O".equals(action)) {
+                    System.err.println("###################COMMANDE ABANDONNER#####################");
+                    return false;
+                } else if ("2".equals(action)) {
+                    recette = creerRecette(port, port1);
+                } else if ("1".equals(action)) {
+                    recette = choisirRecette(port1);
+                }
+                if (recette == null) {
+                    System.err.println("###################COMMANDE ABANDONNER#####################");
+                    return false;
+                }
+
         }catch(Exception e){
 
         }
-        System.out.println("-----------------------------------------------------------");
-        HoraireAtlier horaireAtlier= boutique.getHoraireAtlier();
-        System.out.println("\nInsérez l'heure de votre récuperation?(" + horaireAtlier.getDebutJour() + "~" + horaireAtlier.getFinJour() + ")");
-        boolean error = true;
+
+        System.out.println("\nInsérez l'heure de votre récuperation?");
+        boolean error;
         int heureI = 0;
         String heure = "";
-        while(error){
-            try{
-                heure = bufferRead.readLine();
-                heureI = Integer.parseInt(heure);
-                if(heureI >= horaireAtlier.getDebutJour() && heureI <= horaireAtlier.getFinJour()){
-                    error = false;
-                } else {
-                    System.err.println("#####################TEMPS INVALIDE########################");
-                    System.out.println("-----------------------------------------------------------");
-                    System.out.println("\nInsérez l'heure de votre récuperation?(" + horaireAtlier.getDebutJour() + "~" + horaireAtlier.getFinJour() + ")");
-                }
-            } catch (Exception e){
-                System.err.println("###################TEMPS FORME INVALIDE####################");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("\nInsérez l'heure de votre récuperation?(" + horaireAtlier.getDebutJour() + "~" + horaireAtlier.getFinJour() + ")");
-            }
-        }
+        heure = bufferRead.readLine();
+        heureI = Integer.parseInt(heure);
 
         System.out.println("-----------------------------------------------------------");
         System.out.println("\nInsérez la quantité?");
@@ -96,42 +151,24 @@ public class ClientSansCompte {
                 System.out.println("\nInsérez la quantité?");
             }
         }
-        InfoPayment infoPayment = null;
-        try {
-            System.out.println("-----------------------------------------------------------");
-            System.out.println("\nInsérez votre nom?");
-            String nc = bufferRead.readLine();
 
-            System.out.println("-----------------------------------------------------------");
-            System.out.println("\nInsérez votre addresse?");
-            String ac = bufferRead.readLine();
+        GregorianCalendar cc = new GregorianCalendar();
+        cc.set(Calendar.HOUR_OF_DAY, heureI);
 
-            System.out.println("-----------------------------------------------------------");
-            System.out.println("\nInsérez votre compte banque?");
-            String cb = bufferRead.readLine();
-
-            infoPayment = port.creerInfoPayment(nc,ac,cb);
-
-        } catch(Exception e){
-
-        }
-        GregorianCalendar c = new GregorianCalendar();
-        c.set(Calendar.HOUR_OF_DAY,heureI);
 
         try {
             System.out.println(boutique);
             System.out.println(recette);
-            System.out.println(quantite);
-            System.out.println(infoPayment);
-            System.out.println(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
-            if(port.creerCommande(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(c),quantiteI,infoPayment)) {
-                System.out.println("Succès");
+            System.out.println(quantiteI);
+            System.out.println(DatatypeFactory.newInstance().newXMLGregorianCalendar(cc));
+            if(port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI)){
                 return true;
+            } else{
+                return false;
             }
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        System.out.println("Échec");
         return false;
     }
 
@@ -144,32 +181,74 @@ public class ClientSansCompte {
         System.out.println("-----------------------------------------------------------");
     }
 
-    private Recette creerRecette(stub.TcfService port) throws IOException {
+    private String creerRecette(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("-------------------CREER UNE RECETTE-----------------------");
         System.out.println("-----------------------------------------------------------");
         System.out.println("\nInsérez le nom de votre recette?");
         String nom = bufferRead.readLine();
-        while(port.recetteIsExist(nom)){
-            System.err.println("###############Cette recette est dèjà existe!!#############");
-            System.out.println("-----------------------------------------------------------");
-            System.out.println("\nInsérez le nom de votre recette?");
-            nom = bufferRead.readLine();
-        }
 
-        List<Ingredient> ingredients = new ArrayList<Ingredient>();
-        List<Facon> facons = new ArrayList<Facon>();
+        List<String> ingredients = new ArrayList<String>();
+        List<String> facons = new ArrayList<String>();
         String action = "";
         int i = 0;
         do{
             if(i > 0)System.err.println("##############Choisez au moins un ingrédient!##############");
             do {
-                Ingredient ingredient = choisirIngredient(port);
-                if (ingredient != null && !ingredients.contains(ingredient)){
-                    ingredients.add(ingredient);
-                } else{
-                    System.err.println("#####################Ingrédient invalide###################");
+                String ingredient;
+                System.out.println("-------------------CHOISIR UNE INGREDIENT------------------");
+                System.out.println("-----------------------------------------------------------");
+                System.out.println("Inserez le numero de ingredient");
+                List<String> ingredientList = port1.getAllIngredient();
+                int k = 0;
+                for(String s : ingredientList){
+                    System.out.println("-----------------------[" + k + "] " + s);
+                    k++;
                 }
+                System.out.println("-----------------------------------------------------------");
+                action = bufferRead.readLine();
+                int actionI = 0;
+                boolean error = true;
+
+                while(error){
+                    try{
+                        actionI = Integer.parseInt(action);
+                        error = false;
+                        if(actionI < 0 || actionI >= ingredientList.size()) {
+                            System.err.println("###################INGREDIENT N'EXISTE PAS#################");
+                            System.out.println("-------------------CHOISIR UNE INGREDIENT------------------");
+                            System.out.println("-----------------------------------------------------------");
+                            System.out.println("Inserez le numero de ingredient");
+                            k = 0;
+                            for(String s : ingredientList){
+                                System.out.println("-----------------------[" + k + "] " + s);
+                                k++;
+                            }
+                            System.out.println("-----------------------------------------------------------");
+                            action = bufferRead.readLine();
+                            error = true;
+                        }
+                    } catch(Exception e){
+                        System.err.println("###################ACTION FORME INVALIDE###################");
+                        System.err.println("###################INGREDIENT N'EXISTE PAS#################");
+                        System.out.println("-------------------CHOISIR UNE INGREDIENT------------------");
+                        System.out.println("-----------------------------------------------------------");
+                        System.out.println("Inserez le numero de ingredient");
+                        k = 0;
+                        for(String s : ingredientList){
+                            System.out.println("-----------------------[" + k + "] " + s);
+                            k++;
+                        }
+                        System.out.println("-----------------------------------------------------------");
+                        action = bufferRead.readLine();
+                        error = true;
+                    }
+                }
+
+                ingredient = ingredientList.get(actionI);
+                ingredients.add(ingredient);
+
+
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("\nVous voulez choisir un autre ingrédient?");
                 System.out.println("-----------------[1] Oui!----------------------------------");
@@ -192,12 +271,60 @@ public class ClientSansCompte {
         do{
             if(i > 0)System.err.println("###############Choisez au moins une façon!################");
             do {
-                Facon facon = choisirFacon(port);
-                if (facon != null && !facons.contains(facon)){
-                    facons.add(facon);
-                } else{
-                    System.err.println("#######################Façon invalide######################");
+                String facon;
+                System.out.println("-------------------CHOISIR UNE FACON-----------------------");
+                System.out.println("-----------------------------------------------------------");
+                System.out.println("Inserez le numero de facon");
+                List<String> faconList = port1.getAllFacon();
+                int k = 0;
+                for(String s : faconList){
+                    System.out.println("-----------------------[" + k + "] " + s);
+                    k++;
                 }
+                System.out.println("-----------------------------------------------------------");
+                action = bufferRead.readLine();
+                int actionI = 0;
+                boolean error = true;
+
+                while(error){
+                    try{
+                        actionI = Integer.parseInt(action);
+                        error = false;
+                        if(actionI < 0 || actionI >= faconList.size()) {
+                            System.err.println("#####################FACON N'EXISTE PAS####################");
+                            System.out.println("-------------------CHOISIR UNE FACON-----------------------");
+                            System.out.println("-----------------------------------------------------------");
+                            System.out.println("Inserez le numero de facon");
+                            k = 0;
+                            for(String s : faconList){
+                                System.out.println("-----------------------[" + k + "] " + s);
+                                k++;
+                            }
+                            System.out.println("-----------------------------------------------------------");
+                            action = bufferRead.readLine();
+                            error = true;
+                        }
+                    } catch(Exception e){
+                        System.err.println("###################ACTION FORME INVALIDE###################");
+                        System.err.println("#####################FACON N'EXISTE PAS####################");
+                        System.out.println("-------------------CHOISIR UNE FACON-----------------------");
+                        System.out.println("-----------------------------------------------------------");
+                        System.out.println("Inserez le numero de facon");
+                        k = 0;
+                        for(String s : faconList){
+                            System.out.println("-----------------------[" + k + "] " + s);
+                            k++;
+                        }
+                        System.out.println("-----------------------------------------------------------");
+                        action = bufferRead.readLine();
+                        error = true;
+                    }
+                }
+
+                facon = faconList.get(actionI);
+                facons.add(facon);
+
+
                 System.out.println("-----------------------------------------------------------");
                 System.out.println("\nVous voulez choisir une autre façon?");
                 System.out.println("-----------------[1] Oui!----------------------------------");
@@ -214,30 +341,66 @@ public class ClientSansCompte {
             }while ("1".equals(action));
             i++;
         }while(facons.isEmpty());
-        return port.creerRecette(nom, ingredients,facons);
-    }
-
-    private Boutique choisirBoutique(stub.TcfService port){
-        Boutique boutique = null;
-        try {
-            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-            showMenu(port);
-            String action = bufferRead.readLine();
-            if("0".equals(action))return null;
-            boutique = port.choisirBoutique(action);
-            while (boutique == null){
-                System.err.println("###################BOUTIQUE INCONNUE###################");
-                showMenu(port);
-                action = bufferRead.readLine();
-                if("0".equals(action))return null;
-                boutique = port.choisirBoutique(action);
-            }
-        }catch(Exception e){
-
+        if(port.creerRecette(nom, ingredients, facons) == true){
+            return nom;
+        } else {
+            return null;
         }
-        return boutique;
     }
 
+    private String choisirBoutique(stub.TcfService port1) throws IOException {
+        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("-------------------CHOISIR UNE BOUTIQUE--------------------");
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("Inserez le numero de boutique");
+        List<String> boutiques = port1.getAllBoutique();
+        int i = 0;
+        for(String s : boutiques){
+            System.out.println("-----------------------[" + i + "] " + s);
+            i++;
+        }
+        System.out.println("-----------------------------------------------------------");
+        String action = bufferRead.readLine();
+        int actionI = 0;
+        boolean error = true;
+
+        while(error){
+            try{
+                actionI = Integer.parseInt(action);
+                error = false;
+                if(actionI < 0 || actionI >= boutiques.size()) {
+                    System.err.println("###################BOUTIQUE N'EXISTE PAS###################");
+                    System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Inserez le numero de boutique");
+                    i = 0;
+                    for(String s : boutiques){
+                        System.out.println("-----------------------[" + i + "] " + s);
+                        i++;
+                    }
+                    System.out.println("-----------------------------------------------------------");
+                    action = bufferRead.readLine();
+                    error = true;
+                }
+            } catch(Exception e){
+                System.err.println("###################ACTION FORME INVALIDE###################");
+                System.err.println("###################BOUTIQUE N'EXISTE PAS###################");
+                System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
+                System.out.println("-----------------------------------------------------------");
+                System.out.println("Inserez le numero de boutique");
+                i = 0;
+                for(String s : boutiques){
+                    System.out.println("-----------------------[" + i + "] " + s);
+                    i++;
+                }
+                System.out.println("-----------------------------------------------------------");
+                action = bufferRead.readLine();
+                error = true;
+            }
+        }
+        return boutiques.get(actionI);
+    }
+/*
     private Ingredient choisirIngredient(stub.TcfService port){
         Ingredient ingredient = null;
         try {
@@ -279,28 +442,59 @@ public class ClientSansCompte {
         }
         return facon;
     }
-
-    private Recette choisirRecette(stub.TcfService port){
-        Recette recette = null;
-        try {
-            BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-            showMenuRecette(port);
-            String action = bufferRead.readLine();
-            if("0".equals(action))return null;
-            recette = port.choisirRecette(action);
-            while (recette == null){
-                System.err.println("####################RECETTE INCONNUE###################");
-                showMenuRecette(port);
-                action = bufferRead.readLine();
-                if("0".equals(action))return null;
-                recette = port.choisirRecette(action);
-            }
-        }catch(Exception e){
-
+*/
+    private String choisirRecette(stub.TcfService port1) throws IOException {
+        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("-------------------CHOISIR UNE RECETTE---------------------");
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("Inserez le numero de recette");
+        List<String> recettes = port1.getAllRecette();
+        int i = 0;
+        for(String s : recettes){
+            System.out.println("-----------------------[" + i + "] " + s);
+            i++;
         }
-        return recette;
-    }
+        System.out.println("-----------------------------------------------------------");
+        String action = bufferRead.readLine();
+        int actionI = 0;
+        boolean error = true;
 
+        while(error){
+            try{
+                actionI = Integer.parseInt(action);
+                error = false;
+                if(actionI < 0 || actionI >= recettes.size()) {
+                    System.err.println("####################RECETTE N'EXISTE PAS###################");
+                    System.out.println("-------------------CHOISIR UNE RECETTE---------------------");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("Inserez le numero de recette");
+                    i = 0;
+                    for(String s : recettes){
+                        System.out.println("-----------------------[" + i + "] " + s);
+                        i++;
+                    }
+                    System.out.println("-----------------------------------------------------------");
+                    action = bufferRead.readLine();
+                    error = true;
+                }
+            } catch(Exception e){
+                System.err.println("###################ACTION FORME INVALIDE###################");
+                System.out.println("-------------------CHOISIR UNE RECETTE---------------------");
+                System.out.println("-----------------------------------------------------------");
+                System.out.println("Inserez le numero de recette");
+                i = 0;
+                for(String s : recettes){
+                    System.out.println("-----------------------[" + i + "] " + s);
+                    i++;
+                }
+                System.out.println("-----------------------------------------------------------");
+                action = bufferRead.readLine();
+                error = true;
+            }
+        }
+        return recettes.get(actionI);
+    }
+/*
     private void showMenu(stub.TcfService port){
         System.out.println("-------------------CHOISIR BOUTIQUE MENU-------------------");
         for(Boutique b : port.getAllBoutique()){
