@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAllFaconResponse complex type.
+ * <p>Classe Java pour getAllFaconResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="getAllFaconResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="allFacon" type="{http://webService.demo.se.polytech.unice.fr/}facon" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="allFacon" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetAllFaconResponse {
 
-    protected List<Facon> allFacon;
+    protected List<String> allFacon;
 
     /**
      * Gets the value of the allFacon property.
@@ -53,13 +53,13 @@ public class GetAllFaconResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Facon }
+     * {@link String }
      * 
      * 
      */
-    public List<Facon> getAllFacon() {
+    public List<String> getAllFacon() {
         if (allFacon == null) {
-            allFacon = new ArrayList<Facon>();
+            allFacon = new ArrayList<String>();
         }
         return this.allFacon;
     }

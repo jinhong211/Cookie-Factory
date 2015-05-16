@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div>
+            <h1>Creer Une Boutique</h1><br />
+        </div>
+
+        <div class="form-group">
+            <h:form role="form">
+                <div class="form-group">
+                    <label for="adresse">Address:</label>
+                    <h:inputText id="adresse" styleClass="form-control" value="#{responsableTCFJsf.adresseBoutique}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="tax">Tax:</label>
+                    <h:inputText id="tax" styleClass="form-control" value="#{responsableTCFJsf.tax}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="tempsOuvert">Temps Ouvert:</label>
+                    <h:inputText id="tempsOuvert" styleClass="form-control" value="#{responsableTCFJsf.tempsO}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="tempsFerme">Temps Ferme:</label>
+                    <h:inputText id="tempsFerme" styleClass="form-control" value="#{responsableTCFJsf.tempsF}" />
+                </div>
+
+                <h:commandButton value="Creer Boutique" styleClass="btn btn-primary" action="#{responsableTCFJsf.creerBoutique}" render="outputAdresse">
+                </h:commandButton>
+                <h:outputText id="error" value="#{responsableTCFJsf.errorMessage}" render="#{responsableTCFJsf.errorMessage != null}" style="color:red"/>
+            </h:form>
+        </div>
+
+        <div class="form-group">
+            <h:outputText id="outputAdresse" value="#{responsableTCFJsf.allBoutique}" />
+        </div>
+
+    </ui:define>
+</ui:composition>

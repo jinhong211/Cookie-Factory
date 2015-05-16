@@ -22,8 +22,6 @@ public class Commande implements Serializable {
 
     private Boutique boutique;
 
-    private InfoPayment infoPayment;
-
     private double price;
 
     public Commande(){
@@ -79,17 +77,6 @@ public class Commande implements Serializable {
 
     public void setRecette(Recette r){
         recette = r;
-    }
-
-
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "ID_INFOPAYMENT")
-    public InfoPayment getInfoPayment(){
-        return infoPayment;
-    }
-
-    public void setInfoPayment(InfoPayment i){
-        infoPayment = i;
     }
 
     @ManyToOne(cascade = {CascadeType.ALL})

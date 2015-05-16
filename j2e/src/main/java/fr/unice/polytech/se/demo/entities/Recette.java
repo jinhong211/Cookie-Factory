@@ -79,7 +79,7 @@ public class Recette implements Serializable{
         prix_recette = pr;
     }
 
-    @ManyToMany(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="recette",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
    /* @AssociationTable(table = @Table(name = "PREFERENCE_RECETTE"),
             joinColumns = {@JoinColumn(name = "ID_RECETTE",referencedColumnName="ID_RECETTE")},
             inverseJoinColumns = {@JoinColumn(name = "ID_PREFERENCE",referencedColumnName="ID_PREFERENCE")})*/

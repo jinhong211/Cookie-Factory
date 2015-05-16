@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div>
+            <h1>Boutique Statistique</h1><br />
+        </div>
+        <h:form role="form">
+            <div class="form-group">
+
+                <h:selectOneMenu styleClass="form-control" value="#{responsableBoutiqueJsf.adresseBoutique}">
+                    <f:selectItems value="#{responsableBoutiqueJsf.selectBoutiqueMenu}" />
+                </h:selectOneMenu>
+
+            </div>
+
+            <h:commandButton styleClass="btn btn-primary" value="Select Store" action="BoutiqueStatistique" />
+        </h:form>
+
+    </ui:define>
+</ui:composition>

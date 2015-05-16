@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for boutiqueIsExistResponse complex type.
+ * <p>Classe Java pour boutiqueIsExistResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="boutiqueIsExistResponse">
@@ -34,7 +34,7 @@ public class BoutiqueIsExistResponse {
     protected boolean existBoutique;
 
     /**
-     * Gets the value of the existBoutique property.
+     * Obtient la valeur de la propriété existBoutique.
      * 
      */
     public boolean isExistBoutique() {
@@ -42,7 +42,7 @@ public class BoutiqueIsExistResponse {
     }
 
     /**
-     * Sets the value of the existBoutique property.
+     * Définit la valeur de la propriété existBoutique.
      * 
      */
     public void setExistBoutique(boolean value) {

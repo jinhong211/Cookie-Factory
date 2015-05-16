@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerRecetteResponse complex type.
+ * <p>Classe Java pour creerRecetteResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerRecetteResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="creerRette" type="{http://webService.demo.se.polytech.unice.fr/}recette" minOccurs="0"/>
+ *         &lt;element name="creerRecette" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,34 +27,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "creerRecetteResponse", propOrder = {
-    "creerRette"
+    "creerRecette"
 })
 public class CreerRecetteResponse {
 
-    protected Recette creerRette;
+    protected boolean creerRecette;
 
     /**
-     * Gets the value of the creerRette property.
+     * Obtient la valeur de la propriété creerRecette.
      * 
-     * @return
-     *     possible object is
-     *     {@link Recette }
-     *     
      */
-    public Recette getCreerRette() {
-        return creerRette;
+    public boolean isCreerRecette() {
+        return creerRecette;
     }
 
     /**
-     * Sets the value of the creerRette property.
+     * Définit la valeur de la propriété creerRecette.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Recette }
-     *     
      */
-    public void setCreerRette(Recette value) {
-        this.creerRette = value;
+    public void setCreerRecette(boolean value) {
+        this.creerRecette = value;
     }
 
 }

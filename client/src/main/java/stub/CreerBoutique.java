@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerBoutique complex type.
+ * <p>Classe Java pour creerBoutique complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerBoutique">
@@ -43,7 +43,7 @@ public class CreerBoutique {
     protected int tempsFer;
 
     /**
-     * Gets the value of the addresseBoutique property.
+     * Obtient la valeur de la propriété addresseBoutique.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Sets the value of the addresseBoutique property.
+     * Définit la valeur de la propriété addresseBoutique.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Gets the value of the tax property.
+     * Obtient la valeur de la propriété tax.
      * 
      */
     public double getTax() {
@@ -75,7 +75,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Sets the value of the tax property.
+     * Définit la valeur de la propriété tax.
      * 
      */
     public void setTax(double value) {
@@ -83,7 +83,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Gets the value of the tempsOuv property.
+     * Obtient la valeur de la propriété tempsOuv.
      * 
      */
     public int getTempsOuv() {
@@ -91,7 +91,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Sets the value of the tempsOuv property.
+     * Définit la valeur de la propriété tempsOuv.
      * 
      */
     public void setTempsOuv(int value) {
@@ -99,7 +99,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Gets the value of the tempsFer property.
+     * Obtient la valeur de la propriété tempsFer.
      * 
      */
     public int getTempsFer() {
@@ -107,7 +107,7 @@ public class CreerBoutique {
     }
 
     /**
-     * Sets the value of the tempsFer property.
+     * Définit la valeur de la propriété tempsFer.
      * 
      */
     public void setTempsFer(int value) {

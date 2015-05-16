@@ -1,8 +1,8 @@
 package fr.unice.polytech.se.demo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Created by ding on 22/03/15.
@@ -16,13 +16,11 @@ public class Preference implements Serializable{
 
     private Long id;
 
-    private Compte compte;
+    private int id_compte;
 
-    private InfoPayment infoPayment;
+    private Recette recette;
 
-    private Set<Recette> recettes;
-
-    private Set<Boutique> boutiques;
+    private Boutique boutique;
 
     public Preference(){}
 
@@ -37,45 +35,36 @@ public class Preference implements Serializable{
         this.id = id;
     }
 
-    @OneToOne(optional = true, cascade = CascadeType.ALL)
-    public Compte getCompte(){
-        return compte;
+    @Column(name = "IDCOMPTE", length = 10)
+    @NotNull
+    public int getCompte(){
+        return id_compte;
     }
 
-    public void setCompte(Compte c){
-        compte = c;
+    public void setCompte(int c){
+        id_compte = c;
     }
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "ID_INFOPAYMENT")
-    public InfoPayment getInfoPayment(){
-        return infoPayment;
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    public Recette getRecette(){
+        return recette;
     }
 
-    public void setInfoPayment(InfoPayment p){
-        infoPayment = p;
-    }
-
-    @ManyToMany(mappedBy = "preferences")
-    public Set<Recette> getRecettes(){
-        return recettes;
-    }
-
-    public void setRecettes(Set<Recette> r){
-        recettes = r;
+    public void setRecette(Recette r){
+        recette = r;
     }
 
     public String toString(){
-        return "PREFERENCE[" + this.id + "]# compte: " + this.compte.toString() + "\ninfopayment: " + this.infoPayment.toString();
+        return "PREFERENCE[" + this.id + "]# compte: " + this.id_compte;
     }
 
-    @ManyToMany(mappedBy = "preferences")
-    public Set<Boutique> getBoutiques(){
-        return boutiques;
+    @ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    public Boutique getBoutique(){
+        return boutique;
     }
 
-    public void setBoutiques(Set<Boutique> b){
-        boutiques = b;
+    public void setBoutique(Boutique b){
+        boutique = b;
     }
 
 }

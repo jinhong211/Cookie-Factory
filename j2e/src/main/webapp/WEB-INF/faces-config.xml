@@ -23,20 +23,29 @@
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
               version="2.0">
-
+<!--
   <navigation-rule>
-    <from-view-id>/pets.xhtml</from-view-id>
+    <from-view-id>/ResponsableTCFCreerBoutiqueDisplay.xhtml</from-view-id>
     <navigation-case>
       <from-outcome>success</from-outcome>
       <to-view-id>/</to-view-id>
     </navigation-case>
   </navigation-rule>
-
+-->
+    <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/BoutiqueStatistique.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+<!--
   <navigation-rule>
     <from-view-id>/result.xhtml</from-view-id>
     <navigation-case>
       <from-outcome>back</from-outcome>
       <to-view-id>/pets.xhtml</to-view-id>
     </navigation-case>
-  </navigation-rule>
+  </navigation-rule>-->
 </faces-config>

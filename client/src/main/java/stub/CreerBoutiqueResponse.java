@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerBoutiqueResponse complex type.
+ * <p>Classe Java pour creerBoutiqueResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerBoutiqueResponse">
@@ -34,7 +34,7 @@ public class CreerBoutiqueResponse {
     protected boolean creerBoutique;
 
     /**
-     * Gets the value of the creerBoutique property.
+     * Obtient la valeur de la propriété creerBoutique.
      * 
      */
     public boolean isCreerBoutique() {
@@ -42,7 +42,7 @@ public class CreerBoutiqueResponse {
     }
 
     /**
-     * Sets the value of the creerBoutique property.
+     * Définit la valeur de la propriété creerBoutique.
      * 
      */
     public void setCreerBoutique(boolean value) {

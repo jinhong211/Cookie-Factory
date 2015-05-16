@@ -9,16 +9,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAllIngredientResponse complex type.
+ * <p>Classe Java pour getAllIngredientResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="getAllIngredientResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="allIngredient" type="{http://webService.demo.se.polytech.unice.fr/}ingredient" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="allIngredient" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class GetAllIngredientResponse {
 
-    protected List<Ingredient> allIngredient;
+    protected List<String> allIngredient;
 
     /**
      * Gets the value of the allIngredient property.
@@ -53,13 +53,13 @@ public class GetAllIngredientResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Ingredient }
+     * {@link String }
      * 
      * 
      */
-    public List<Ingredient> getAllIngredient() {
+    public List<String> getAllIngredient() {
         if (allIngredient == null) {
-            allIngredient = new ArrayList<Ingredient>();
+            allIngredient = new ArrayList<String>();
         }
         return this.allIngredient;
     }

@@ -18,5 +18,5 @@
 -->
 <%@ page session="false" %>
 <%
-  response.sendRedirect("pets.jsf");
+  response.sendRedirect("ResponsableBoutiqueDisplay.jsf");
 %>

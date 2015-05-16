@@ -9,18 +9,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerRecette complex type.
+ * <p>Classe Java pour creerRecette complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerRecette">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="nomRette" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="ingredientSet" type="{http://webService.demo.se.polytech.unice.fr/}ingredient" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="faconSet" type="{http://webService.demo.se.polytech.unice.fr/}facon" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="recetteNom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ingredients" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="facons" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,96 +31,96 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "creerRecette", propOrder = {
-    "nomRette",
-    "ingredientSet",
-    "faconSet"
+    "recetteNom",
+    "ingredients",
+    "facons"
 })
 public class CreerRecette {
 
-    protected String nomRette;
-    protected List<Ingredient> ingredientSet;
-    protected List<Facon> faconSet;
+    protected String recetteNom;
+    protected List<String> ingredients;
+    protected List<String> facons;
 
     /**
-     * Gets the value of the nomRette property.
+     * Obtient la valeur de la propriété recetteNom.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNomRette() {
-        return nomRette;
+    public String getRecetteNom() {
+        return recetteNom;
     }
 
     /**
-     * Sets the value of the nomRette property.
+     * Définit la valeur de la propriété recetteNom.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNomRette(String value) {
-        this.nomRette = value;
+    public void setRecetteNom(String value) {
+        this.recetteNom = value;
     }
 
     /**
-     * Gets the value of the ingredientSet property.
+     * Gets the value of the ingredients property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the ingredientSet property.
+     * This is why there is not a <CODE>set</CODE> method for the ingredients property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getIngredientSet().add(newItem);
+     *    getIngredients().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Ingredient }
+     * {@link String }
      * 
      * 
      */
-    public List<Ingredient> getIngredientSet() {
-        if (ingredientSet == null) {
-            ingredientSet = new ArrayList<Ingredient>();
+    public List<String> getIngredients() {
+        if (ingredients == null) {
+            ingredients = new ArrayList<String>();
         }
-        return this.ingredientSet;
+        return this.ingredients;
     }
 
     /**
-     * Gets the value of the faconSet property.
+     * Gets the value of the facons property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the faconSet property.
+     * This is why there is not a <CODE>set</CODE> method for the facons property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getFaconSet().add(newItem);
+     *    getFacons().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Facon }
+     * {@link String }
      * 
      * 
      */
-    public List<Facon> getFaconSet() {
-        if (faconSet == null) {
-            faconSet = new ArrayList<Facon>();
+    public List<String> getFacons() {
+        if (facons == null) {
+            facons = new ArrayList<String>();
         }
-        return this.faconSet;
+        return this.facons;
     }
 
 }

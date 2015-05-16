@@ -3,120 +3,12 @@
     </wsdl:import>
   <wsdl:binding name="TcfServiceImplServiceSoapBinding" type="ns1:TcfService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="creerRecette">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerRecette">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerRecetteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="creerIngredient">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerIngredient">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerIngredientResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="choisirRecette">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="choisirRecette">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="choisirRecetteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="creerFacon">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerFacon">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerFaconResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getAllFacon">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getAllFacon">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getAllFaconResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="choisirFacon">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="choisirFacon">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="choisirFaconResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ingredientIsExist">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="ingredientIsExist">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="ingredientIsExistResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="creerBoutique">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerBoutique">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerBoutiqueResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="faconIsExist">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="faconIsExist">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="faconIsExistResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="recetteIsExist">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="recetteIsExist">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="recetteIsExistResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllRecette">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getAllRecette">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getAllRecetteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getAllIngredient">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getAllIngredient">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getAllIngredientResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="boutiqueIsExist">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="boutiqueIsExist">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="boutiqueIsExistResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -129,39 +21,21 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="choisirBoutique">
+    <wsdl:operation name="getAllIngredient">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="choisirBoutique">
+      <wsdl:input name="getAllIngredient">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="choisirBoutiqueResponse">
+      <wsdl:output name="getAllIngredientResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="choisirIngredient">
+    <wsdl:operation name="getAllRecette">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="choisirIngredient">
+      <wsdl:input name="getAllRecette">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="choisirIngredientResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="creerInfoPayment">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerInfoPayment">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerInfoPaymentResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="creerCommande">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerCommande">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="creerCommandeResponse">
+      <wsdl:output name="getAllRecetteResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

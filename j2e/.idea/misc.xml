@@ -34,12 +34,11 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="IdProvider" IDEtalkID="4F762A23C19A7FBB1DF5EC87A07D16CF" />
+  <component name="IdProvider" IDEtalkID="1059A62ACF325524006071C7FE73FCF2" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../client/pom.xml" />
       </list>
     </option>
   </component>
@@ -165,7 +164,6 @@
     </configuration>
     <list size="0" />
   </component>
-  <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="libraryTable">
     <library name="shrinkwrap-impl-base-1.2.2">
       <CLASSES>
