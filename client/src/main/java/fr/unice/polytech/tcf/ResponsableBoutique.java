@@ -35,7 +35,7 @@ public class ResponsableBoutique {
 
     }*/
 
-    public void log(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
+    public void log(String role,stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         showMenu();
         String action = bufferRead.readLine();
@@ -60,119 +60,25 @@ public class ResponsableBoutique {
         if(actionI == 3){
             return;
         } else if(actionI == 1){
-            getCommandes(port,port1);
+            getCommandes(role,port,port1);
         } else if (actionI == 2){
-            getChiffreVente(port,port1);
+            getChiffreVente(role,port,port1);
         }
     }
 
-    public void getCommandes(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
-        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+    public void getCommandes(String role,stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
         System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
         System.out.println("-----------------------------------------------------------");
-        System.out.println("Inserez le numero de boutique");
-        List<String> boutiques = port1.getAllBoutique();
-        int i = 0;
-        for(String s : boutiques){
-            System.out.println("-----------------------[" + i + "] " + s);
-            i++;
-        }
-        System.out.println("-----------------------------------------------------------");
-        String action = bufferRead.readLine();
-        int actionI = 0;
-        boolean error = true;
-
-        while(error){
-            try{
-                actionI = Integer.parseInt(action);
-                error = false;
-                if(actionI < 0 || actionI >= boutiques.size()) {
-                    System.err.println("###################BOUTIQUE N'EXISTE PAS###################");
-                    System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
-                    System.out.println("-----------------------------------------------------------");
-                    System.out.println("Inserez le numero de boutique");
-                    i = 0;
-                    for(String s : boutiques){
-                        System.out.println("-----------------------[" + i + "] " + s);
-                        i++;
-                    }
-                    System.out.println("-----------------------------------------------------------");
-                    action = bufferRead.readLine();
-                    error = true;
-                }
-            } catch(Exception e){
-                System.err.println("###################ACTION FORME INVALIDE###################");
-                System.err.println("###################BOUTIQUE N'EXISTE PAS###################");
-                System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Inserez le numero de boutique");
-                i = 0;
-                for(String s : boutiques){
-                    System.out.println("-----------------------[" + i + "] " + s);
-                    i++;
-                }
-                System.out.println("-----------------------------------------------------------");
-                action = bufferRead.readLine();
-                error = true;
-            }
-        }
-        List<String> commandess = port.getListCommande(boutiques.get(actionI));
+        List<String> commandess = port.getListCommande(role);
         for(String s : commandess){
             System.out.println(s);
         }
     }
 
-    public void getChiffreVente(stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
-        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+    public void getChiffreVente(String role,stub.ResponsableBoutiqueService port, stub.TcfService port1) throws IOException {
         System.out.println("------------------CHIFFRE VENTE DE BOUTIQUE----------------");
         System.out.println("-----------------------------------------------------------");
-        System.out.println("Inserez le numero de boutique");
-        List<String> boutiques = port1.getAllBoutique();
-        int i = 0;
-        for(String s : boutiques){
-            System.out.println("-----------------------[" + i + "] " + s);
-            i++;
-        }
-        System.out.println("-----------------------------------------------------------");
-        String action = bufferRead.readLine();
-        int actionI = 0;
-        boolean error = true;
-
-        while(error){
-            try{
-                actionI = Integer.parseInt(action);
-                error = false;
-                if(actionI < 0 || actionI >= boutiques.size()) {
-                    System.err.println("###################BOUTIQUE N'EXISTE PAS###################");
-                    System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
-                    System.out.println("-----------------------------------------------------------");
-                    System.out.println("Inserez le numero de boutique");
-                    i = 0;
-                    for(String s : boutiques){
-                        System.out.println("-----------------------[" + i + "] " + s);
-                        i++;
-                    }
-                    System.out.println("-----------------------------------------------------------");
-                    action = bufferRead.readLine();
-                    error = true;
-                }
-            } catch(Exception e){
-                System.err.println("###################ACTION FORME INVALIDE###################");
-                System.err.println("###################BOUTIQUE N'EXISTE PAS###################");
-                System.out.println("-------------LISTE DE COMMANDE DANS UN BOUTIQUE------------");
-                System.out.println("-----------------------------------------------------------");
-                System.out.println("Inserez le numero de boutique");
-                i = 0;
-                for(String s : boutiques){
-                    System.out.println("-----------------------[" + i + "] " + s);
-                    i++;
-                }
-                System.out.println("-----------------------------------------------------------");
-                action = bufferRead.readLine();
-                error = true;
-            }
-        }
-        System.out.println(""+port.getStatistiqueBoutique(boutiques.get(actionI)) + "$");
+        System.out.println(""+port.getStatistiqueBoutique(role) + "$");
     }
 
 /*

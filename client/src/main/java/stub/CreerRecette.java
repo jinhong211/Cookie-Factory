@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerRecette complex type.
+ * <p>Classe Java pour creerRecette complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerRecette">
@@ -42,7 +42,7 @@ public class CreerRecette {
     protected List<String> facons;
 
     /**
-     * Gets the value of the recetteNom property.
+     * Obtient la valeur de la propriété recetteNom.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class CreerRecette {
     }
 
     /**
-     * Sets the value of the recetteNom property.
+     * Définit la valeur de la propriété recetteNom.
      * 
      * @param value
      *     allowed object is

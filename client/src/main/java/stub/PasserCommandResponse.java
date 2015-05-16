@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for passerCommandResponse complex type.
+ * <p>Classe Java pour passerCommandResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="passerCommandResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="passerCommand" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="passerCommand" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,21 +31,21 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class PasserCommandResponse {
 
-    protected boolean passerCommand;
+    protected double passerCommand;
 
     /**
-     * Gets the value of the passerCommand property.
+     * Obtient la valeur de la propriété passerCommand.
      * 
      */
-    public boolean isPasserCommand() {
+    public double getPasserCommand() {
         return passerCommand;
     }
 
     /**
-     * Sets the value of the passerCommand property.
+     * Définit la valeur de la propriété passerCommand.
      * 
      */
-    public void setPasserCommand(boolean value) {
+    public void setPasserCommand(double value) {
         this.passerCommand = value;
     }
 

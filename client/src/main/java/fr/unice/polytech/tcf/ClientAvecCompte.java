@@ -5,10 +5,7 @@ import javax.xml.datatype.DatatypeFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ding on 14/05/15.
@@ -47,12 +44,11 @@ public class ClientAvecCompte {
         log(port, port1,port2);
     }*/
 
-    public void log(stub.ClientSansCompteService port, stub.TcfService port1, stub.ClientAvecCompteService port2) throws IOException {
+    public void log(String login,DotNetStub.IServiceTCF port5,stub.ClientSansCompteService port, stub.TcfService port1, stub.ClientAvecCompteService port2) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("---------BIENVENUE, VOUS VOULEZ FAIRE UNE COMMANDE---------");
         System.out.println("----------------[1] CHOIX PREFERE--------------------------");
         System.out.println("----------------[2] CHOIX NORMAl---------------------------");
-        System.out.println("----------------[3] COMMANDE HISTORIQUE--------------------");
         System.out.println("----------------[0] POUR ABANDONNER------------------------");
         System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
         System.out.println("-----------------------------------------------------------");
@@ -62,7 +58,6 @@ public class ClientAvecCompte {
             System.err.println("#####################ACTION INCONNUE#######################");
             System.out.println("----------------[1] CHOIX PREFERE--------------------------");
             System.out.println("----------------[2] CHOIX NORMAl---------------------------");
-            System.out.println("----------------[3] COMMANDE HISTORIQUE--------------------");
             System.out.println("----------------[0] POUR ABANDONNER------------------------");
             System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
             System.out.println("-----------------------------------------------------------");
@@ -70,20 +65,19 @@ public class ClientAvecCompte {
             if(veux.equals("0"))return;
         }
         if("1".equals(veux)){
-            System.out.println(commandePrefere(port,port2));
+            System.out.println(commandePrefere(login,port5,port,port2));
         } else if("2".equals(veux)){
-            System.out.println(paserCommand(port,port1));
-        } else if("3".equals(veux)){
-
+            System.out.println(paserCommand(login,port5,port,port1));
         }
 
     }
 
-    public boolean commandePrefere(stub.ClientSansCompteService port, stub.ClientAvecCompteService port2) throws IOException {
-        System.out.println(port2.getBoutiquePrefere(1));
-        System.out.println(port2.getRecettePrefere(1));
-        String boutique = port2.getBoutiquePrefere(1);
-        String recette = port2.getRecettePrefere(1);
+    public double commandePrefere(String login,DotNetStub.IServiceTCF port5,stub.ClientSansCompteService port, stub.ClientAvecCompteService port2) throws IOException {
+        int id = port5.getID(login);
+        System.out.println(port2.getBoutiquePrefere(id));
+        System.out.println(port2.getRecettePrefere(id));
+        String boutique = port2.getBoutiquePrefere(id);
+        String recette = port2.getRecettePrefere(id);
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("\nInsérez l'heure de votre récuperation?");
         boolean error;
@@ -112,24 +106,71 @@ public class ClientAvecCompte {
         GregorianCalendar cc = new GregorianCalendar();
         cc.set(Calendar.HOUR_OF_DAY, heureI);
 
-
         try {
             System.out.println(boutique);
             System.out.println(recette);
             System.out.println(quantiteI);
             System.out.println(DatatypeFactory.newInstance().newXMLGregorianCalendar(cc));
-            if(port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI)){
-                return true;
+            double prix = port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI);
+            if(prix - 0 > 0.001){
+                Random r=new Random();
+                int i=r.nextInt(90000)+10000;
+                String result = null;
+                String choix = null;
+                while(!"success".equals(result)) {
+                    System.out.println(port5.addHistAccount(login, i, boutique, recette, quantiteI, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc).toString()));
+                    System.out.println("##################SYSTEME DE PAYMENT##################");
+                    System.out.println(port5.getListInfoAccount(login));
+                    System.out.println("Vous pouvez choisir l'information de payment dans la list(Choisir|Nouveau|Quitter)");
+                    choix = bufferRead.readLine();
+                    if("Choisir".equals(choix)){
+                        int num;
+                        int cry;
+                        System.out.println("Carte number:");
+                        num = Integer.parseInt(bufferRead.readLine());
+                        System.out.println("Cryptogramme:");
+                        cry = Integer.parseInt(bufferRead.readLine());
+                        result = port5.payment("user",login,num,cry,prix);
+                    }else if("Nouveau".equals(choix)){
+                        String name;
+                        String surname;
+                        int num;
+                        String address;
+                        String date;
+                        int cry;
+                        System.out.println("Name:");
+                        name = bufferRead.readLine();
+                        System.out.println("Surname:");
+                        surname = bufferRead.readLine();
+                        System.out.println("Carte number:");
+                        num = Integer.parseInt(bufferRead.readLine());
+                        System.out.println("Address:");
+                        address = bufferRead.readLine();
+                        System.out.println("Expiration Date:");
+                        date = bufferRead.readLine();
+                        System.out.println("Cryptogramme:");
+                        cry = Integer.parseInt(bufferRead.readLine());
+                        result = port5.payment("custom",login,num,cry,prix);
+                        if("success".equals(result)){
+                            System.out.println(port5.addInfoAccount(login,name,surname,num,address,date,cry));
+                        }
+                    }else if("Quitter".equals(choix)){
+                        System.out.println("Echec à payer!");
+                        break;
+                    }
+                    System.out.println(result);
+                }
+                return prix;
             } else{
-                return false;
+                return 0;
             }
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        return false;
+        return 0;
     }
 
-    public boolean paserCommand(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+    public double paserCommand(String login,DotNetStub.IServiceTCF port5,stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
 
         String boutique = null, recette = null;
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
@@ -140,7 +181,7 @@ public class ClientAvecCompte {
             System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
             System.out.println("-----------------------------------------------------------");
             String veux = bufferRead.readLine();
-            if("0".equals(veux))return false;
+            if("0".equals(veux))return 0;
             while (!"1".equals(veux)){
                 System.err.println("#####################ACTION INCONNUE#######################");
                 System.out.println("----------------[1] POUR COMMANDER-------------------------");
@@ -148,7 +189,7 @@ public class ClientAvecCompte {
                 System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
                 System.out.println("-----------------------------------------------------------");
                 veux = bufferRead.readLine();
-                if(veux.equals("0"))return false;
+                if(veux.equals("0"))return 0;
             }
 
             boutique = choisirBoutique(port1);
@@ -162,7 +203,7 @@ public class ClientAvecCompte {
             }
             if ("O".equals(action)) {
                 System.err.println("###################COMMANDE ABANDONNER#####################");
-                return false;
+                return 0;
             } else if ("2".equals(action)) {
                 recette = creerRecette(port, port1);
             } else if ("1".equals(action)) {
@@ -170,7 +211,7 @@ public class ClientAvecCompte {
             }
             if (recette == null) {
                 System.err.println("###################COMMANDE ABANDONNER#####################");
-                return false;
+                return 0;
             }
 
         }catch(Exception e){
@@ -210,15 +251,64 @@ public class ClientAvecCompte {
             System.out.println(recette);
             System.out.println(quantiteI);
             System.out.println(DatatypeFactory.newInstance().newXMLGregorianCalendar(cc));
-            if(port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI)){
-                return true;
+            double prix = port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI);
+            if(prix - 0 > 0.0001){
+                Random r=new Random();
+                int i=r.nextInt(90000)+10000;
+                System.out.println(port5.addHistAccount(login,i,boutique,recette,quantiteI,DatatypeFactory.newInstance().newXMLGregorianCalendar(cc).toString()));
+                String result = null;
+                String choix = null;
+                while(!"success".equals(result)) {
+                    System.out.println(port5.addHistAccount(login, i, boutique, recette, quantiteI, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc).toString()));
+                    System.out.println("##################SYSTEME DE PAYMENT##################");
+                    System.out.println(port5.getListInfoAccount(login));
+                    System.out.println("Vous pouvez choisir l'information de payment dans la list(Choisir|Nouveau|Quitter)");
+                    choix = bufferRead.readLine();
+                    if("Choisir".equals(choix)){
+                        int num;
+                        int cry;
+                        System.out.println("Carte number:");
+                        num = Integer.parseInt(bufferRead.readLine());
+                        System.out.println("Cryptogramme:");
+                        cry = Integer.parseInt(bufferRead.readLine());
+                        result = port5.payment("user",login,num,cry,prix);
+                    }else if("Nouveau".equals(choix)){
+                        String name;
+                        String surname;
+                        int num;
+                        String address;
+                        String date;
+                        int cry;
+                        System.out.println("Name:");
+                        name = bufferRead.readLine();
+                        System.out.println("Surname:");
+                        surname = bufferRead.readLine();
+                        System.out.println("Carte number:");
+                        num = Integer.parseInt(bufferRead.readLine());
+                        System.out.println("Address:");
+                        address = bufferRead.readLine();
+                        System.out.println("Expiration Date:");
+                        date = bufferRead.readLine();
+                        System.out.println("Cryptogramme:");
+                        cry = Integer.parseInt(bufferRead.readLine());
+                        result = port5.payment("custom",login,num,cry,prix);
+                        if("success".equals(result)){
+                            System.out.println(port5.addInfoAccount(login,name,surname,num,address,date,cry));
+                        }
+                    }else if("Quitter".equals(choix)){
+                        System.out.println("Echec à payer!");
+                        break;
+                    }
+                    System.out.println(result);
+                }
+                return prix;
             } else{
-                return false;
+                return 0;
             }
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        return false;
+        return 0;
     }
 
     private void showRecetteMainMenu(){

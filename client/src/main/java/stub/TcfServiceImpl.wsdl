@@ -21,21 +21,21 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getAllRecette">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getAllRecette">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getAllRecetteResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getAllIngredient">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getAllIngredient">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getAllIngredientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRecette">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllRecette">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllRecetteResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

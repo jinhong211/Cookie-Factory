@@ -3,21 +3,21 @@
     </wsdl:import>
   <wsdl:binding name="ResponsableBoutiqueServiceImplServiceSoapBinding" type="ns1:ResponsableBoutiqueService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="getStatistiqueBoutique">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getStatistiqueBoutique">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getStatistiqueBoutiqueResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getListCommande">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getListCommande">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getListCommandeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatistiqueBoutique">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatistiqueBoutique">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatistiqueBoutiqueResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

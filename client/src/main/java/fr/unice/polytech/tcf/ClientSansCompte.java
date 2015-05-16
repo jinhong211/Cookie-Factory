@@ -41,7 +41,7 @@ public class ClientSansCompte {
 
     }
 */
-    public void log(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+    public void log(DotNetStub.IServiceTCF port5,stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("---------BIENVENUE, VOUS VOULEZ FAIRE UNE COMMANDE---------");
         System.out.println("----------------[1] POUR COMMANDER-------------------------");
@@ -62,25 +62,35 @@ public class ClientSansCompte {
             if(veux.equals("0"))return;
         }
         if("1".equals(veux)){
-            System.out.println(paserCommand(port,port1));
+            System.out.println(paserCommand(port5,port,port1));
         } else if("2".equals(veux)){
-            System.out.println(creerCompte(port,port1));
+            System.out.println(creerCompte(port5,port,port1));
         }
     }
 
-    public boolean creerCompte(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+    public boolean creerCompte(DotNetStub.IServiceTCF port5,stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("------------------- CREER UN COMPTE------------------------");
         String boutique = choisirBoutique(port1);
         String recette = choisirRecette(port1);
-        if(port.creerPreferenceCompte(recette,boutique,1)){
+        String newlogin;
+        String newpasswd;
+        String newtype;
+        System.out.println("Login name:");
+        newlogin = bufferRead.readLine();
+        System.out.println("Password:");
+        newpasswd = bufferRead.readLine();
+        newtype = "user";
+        System.out.println(port5.createAccount(newlogin, newpasswd, newtype));
+        int id = port5.getID(newlogin);
+        if(port.creerPreferenceCompte(recette,boutique,id)){
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean paserCommand(stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
+    public double paserCommand(DotNetStub.IServiceTCF port5,stub.ClientSansCompteService port, stub.TcfService port1) throws IOException {
 
         String boutique = null, recette = null;
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
@@ -91,7 +101,7 @@ public class ClientSansCompte {
             System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
             System.out.println("-----------------------------------------------------------");
             String veux = bufferRead.readLine();
-            if("0".equals(veux))return false;
+            if("0".equals(veux))return 0;
             while (!"1".equals(veux)){
                 System.err.println("#####################ACTION INCONNUE#######################");
                 System.out.println("----------------[1] POUR COMMANDER-------------------------");
@@ -99,7 +109,7 @@ public class ClientSansCompte {
                 System.out.println("--------------INSERER LE NUMERO DE ACTION------------------");
                 System.out.println("-----------------------------------------------------------");
                 veux = bufferRead.readLine();
-                if(veux.equals("0"))return false;
+                if(veux.equals("0"))return 0;
             }
 
                 boutique = choisirBoutique(port1);
@@ -113,7 +123,7 @@ public class ClientSansCompte {
                 }
                 if ("O".equals(action)) {
                     System.err.println("###################COMMANDE ABANDONNER#####################");
-                    return false;
+                    return 0;
                 } else if ("2".equals(action)) {
                     recette = creerRecette(port, port1);
                 } else if ("1".equals(action)) {
@@ -121,7 +131,7 @@ public class ClientSansCompte {
                 }
                 if (recette == null) {
                     System.err.println("###################COMMANDE ABANDONNER#####################");
-                    return false;
+                    return 0;
                 }
 
         }catch(Exception e){
@@ -161,15 +171,48 @@ public class ClientSansCompte {
             System.out.println(recette);
             System.out.println(quantiteI);
             System.out.println(DatatypeFactory.newInstance().newXMLGregorianCalendar(cc));
-            if(port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI)){
-                return true;
+            double prix = port.passerCommand(boutique,recette, DatatypeFactory.newInstance().newXMLGregorianCalendar(cc),quantiteI);
+            if(prix - 0 > 0.001){
+                String result = null;
+                String choix = null;
+                while(!"success".equals(result)) {
+                    System.out.println("##################SYSTEME DE PAYMENT##################");
+                    System.out.println("Vous pouvez entrer les informations de payment(Nouveau|Quitter)");
+                    choix = bufferRead.readLine();
+                    if("Nouveau".equals(choix)){
+                        String name;
+                        String surname;
+                        int num;
+                        String address;
+                        String date;
+                        int cry;
+                        System.out.println("Name:");
+                        name = bufferRead.readLine();
+                        System.out.println("Surname:");
+                        surname = bufferRead.readLine();
+                        System.out.println("Carte number:");
+                        num = Integer.parseInt(bufferRead.readLine());
+                        System.out.println("Address:");
+                        address = bufferRead.readLine();
+                        System.out.println("Expiration Date(MM/AA):");
+                        date = bufferRead.readLine();
+                        System.out.println("Cryptogramme:");
+                        cry = Integer.parseInt(bufferRead.readLine());
+                        result = port5.payment("custom","custom",num,cry,prix);
+                    }else if("Quitter".equals(choix)){
+                        System.out.println("Echec à payer!");
+                        break;
+                    }
+                    System.out.println(result);
+                }
+                return prix;
             } else{
-                return false;
+                return 0;
             }
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        return false;
+        return 0;
     }
 
     private void showRecetteMainMenu(){

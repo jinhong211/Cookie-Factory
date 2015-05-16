@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAllFaconResponse complex type.
+ * <p>Classe Java pour getAllFaconResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="getAllFaconResponse">

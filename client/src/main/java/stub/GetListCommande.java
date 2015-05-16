@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getListCommande complex type.
+ * <p>Classe Java pour getListCommande complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="getListCommande">
@@ -34,7 +34,7 @@ public class GetListCommande {
     protected String addresseBoutique;
 
     /**
-     * Gets the value of the addresseBoutique property.
+     * Obtient la valeur de la propriété addresseBoutique.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetListCommande {
     }
 
     /**
-     * Sets the value of the addresseBoutique property.
+     * Définit la valeur de la propriété addresseBoutique.
      * 
      * @param value
      *     allowed object is

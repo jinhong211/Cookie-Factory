@@ -3,10 +3,7 @@ package fr.unice.polytech.se.demo.webService;
 import fr.unice.polytech.se.demo.domain.BoutiqueFinder;
 import fr.unice.polytech.se.demo.domain.PreferenceManager;
 import fr.unice.polytech.se.demo.domain.ProcessCommand;
-import fr.unice.polytech.se.demo.entities.Boutique;
-import fr.unice.polytech.se.demo.entities.Facon;
-import fr.unice.polytech.se.demo.entities.Ingredient;
-import fr.unice.polytech.se.demo.entities.Recette;
+import fr.unice.polytech.se.demo.entities.*;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -33,7 +30,7 @@ public class ClientSansCompteServiceImpl implements ClientSansCompteService{
     private PreferenceManager preferenceManager;
 
     @Override
-    public boolean passerCommand(String ab, String r, Date d, int q) {
+    public double passerCommand(String ab, String r, Date d, int q) {
         Boutique boutique = boutiqueFinder.findByAddresse(ab);
         Recette recette = null;
         List<Recette> recettes = processCommand.findAllRecette();
@@ -46,13 +43,14 @@ public class ClientSansCompteServiceImpl implements ClientSansCompteService{
 
         System.out.println(recette);
         if(boutique != null && recette != null){
-            if(processCommand.createCommande(boutique,recette,d,q) != null){
-                return true;
+            Commande commande = processCommand.createCommande(boutique,recette,d,q);
+            if(commande != null){
+                return commande.getPrice();
             } else {
-                return false;
+                return 0;
             }
         }
-        return false;
+        return 0;
     }
 
     @Override

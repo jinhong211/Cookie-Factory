@@ -24,10 +24,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetRecettePrefereResponse_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getRecettePrefereResponse");
-    private final static QName _GetBoutiquePrefere_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getBoutiquePrefere");
-    private final static QName _GetBoutiquePrefereResponse_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getBoutiquePrefereResponse");
-    private final static QName _GetRecettePrefere_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getRecettePrefere");
+    private final static QName _GetListCommande_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getListCommande");
+    private final static QName _GetListCommandeResponse_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getListCommandeResponse");
+    private final static QName _GetStatistiqueBoutiqueResponse_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getStatistiqueBoutiqueResponse");
+    private final static QName _GetStatistiqueBoutique_QNAME = new QName("http://webService.demo.se.polytech.unice.fr/", "getStatistiqueBoutique");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: stub
@@ -37,71 +37,71 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetBoutiquePrefereResponse }
+     * Create an instance of {@link GetStatistiqueBoutique }
      * 
      */
-    public GetBoutiquePrefereResponse createGetBoutiquePrefereResponse() {
-        return new GetBoutiquePrefereResponse();
+    public GetStatistiqueBoutique createGetStatistiqueBoutique() {
+        return new GetStatistiqueBoutique();
     }
 
     /**
-     * Create an instance of {@link GetRecettePrefere }
+     * Create an instance of {@link GetListCommandeResponse }
      * 
      */
-    public GetRecettePrefere createGetRecettePrefere() {
-        return new GetRecettePrefere();
+    public GetListCommandeResponse createGetListCommandeResponse() {
+        return new GetListCommandeResponse();
     }
 
     /**
-     * Create an instance of {@link GetRecettePrefereResponse }
+     * Create an instance of {@link GetStatistiqueBoutiqueResponse }
      * 
      */
-    public GetRecettePrefereResponse createGetRecettePrefereResponse() {
-        return new GetRecettePrefereResponse();
+    public GetStatistiqueBoutiqueResponse createGetStatistiqueBoutiqueResponse() {
+        return new GetStatistiqueBoutiqueResponse();
     }
 
     /**
-     * Create an instance of {@link GetBoutiquePrefere }
+     * Create an instance of {@link GetListCommande }
      * 
      */
-    public GetBoutiquePrefere createGetBoutiquePrefere() {
-        return new GetBoutiquePrefere();
+    public GetListCommande createGetListCommande() {
+        return new GetListCommande();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetRecettePrefereResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListCommande }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getRecettePrefereResponse")
-    public JAXBElement<GetRecettePrefereResponse> createGetRecettePrefereResponse(GetRecettePrefereResponse value) {
-        return new JAXBElement<GetRecettePrefereResponse>(_GetRecettePrefereResponse_QNAME, GetRecettePrefereResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getListCommande")
+    public JAXBElement<GetListCommande> createGetListCommande(GetListCommande value) {
+        return new JAXBElement<GetListCommande>(_GetListCommande_QNAME, GetListCommande.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetBoutiquePrefere }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetListCommandeResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getBoutiquePrefere")
-    public JAXBElement<GetBoutiquePrefere> createGetBoutiquePrefere(GetBoutiquePrefere value) {
-        return new JAXBElement<GetBoutiquePrefere>(_GetBoutiquePrefere_QNAME, GetBoutiquePrefere.class, null, value);
+    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getListCommandeResponse")
+    public JAXBElement<GetListCommandeResponse> createGetListCommandeResponse(GetListCommandeResponse value) {
+        return new JAXBElement<GetListCommandeResponse>(_GetListCommandeResponse_QNAME, GetListCommandeResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetBoutiquePrefereResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetStatistiqueBoutiqueResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getBoutiquePrefereResponse")
-    public JAXBElement<GetBoutiquePrefereResponse> createGetBoutiquePrefereResponse(GetBoutiquePrefereResponse value) {
-        return new JAXBElement<GetBoutiquePrefereResponse>(_GetBoutiquePrefereResponse_QNAME, GetBoutiquePrefereResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getStatistiqueBoutiqueResponse")
+    public JAXBElement<GetStatistiqueBoutiqueResponse> createGetStatistiqueBoutiqueResponse(GetStatistiqueBoutiqueResponse value) {
+        return new JAXBElement<GetStatistiqueBoutiqueResponse>(_GetStatistiqueBoutiqueResponse_QNAME, GetStatistiqueBoutiqueResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetRecettePrefere }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetStatistiqueBoutique }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getRecettePrefere")
-    public JAXBElement<GetRecettePrefere> createGetRecettePrefere(GetRecettePrefere value) {
-        return new JAXBElement<GetRecettePrefere>(_GetRecettePrefere_QNAME, GetRecettePrefere.class, null, value);
+    @XmlElementDecl(namespace = "http://webService.demo.se.polytech.unice.fr/", name = "getStatistiqueBoutique")
+    public JAXBElement<GetStatistiqueBoutique> createGetStatistiqueBoutique(GetStatistiqueBoutique value) {
+        return new JAXBElement<GetStatistiqueBoutique>(_GetStatistiqueBoutique_QNAME, GetStatistiqueBoutique.class, null, value);
     }
 
 }

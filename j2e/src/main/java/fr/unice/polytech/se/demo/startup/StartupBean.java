@@ -29,7 +29,7 @@ public class StartupBean {
     private BoutiqueFinder managerBF;
 
 
-    private Boutique polytech, nice, antibes, valbonne;
+    private Boutique denver, nice, antibes, valbonne;
     private Ingredient ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8;
     private Recette recette1, recette2, recette3, recette4, recette5, recette6, recette7, recette8;
     private Commande commande1, commande2, commande3, commande4, commande5, commande6, commande7, commande8, commande9, commande10;
@@ -38,12 +38,12 @@ public class StartupBean {
     private Set<Ingredient> ingredients1,ingredients2,ingredients3,ingredients4,ingredients5,ingredients6,ingredients7,ingredients8;
     @PostConstruct
     public void startup(){
-        polytech = creerBoutique.createBoutique("Polytech", 0.5, 10, 9, 5);
+        denver = creerBoutique.createBoutique("Denver", 0.5, 10, 9, 5);
         nice = creerBoutique.createBoutique("Nice", 0.20, 0, 8, 19);
         antibes = creerBoutique.createBoutique("Antibes", 0.14, 0, 10, 20);
         valbonne = creerBoutique.createBoutique("Valbonne", 0.10, 0, 12, 18);
 
-        Boutique pp= managerBF.findByAddresse("Polytech");
+        Boutique pp= managerBF.findByAddresse("Denver");
 
         ingredient1 = processCommand.createIngredient("Pomme", 3.29);
         ingredient2 = processCommand.createIngredient("Chocolat", 4.5);
@@ -108,9 +108,9 @@ public class StartupBean {
         recette7 = processCommand.createRecette("Recette7", ingredients7,facons7);
         recette8 = processCommand.createRecette("Recette8", ingredients8,facons8);
 
-        commande1 = processCommand.createCommande(polytech,recette1,new Date(2015,5,20),20);
-        commande2 = processCommand.createCommande(polytech,recette2,new Date(2015,5,20),30);
-        commande3 = processCommand.createCommande(polytech,recette3,new Date(2015,5,20),40);
+        commande1 = processCommand.createCommande(denver,recette1,new Date(2015,5,20),20);
+        commande2 = processCommand.createCommande(denver,recette2,new Date(2015,5,20),30);
+        commande3 = processCommand.createCommande(denver,recette3,new Date(2015,5,20),40);
         commande4 = processCommand.createCommande(nice,recette4,new Date(2015,5,20),20);
         commande5 = processCommand.createCommande(nice,recette5,new Date(2015,5,20),10);
         commande6 = processCommand.createCommande(antibes,recette6,new Date(2015,5,20),25);
@@ -122,7 +122,7 @@ public class StartupBean {
     }
     @PreDestroy
     public void cleanup(){
-        polytech = nice = antibes = valbonne = null;
+        denver = nice = antibes = valbonne = null;
         ingredient1 = ingredient2 =ingredient3 = ingredient4 = ingredient5 = ingredient6 = ingredient7 = ingredient8 = null;
         facon1 = facon2 = facon3 = facon4 = facon5 = facon6 = facon7 = facon8 = null;
         ingredients1 = ingredients2 = ingredients3 = ingredients4 = ingredients5 = ingredients6 = ingredients7 = ingredients8 = null;

@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for passerCommand complex type.
+ * <p>Classe Java pour passerCommand complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="passerCommand">
@@ -46,7 +46,7 @@ public class PasserCommand {
     protected int quantite;
 
     /**
-     * Gets the value of the addresseBoutique property.
+     * Obtient la valeur de la propriété addresseBoutique.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class PasserCommand {
     }
 
     /**
-     * Sets the value of the addresseBoutique property.
+     * Définit la valeur de la propriété addresseBoutique.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class PasserCommand {
     }
 
     /**
-     * Gets the value of the recetteNom property.
+     * Obtient la valeur de la propriété recetteNom.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class PasserCommand {
     }
 
     /**
-     * Sets the value of the recetteNom property.
+     * Définit la valeur de la propriété recetteNom.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class PasserCommand {
     }
 
     /**
-     * Gets the value of the date property.
+     * Obtient la valeur de la propriété date.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class PasserCommand {
     }
 
     /**
-     * Sets the value of the date property.
+     * Définit la valeur de la propriété date.
      * 
      * @param value
      *     allowed object is
@@ -118,7 +118,7 @@ public class PasserCommand {
     }
 
     /**
-     * Gets the value of the quantite property.
+     * Obtient la valeur de la propriété quantite.
      * 
      */
     public int getQuantite() {
@@ -126,7 +126,7 @@ public class PasserCommand {
     }
 
     /**
-     * Sets the value of the quantite property.
+     * Définit la valeur de la propriété quantite.
      * 
      */
     public void setQuantite(int value) {

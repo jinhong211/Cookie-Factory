@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getStatistiqueGlobalResponse complex type.
+ * <p>Classe Java pour getStatistiqueGlobalResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="getStatistiqueGlobalResponse">
@@ -34,7 +34,7 @@ public class GetStatistiqueGlobalResponse {
     protected int statistiqueGlobal;
 
     /**
-     * Gets the value of the statistiqueGlobal property.
+     * Obtient la valeur de la propriété statistiqueGlobal.
      * 
      */
     public int getStatistiqueGlobal() {
@@ -42,7 +42,7 @@ public class GetStatistiqueGlobalResponse {
     }
 
     /**
-     * Sets the value of the statistiqueGlobal property.
+     * Définit la valeur de la propriété statistiqueGlobal.
      * 
      */
     public void setStatistiqueGlobal(int value) {

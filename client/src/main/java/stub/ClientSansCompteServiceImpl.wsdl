@@ -3,12 +3,12 @@
     </wsdl:import>
   <wsdl:binding name="ClientSansCompteServiceImplServiceSoapBinding" type="ns1:ClientSansCompteService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="creerRecette">
+    <wsdl:operation name="creerPreferenceCompte">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerRecette">
+      <wsdl:input name="creerPreferenceCompte">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="creerRecetteResponse">
+      <wsdl:output name="creerPreferenceCompteResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -21,12 +21,12 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="creerPreferenceCompte">
+    <wsdl:operation name="creerRecette">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="creerPreferenceCompte">
+      <wsdl:input name="creerRecette">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="creerPreferenceCompteResponse">
+      <wsdl:output name="creerRecetteResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

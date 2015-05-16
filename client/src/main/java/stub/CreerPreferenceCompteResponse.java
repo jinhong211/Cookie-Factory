@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerPreferenceCompteResponse complex type.
+ * <p>Classe Java pour creerPreferenceCompteResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerPreferenceCompteResponse">
@@ -34,7 +34,7 @@ public class CreerPreferenceCompteResponse {
     protected boolean preferenceDansCompte;
 
     /**
-     * Gets the value of the preferenceDansCompte property.
+     * Obtient la valeur de la propriété preferenceDansCompte.
      * 
      */
     public boolean isPreferenceDansCompte() {
@@ -42,7 +42,7 @@ public class CreerPreferenceCompteResponse {
     }
 
     /**
-     * Sets the value of the preferenceDansCompte property.
+     * Définit la valeur de la propriété preferenceDansCompte.
      * 
      */
     public void setPreferenceDansCompte(boolean value) {

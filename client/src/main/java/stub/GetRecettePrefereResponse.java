@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getRecettePrefereResponse complex type.
+ * <p>Classe Java pour getRecettePrefereResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="getRecettePrefereResponse">
@@ -34,7 +34,7 @@ public class GetRecettePrefereResponse {
     protected String recettePrefere;
 
     /**
-     * Gets the value of the recettePrefere property.
+     * Obtient la valeur de la propriété recettePrefere.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetRecettePrefereResponse {
     }
 
     /**
-     * Sets the value of the recettePrefere property.
+     * Définit la valeur de la propriété recettePrefere.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for creerPreferenceCompte complex type.
+ * <p>Classe Java pour creerPreferenceCompte complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="creerPreferenceCompte">
@@ -40,7 +40,7 @@ public class CreerPreferenceCompte {
     protected int compteId;
 
     /**
-     * Gets the value of the recette property.
+     * Obtient la valeur de la propriété recette.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class CreerPreferenceCompte {
     }
 
     /**
-     * Sets the value of the recette property.
+     * Définit la valeur de la propriété recette.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class CreerPreferenceCompte {
     }
 
     /**
-     * Gets the value of the boutiques property.
+     * Obtient la valeur de la propriété boutiques.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class CreerPreferenceCompte {
     }
 
     /**
-     * Sets the value of the boutiques property.
+     * Définit la valeur de la propriété boutiques.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public class CreerPreferenceCompte {
     }
 
     /**
-     * Gets the value of the compteId property.
+     * Obtient la valeur de la propriété compteId.
      * 
      */
     public int getCompteId() {
@@ -96,7 +96,7 @@ public class CreerPreferenceCompte {
     }
 
     /**
-     * Sets the value of the compteId property.
+     * Définit la valeur de la propriété compteId.
      * 
      */
     public void setCompteId(int value) {

@@ -15,7 +15,7 @@ public interface ClientSansCompteService {
 
     @WebMethod
     @WebResult(name = "passerCommand")
-    public boolean passerCommand(@WebParam(name = "addresseBoutique") String ab, @WebParam(name = "recetteNom") String r, @WebParam(name = "date") Date d, @WebParam(name = "quantite") int q);
+    public double passerCommand(@WebParam(name = "addresseBoutique") String ab, @WebParam(name = "recetteNom") String r, @WebParam(name = "date") Date d, @WebParam(name = "quantite") int q);
 
     @WebMethod
     @WebResult(name = "creerRecette")
