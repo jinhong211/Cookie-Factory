@@ -7,7 +7,7 @@ namespace TestClient
 {
     class Program
     {
-        private void CoD(String role,String login,String passwd)
+        private void CoD(int id,String role,String login,String passwd)
         {
             ServiceTCF.ServiceTCFClient userServiceStub = new
 ServiceTCF.ServiceTCFClient();
@@ -106,9 +106,10 @@ ServiceTCF.ServiceTCFClient();
         static void Main(string[] args)
         {
             ServiceTCF.ServiceTCFClient userServiceStub = new
-ServiceTCF.ServiceTCFClient();
+ServiceTCF.ServiceTCFClient("WSHttpBinding_IServiceTCF");
             userServiceStub.ClientCredentials.UserName.UserName = "custom";
             userServiceStub.ClientCredentials.UserName.Password = "custom";
+            int id = -1;
             bool t = true;
             String role = "custom";
             String login = "custom";
@@ -145,12 +146,14 @@ ServiceTCF.ServiceTCFClient();
                             if (userServiceStub.loginAccount(login, passwd).Equals("User " + login + " login successfully"))
                             {
                                 role = userServiceStub.getRoles(login);
+                                id = userServiceStub.getID(login);
                             }
+                            //Console.WriteLine(id);
                             break;
                         }
                     case "3":
                         {
-                            new Program().CoD(role, login, passwd);
+                            new Program().CoD(id,role, login, passwd);
                             break;
                         }
                     case "4":

@@ -86,7 +86,7 @@ namespace Test
         public void TestGetInfoOne()
         {
             String login = "admin";
-            int num = 12345;
+            int num = 12345678;
             int num2 = 123;
             var dao = new UtilisateurDAO();
             Infomation info = dao.getOneInfoUtilisateur(login, num);
@@ -101,7 +101,7 @@ namespace Test
             String login = "admin";
             String nom = "jin";
             String prenom = "hong";
-            int num = 11111;
+            int num = 11111111;
             String address = "antibes";
             String date = "09/17";
             int cry = 123;
@@ -120,7 +120,7 @@ namespace Test
         public void TestDeleteInfo()
         {
             String login = "admin";
-            int num = 12345;
+            int num = 12345678;
             var dao = new UtilisateurDAO();
             dao.deleteInfoToUtilisateur(login, num);
             Infomation info = dao.getOneInfoUtilisateur(login, num);
@@ -131,7 +131,7 @@ namespace Test
         public void TestUpdateInfo()
         {
             String login = "admin";
-            int num = 12345;
+            int num = 12345678;
             String address = "valbonne";
             var dao = new UtilisateurDAO();
             dao.modifyInfoToUtilisateur(login, num, address);
@@ -174,13 +174,17 @@ namespace Test
         public void TestAddHistorique()
         {
             String login = "admin";
+            String boutique = "Antibes";
+            String recette = "Recette2";
+            int quantite = 11;
+            String time = "2015-05-16T12:38:33.513+02:00";
             int commande = 11111;
-            float prix = 12.22F;
-            String time = "2015-05-11@23:53";
             var dao = new UtilisateurDAO();
-            dao.addHistToUtilisateur(login, commande,prix,time);
+            dao.addHistToUtilisateur(login, commande,boutique,recette,quantite,time);
             Historique info = dao.getOneHistUtilisateur(login, commande);
-            Assert.AreEqual(prix, info.prix);
+            Assert.AreEqual(boutique, info.boutique);
+            Assert.AreEqual(recette, info.recette);
+            Assert.AreEqual(quantite, info.quantite);
             Assert.AreEqual(time, info.time);
         }
 
@@ -199,13 +203,17 @@ namespace Test
         public void TestUpdateHistorique()
         {
             String login = "admin";
+            String boutique = "Antibes";
+            String recette = "Recette2";
+            int quantite = 11;
+            String time = "2015-05-16T12:38:33.513+02:00";
             int commande = 12345;
-            float prix = 12.12F;
-            String time = "2015-05-15@23:58";
             var dao = new UtilisateurDAO();
-            dao.modifyHistToUtilisateur(login, commande, prix,time);
+            dao.modifyHistToUtilisateur(login, commande, boutique, recette, quantite, time);
             Historique hist = dao.getOneHistUtilisateur(login, commande);
-            Assert.AreEqual(prix, hist.prix);
+            Assert.AreEqual(boutique, hist.boutique);
+            Assert.AreEqual(recette, hist.recette);
+            Assert.AreEqual(quantite, hist.quantite);
             Assert.AreEqual(time, hist.time);
         }
     }

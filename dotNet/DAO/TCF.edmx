@@ -10,10 +10,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="commande" Type="int" Nullable="false" />
-          <Property Name="prix" Type="real" Nullable="false" />
+          <Property Name="boutique" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="recette" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="time" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="id_utilisateur" Type="int" Nullable="false" />
+          <Property Name="quantite" Type="int" Nullable="false" />
+          <Property Name="command" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Infomation">
           <Key>
@@ -133,10 +135,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="commande" Type="Int32" Nullable="false" />
-          <Property Name="prix" Type="Single" Nullable="false" />
+          <Property Name="boutique" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="recette" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="id_utilisateur" Type="Int32" Nullable="false" />
+          <Property Name="quantite" Type="Int32" Nullable="false" />
+          <Property Name="command" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Historique_Historique" FromRole="Historique" ToRole="Utilisateur" />
         </EntityType>
         <Association Name="FK_Historique_Historique">
@@ -184,10 +188,12 @@
           <EntitySetMapping Name="Historique">
             <EntityTypeMapping TypeName="TCFLoginModel.Historique">
               <MappingFragment StoreEntitySet="Historique">
+                <ScalarProperty Name="command" ColumnName="command" />
+                <ScalarProperty Name="quantite" ColumnName="quantite" />
                 <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
                 <ScalarProperty Name="time" ColumnName="time" />
-                <ScalarProperty Name="prix" ColumnName="prix" />
-                <ScalarProperty Name="commande" ColumnName="commande" />
+                <ScalarProperty Name="recette" ColumnName="recette" />
+                <ScalarProperty Name="boutique" ColumnName="boutique" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

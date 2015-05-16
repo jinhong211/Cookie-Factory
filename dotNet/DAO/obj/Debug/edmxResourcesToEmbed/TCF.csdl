@@ -55,10 +55,12 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="commande" Type="Int32" Nullable="false" />
-    <Property Name="prix" Type="Single" Nullable="false" />
+    <Property Name="boutique" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="recette" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="id_utilisateur" Type="Int32" Nullable="false" />
+    <Property Name="quantite" Type="Int32" Nullable="false" />
+    <Property Name="command" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Historique_Historique" FromRole="Historique" ToRole="Utilisateur" />
   </EntityType>
   <Association Name="FK_Historique_Historique">

@@ -5,10 +5,12 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="commande" Type="int" Nullable="false" />
-    <Property Name="prix" Type="real" Nullable="false" />
+    <Property Name="boutique" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="recette" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="time" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="id_utilisateur" Type="int" Nullable="false" />
+    <Property Name="quantite" Type="int" Nullable="false" />
+    <Property Name="command" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Infomation">
     <Key>

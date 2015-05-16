@@ -40,6 +40,8 @@ namespace WcfServiceTCF
         [OperationContract]
         String getListHistoriqueUser();
         [OperationContract]
-        String addHistAccount(String login,int commande,float prix,String time);
+        String addHistAccount(String login, int commande, String boutique, String recette, int quantite, String time);
+        [OperationContract]
+        String payment(String role, String login, int number, int cry, double prix);
     }
 }

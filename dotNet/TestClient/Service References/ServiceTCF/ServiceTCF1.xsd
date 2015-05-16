@@ -203,7 +203,9 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="commande" type="xs:int" />
-        <xs:element minOccurs="0" name="prix" type="xs:float" />
+        <xs:element minOccurs="0" name="boutique" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="recette" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="quantite" type="xs:int" />
         <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -212,6 +214,24 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="addHistAccountResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="role" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="number" type="xs:int" />
+        <xs:element minOccurs="0" name="cry" type="xs:int" />
+        <xs:element minOccurs="0" name="prix" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="paymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

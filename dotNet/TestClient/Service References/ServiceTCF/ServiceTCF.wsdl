@@ -7,78 +7,18 @@
           <wsp:Policy>
             <sp:ProtectionToken>
               <wsp:Policy>
-                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
                   <wsp:Policy>
                     <sp:RequireDerivedKeys />
-                    <sp:BootstrapPolicy>
-                      <wsp:Policy>
-                        <sp:SignedParts>
-                          <sp:Body />
-                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-                        </sp:SignedParts>
-                        <sp:EncryptedParts>
-                          <sp:Body />
-                        </sp:EncryptedParts>
-                        <sp:SymmetricBinding>
-                          <wsp:Policy>
-                            <sp:ProtectionToken>
-                              <wsp:Policy>
-                                <mssp:SslContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient" xmlns:mssp="http://schemas.microsoft.com/ws/2005/07/securitypolicy">
-                                  <wsp:Policy>
-                                    <sp:RequireDerivedKeys />
-                                  </wsp:Policy>
-                                </mssp:SslContextToken>
-                              </wsp:Policy>
-                            </sp:ProtectionToken>
-                            <sp:AlgorithmSuite>
-                              <wsp:Policy>
-                                <sp:Basic256 />
-                              </wsp:Policy>
-                            </sp:AlgorithmSuite>
-                            <sp:Layout>
-                              <wsp:Policy>
-                                <sp:Strict />
-                              </wsp:Policy>
-                            </sp:Layout>
-                            <sp:IncludeTimestamp />
-                            <sp:EncryptSignature />
-                            <sp:OnlySignEntireHeadersAndBody />
-                          </wsp:Policy>
-                        </sp:SymmetricBinding>
-                        <sp:SignedSupportingTokens>
-                          <wsp:Policy>
-                            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
-                              <wsp:Policy>
-                                <sp:WssUsernameToken10 />
-                              </wsp:Policy>
-                            </sp:UsernameToken>
-                          </wsp:Policy>
-                        </sp:SignedSupportingTokens>
-                        <sp:Wss11>
-                          <wsp:Policy />
-                        </sp:Wss11>
-                        <sp:Trust10>
-                          <wsp:Policy>
-                            <sp:MustSupportIssuedTokens />
-                            <sp:RequireClientEntropy />
-                            <sp:RequireServerEntropy />
-                          </wsp:Policy>
-                        </sp:Trust10>
-                      </wsp:Policy>
-                    </sp:BootstrapPolicy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token10 />
                   </wsp:Policy>
-                </sp:SecureConversationToken>
+                </sp:X509Token>
               </wsp:Policy>
             </sp:ProtectionToken>
             <sp:AlgorithmSuite>
               <wsp:Policy>
-                <sp:Basic256 />
+                <sp:Basic128 />
               </wsp:Policy>
             </sp:AlgorithmSuite>
             <sp:Layout>
@@ -91,8 +31,20 @@
             <sp:OnlySignEntireHeadersAndBody />
           </wsp:Policy>
         </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
         <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy />
+          <wsp:Policy>
+            <sp:MustSupportRefThumbprint />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
         </sp:Wss11>
         <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
           <wsp:Policy>
@@ -675,6 +627,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IServiceTCF_payment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IServiceTCF_payment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8087/ServiceTCF.svc?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -771,6 +761,12 @@
   <wsdl:message name="IServiceTCF_addHistAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:addHistAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceTCF_payment_InputMessage">
+    <wsdl:part name="parameters" element="tns:payment" />
+  </wsdl:message>
+  <wsdl:message name="IServiceTCF_payment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:paymentResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceTCF">
     <wsdl:operation name="createAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/createAccount" message="tns:IServiceTCF_createAccount_InputMessage" />
@@ -831,6 +827,10 @@
     <wsdl:operation name="addHistAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/addHistAccount" message="tns:IServiceTCF_addHistAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/addHistAccountResponse" message="tns:IServiceTCF_addHistAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="payment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceTCF/payment" message="tns:IServiceTCF_payment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceTCF/paymentResponse" message="tns:IServiceTCF_payment_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IServiceTCF" type="tns:IServiceTCF">
@@ -1001,6 +1001,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="payment">
+      <soap12:operation soapAction="http://tempuri.org/IServiceTCF/payment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IServiceTCF_payment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IServiceTCF_payment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ServiceTCF">
     <wsdl:port name="WSHttpBinding_IServiceTCF" binding="tns:WSHttpBinding_IServiceTCF">
@@ -1010,7 +1021,7 @@
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
             <X509Data>
-              <X509Certificate>MIIEujCCAqKgAwIBAgIQf8f3kJ0vHopPgYDVajr/6jANBgkqhkiG9w0BAQUFADAZMRcwFQYDVQQDEw5DZXJ0aWZpY2F0VGVzdDAeFw0xNTA1MDEyMjAwMDBaFw0yNTA1MDgyMjAwMDBaMBkxFzAVBgNVBAMTDkNlcnRpZmljYXRUZXN0MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtDPDjUqLYzvVgKUaXJO/SwLpL1S8rt//nWR66nRUNROO1ua/w6iWY5FAkCqi1SD8GWEj5m9AwCJ3xnB9G0TfdjUJhG+Grx0hQFxKOU3QLXyjfvC4wg2cqrj3vVq9p7QOyJCHjfu6xDr54WlSk0ZBpZkCy3u715kJ4PZENSBgXAmbfHkyrVKV186n4WasfUYasgTFDgLBqd4ziBtGbu3IDm5M9L8RLh15v0gBnkPTujMavo6+T6pIUvUtwp1kpEjBOGgmQTFhXt1JkLfA5Fk1UUP6cI2X23IsAhbhhOg2BL8UuIZ0zWVYdJPYboLe74w3GN7XTfyHIleNqbkoUmpl/eNxuSOD/ITdVUBWF2rDkna0QVkBFegEjzaC8S8EpY8U3NuvzY5tbYnr4+X9bICjS7n3RTpnXFMt8vFakD4CSPEM7Tfh4sSaiSMsY9J9bOBy70RwQQxIFWEl8PMvssTut6e/ajMV3UYGZqLCFuf/6h/zpILWrD41db4Zl0fKAojRc4/6a9egvE+JrcfAeXWrJ6jgd4ScfVT6NAAvzyM4ftZK88Ri5wph3r1Zo8C/0Mbk/t0RpdJ2XRb9mOeH86aF+TqQ4hOXhlnMIT/vTekolnjevKOwM2w3w4Zxd2pxFAjwJZPpJlF5O1BEVDK+0xKqmymdWmYo6JbxklmMgeHUujsCAwEAATANBgkqhkiG9w0BAQUFAAOCAgEAqNTHIXO2iYq2HftRB8lIOOO2vtqcj7ct4+juI1Ebw3ZQrBE9fsuEJae/jn9pDrySNarlxM5kikpCpKMxt1Mi/21qzVdwWstUoQZchlYZVUJfrzYzlsOMKCNT7bLYN+DC9PreVxEntyphJuo/cl3aAYzcHbVbR39uni3MXUSsbTcMZTz3cDx6z7EK0eCuQQg7I+CRgX50oV7lE2AcH2WZ+HvzZS4EMQc83kNIo80pBnYXfsSu4AWE6BY0jnF44h1hiP1fkVPwFz3+J/FwWtSP+eFkuJfIgffMEv1QEEpRs7Z7XArKM5ONOxpgcax2Nk4YjiCPlGJ+XL7iJPFu3p2DfNMpLPmtBGgT4AItglHLx+zK4GCD+roaSBfXWuJm2lH8GzzyikitBv1y2QrXu/uOfC99MuNFr6FhjFXo6cqLjXa+HZCTNfaLhVNofiuY8p70eqWteDYH3Cnjh3ZmqsNrNbru70tLvJz9WEF5QQtqyZ/rmWoW6szXBSiAsd95ku242iDERd5vrza6YQCmWQeZwpFuZTUTfyQGLL1OYSVvA7IEIXfQCrk3swKBF+2UcmcVLBV7S1A2nG0k2eSEyjw7q0Fws8cCGnVaTZj053AENiUJdKouG8cXODLF51V6qo6/ZOBNWsuFajQ46y4dUdn5ALWvWN6PjUMsi+Yt1TCATcc=</X509Certificate>
+              <X509Certificate>MIIEujCCAqKgAwIBAgIQL/ZFOb5LeKlA8r4W7tjjijANBgkqhkiG9w0BAQUFADAZMRcwFQYDVQQDEw5DZXJ0aWZpY2F0VGVzdDAeFw0xNTA1MDcyMjAwMDBaFw0yNTA1MTQyMjAwMDBaMBkxFzAVBgNVBAMTDkNlcnRpZmljYXRUZXN0MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtybU84C+z785t92swAI9g9RlZx3pcLm6ZsXH/EFt6IWkqrXW/VEorxlBv9ww4AOrPsiPZVBgD5nYUkRv4iJO3C9RPmGkBiL1nu2h0OStCvRINwyUBJFHVd/RKUjhXcJmUX/gK6QXOxq485HE7i43hpusp+8qva7Xn4hbS2ON5hF9oerlL4GIAZgLWExmFd45plUTw15s9UdJKlWmWnw1p9cenPSJc9KRw6l+YWvv1HoTSdO2pkKsjL0OODazwfDeL+fjgLt3hYB7LVcoQALM6eA+wR/sZl/c7o8JuGFxrbSzdZSD1JNLEecRU2dM0dtvuSD66B+aa7bCGRAe2bh9MYtTrId+dS7gC7sNVQosFYOD0S/EENsez0kOdlQlPR55C03XudtD9MbDqzkX+qNqtJBFVbVsmZQC/8iNi4JnJFBhcomnQ99h9kcQEmejhoKkxhaVlyd3RJxW/QrmqbchC7z/IyGnkV2wSalTYdk5mM/UfSwFPBkG8YF0G4C1mLFFeCsJ1Lwks2uWw22BVzspiGLx7cpe+1ANw6yvoySjgpvK4o59tnlVc9Mg8y1NTiaIEEbpO65JS91vRUiOoK76QfKyYwoUzUJoswtgopjALlGpJJU0vM48dnI0qJhVOqZE6aYS/qj3wCL5TAx33qUp+KADOVuqlvOcn6CUEiZf+nMCAwEAATANBgkqhkiG9w0BAQUFAAOCAgEADzeq8QtZW0iT+IyCONuTow3BwSyBjF3zycbRidWSCvpNVIttpqFlyYscQxc9xLtda3L9okZCSaosCfVsN4UWYLgq+/QnZ3dXNIjeggne01vcqJYIR+lVAQJGjfSIY4Zcly5kKGzCQKqudmqY+hYOmtjDSOYQZ0fAfN9nUWOKgSuQ91h4XkRwtdjUuZ5gh5Sb5+1RKNvr1Gqcb4ZlJXI1q3Ael+Dsq+g6j0vdyektGa77A7J/U0jFCpTcMDiWUOMTxZ5soKbnLBTyvICuHpDeCvwNJD+yosNBfL8eo630nFrWaXN9j+grXWPNyaqzq4TZDwQ4pcSAIhyuiFDYJRgkorL62QwjNBREHULeutCtx/ZSztrrWP29lewg6aZ4IdQYfrGYaW3v2CkzyMVSsHmfGheBAxFppSZhzhwr+Jh57j4MRm9kH2SblEEFHwPfnKLbiK44b0csOfRCROKBWGbUorcECSUNW9HckzgUDITBgIYp2TU/Fx2x6ssFX8ACrH2FIPAHI0TStZZ7PlkBTCuAZOlLOYDthyDqTmh62KKC2bZt0WnGdE75EyISRfAy80ddx6OG11U3xzoVJkhTiROtxmLOPwZlcCYsYqXb4TYZ7kJWD1YxQ0O6gXTu906f3jPUrknLi8eVz2jVdlx46zNE7znxAk49Trxtxsqh1KjUrhE=</X509Certificate>
             </X509Data>
           </KeyInfo>
         </Identity>

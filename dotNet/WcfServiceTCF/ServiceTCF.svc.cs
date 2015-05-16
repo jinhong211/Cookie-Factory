@@ -266,8 +266,10 @@ namespace WcfServiceTCF
             for (int i = 0; i < dao.getListHitorique().Count<Historique>(); i++)
             {
                 result = result + "User: " + dao.getListHitorique()[i].id_utilisateur;
-                result = result + " Commande NO.: " + dao.getListHitorique()[i].commande;
-                result = result + " Price: " + dao.getListHitorique()[i].prix;
+                result = result + " Commande NO.: " + dao.getListHitorique()[i].command;
+                result = result + " Shop: " + dao.getListHitorique()[i].boutique;
+                result = result + " Recette: " + dao.getListHitorique()[i].recette;
+                result = result + " Quantity: " + dao.getListHitorique()[i].quantite;
                 result = result + " Time: " + dao.getListHitorique()[i].time;
                 result = result + "\n";
             }
@@ -288,8 +290,10 @@ namespace WcfServiceTCF
                 for (int i = 0; i < dao.getListHistUtilisateur(login).Count<Historique>(); i++)
                 {
                     result = result + "User: " + login;
-                    result = result + " Commande NO.: " + dao.getListHistUtilisateur(login)[i].commande;
-                    result = result + " Price: " + dao.getListHistUtilisateur(login)[i].prix;
+                    result = result + " Commande NO.: " + dao.getListHistUtilisateur(login)[i].command;
+                    result = result + " Shop: " + dao.getListHistUtilisateur(login)[i].boutique;
+                    result = result + " Recette: " + dao.getListHistUtilisateur(login)[i].recette;
+                    result = result + " Quantity: " + dao.getListHistUtilisateur(login)[i].quantite;
                     result = result + " Time: " + dao.getListHistUtilisateur(login)[i].time;
                     result = result + "\n";
                 }
@@ -300,7 +304,7 @@ namespace WcfServiceTCF
             }
             return result;
         }
-        public String addHistAccount(String login,int commande, float prix, String time)
+        public String addHistAccount(String login,int commande, String boutique,String recette,int quantite, String time)
         {
             
             String result = "";
@@ -309,10 +313,12 @@ namespace WcfServiceTCF
             {
                 if (dao.getOneHistUtilisateur(login, commande) == null)
                 {
-                    dao.addHistToUtilisateur(login, commande,prix,time);
+                    dao.addHistToUtilisateur(login, commande,boutique,recette,quantite,time);
                     result = result + "User: " + login;
-                    result = result + " Commande NO.: " + dao.getOneHistUtilisateur(login, commande).commande;
-                    result = result + " Price: " + dao.getOneHistUtilisateur(login, commande).prix;
+                    result = result + " Commande NO.: " + dao.getOneHistUtilisateur(login, commande).command;
+                    result = result + " Shop: " + dao.getOneHistUtilisateur(login, commande).boutique;
+                    result = result + " Recette: " + dao.getOneHistUtilisateur(login, commande).recette;
+                    result = result + " Quantity: " + dao.getOneHistUtilisateur(login, commande).quantite;
                     result = result + " Time: " + dao.getOneHistUtilisateur(login, commande).time;
                     result = result + "added\n";
                 }
@@ -326,6 +332,32 @@ namespace WcfServiceTCF
                 return "User " + login + " doesn't exist";
             }
             return result;
+        }
+        public String payment(String role, String login, int number, int cry, double prix)
+        {
+            var dao = new UtilisateurDAO();
+            if (role == "custom")
+            {
+                if(10000000>=number||number>= 99999999){
+                    return "wrong card number type";
+                }
+                else if (100 >= cry || cry >= 999)
+                {
+                    return "Wrong Cryptogramme code type";
+                }
+                else
+                {
+                    return "success";
+                }
+            }
+            else if (dao.getOneInfoUtilisateur(login, number) != null)
+            {
+                return "success";
+            }
+            else
+            {
+                return "card not exist";
+            }
         }
     }
 }

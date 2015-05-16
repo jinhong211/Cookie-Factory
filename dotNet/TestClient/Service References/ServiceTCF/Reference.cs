@@ -58,7 +58,10 @@ namespace TestClient.ServiceTCF {
         string getListHistoriqueUser();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/addHistAccount", ReplyAction="http://tempuri.org/IServiceTCF/addHistAccountResponse")]
-        string addHistAccount(string login, int commande, float prix, string time);
+        string addHistAccount(string login, int commande, string boutique, string recette, int quantite, string time);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceTCF/payment", ReplyAction="http://tempuri.org/IServiceTCF/paymentResponse")]
+        string payment(string role, string login, int number, int cry, double prix);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -144,8 +147,12 @@ namespace TestClient.ServiceTCF {
             return base.Channel.getListHistoriqueUser();
         }
         
-        public string addHistAccount(string login, int commande, float prix, string time) {
-            return base.Channel.addHistAccount(login, commande, prix, time);
+        public string addHistAccount(string login, int commande, string boutique, string recette, int quantite, string time) {
+            return base.Channel.addHistAccount(login, commande, boutique, recette, quantite, time);
+        }
+        
+        public string payment(string role, string login, int number, int cry, double prix) {
+            return base.Channel.payment(role, login, number, cry, prix);
         }
     }
 }

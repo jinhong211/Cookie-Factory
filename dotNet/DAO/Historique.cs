@@ -15,10 +15,12 @@ namespace DAO
     public partial class Historique
     {
         public int id { get; set; }
-        public int commande { get; set; }
-        public float prix { get; set; }
+        public string boutique { get; set; }
+        public string recette { get; set; }
         public string time { get; set; }
         public int id_utilisateur { get; set; }
+        public int quantite { get; set; }
+        public int command { get; set; }
     
         public virtual Utilisateur Utilisateur { get; set; }
     }

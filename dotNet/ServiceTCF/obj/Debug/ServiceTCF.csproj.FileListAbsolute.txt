@@ -1,0 +1,11 @@
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\ServiceTCF.dll.config
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\ServiceTCF.dll
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\ServiceTCF.pdb
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\DAO.dll
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\EntityFramework.dll
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\DAO.pdb
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\EntityFramework.xml
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\obj\Debug\ServiceTCF.csprojResolveAssemblyReference.cache
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\obj\Debug\ServiceTCF.dll
+C:\Users\user\Source\Repos\private\dotNet\ServiceTCF\obj\Debug\ServiceTCF.pdb

@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="TCFLoginModel.Infomation" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="TCFLoginModel.Utilisateur" Width="1.5" PointX="0.75" PointY="1.375" />
         <AssociationConnector Association="TCFLoginModel.FK_Infomation_Utilisateur" />
-        <EntityTypeShape EntityType="TCFLoginModel.Historique" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="TCFLoginModel.Historique" Width="1.5" PointX="3" PointY="5.125" />
         <AssociationConnector Association="TCFLoginModel.FK_Historique_Historique" />
       </Diagram>
     </edmx:Diagrams>

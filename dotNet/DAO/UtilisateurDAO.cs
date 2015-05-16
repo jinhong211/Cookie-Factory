@@ -236,14 +236,14 @@ namespace DAO
                               where utilisateur.login == login1
                               select utilisateur;
                 Utilisateur u = requete.First();
-                Historique hist = u.Historique.ToList<Historique>().Find(e => e.commande == commande);
+                Historique hist = u.Historique.ToList<Historique>().Find(e => e.command == commande);
                 return hist;
             }
         }
         /// <summary>
         /// Ajout historique de Payment à utilisateur
         /// </summary>
-        public void addHistToUtilisateur(String login1, int commande1, float prix1,String time1)
+        public void addHistToUtilisateur(String login1, int commande1,String boutique,String recette,int quantite,String time1)
         {
             using (TCFModele modele = new TCFModele())
             {
@@ -253,8 +253,10 @@ namespace DAO
                 Utilisateur u = requete.First();
                 u.Historique.Add(new Historique
                 {
-                    commande = commande1,
-                    prix = prix1,
+                    boutique = boutique,
+                    recette = recette,
+                    command = commande1,
+                    quantite = quantite,
                     time = time1
                 }
                     );
@@ -273,7 +275,7 @@ namespace DAO
                               where utilisateur.login == login1
                               select utilisateur;
                 Utilisateur u = requete.First();
-                Historique hist = u.Historique.ToList<Historique>().Find(e => e.commande == commande1);
+                Historique hist = u.Historique.ToList<Historique>().Find(e => e.command == commande1);
                 modele.Historique.Remove(hist);
                 modele.SaveChanges();
             }
@@ -282,7 +284,7 @@ namespace DAO
         /// <summary>
         /// Modifier historique de Payment de l'utilisateur
         /// </summary>
-        public void modifyHistToUtilisateur(String login1, int commande1, float prix1, String time1)
+        public void modifyHistToUtilisateur(String login1, int commande1, String boutique,String recette,int quantite, String time1)
         {
             using (TCFModele modele = new TCFModele())
             {
@@ -290,8 +292,10 @@ namespace DAO
                               where utilisateur.login == login1
                               select utilisateur;
                 Utilisateur u = requete.First();
-                Historique hist = u.Historique.ToList<Historique>().Find(e => e.commande == commande1);
-                hist.prix = prix1;
+                Historique hist = u.Historique.ToList<Historique>().Find(e => e.command == commande1);
+                hist.boutique = boutique;
+                hist.recette = recette;
+                hist.quantite = quantite;
                 hist.time = time1;
                 modele.SaveChanges();
             }
