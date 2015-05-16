@@ -25,13 +25,8 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
-<<<<<<< HEAD
         public DbSet<Infomation> Infomation { get; set; }
         public DbSet<Utilisateur> Utilisateur { get; set; }
         public DbSet<Historique> Historique { get; set; }
-=======
-        public DbSet<Utilisateur> Utilisateur { get; set; }
-        public DbSet<Infomation> Infomation { get; set; }
->>>>>>> d3166097a1601c8264551dbd6c77969665be9206
     }
 }
