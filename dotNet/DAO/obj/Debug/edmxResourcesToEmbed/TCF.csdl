@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TCFLoginModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TCFModele" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Infomation" EntityType="TCFLoginModel.Infomation" />
+    <EntitySet Name="Utilisateur" EntityType="TCFLoginModel.Utilisateur" />
+    <AssociationSet Name="FK_Infomation_Utilisateur" Association="TCFLoginModel.FK_Infomation_Utilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Infomation" EntitySet="Infomation" />
+    </AssociationSet>
+    <EntitySet Name="Historique" EntityType="TCFLoginModel.Historique" />
+    <AssociationSet Name="FK_Historique_Historique" Association="TCFLoginModel.FK_Historique_Historique">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Historique" EntitySet="Historique" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Infomation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="prenom" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="Int32" Nullable="false" />
+    <Property Name="adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="expiration" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="cryptogramme" Type="Int32" Nullable="false" />
+    <Property Name="id_Utilisateur" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Infomation_Utilisateur" FromRole="Infomation" ToRole="Utilisateur" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="passward" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Infomation" Relationship="TCFLoginModel.FK_Infomation_Utilisateur" FromRole="Utilisateur" ToRole="Infomation" />
+    <NavigationProperty Name="Historique" Relationship="TCFLoginModel.FK_Historique_Historique" FromRole="Utilisateur" ToRole="Historique" />
+  </EntityType>
+  <Association Name="FK_Infomation_Utilisateur">
+    <End Type="TCFLoginModel.Utilisateur" Role="Utilisateur" Multiplicity="1" />
+    <End Type="TCFLoginModel.Infomation" Role="Infomation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Infomation">
+        <PropertyRef Name="id_Utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Historique">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="boutique" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="recette" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_utilisateur" Type="Int32" Nullable="false" />
+    <Property Name="quantite" Type="Int32" Nullable="false" />
+    <Property Name="command" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Utilisateur" Relationship="TCFLoginModel.FK_Historique_Historique" FromRole="Historique" ToRole="Utilisateur" />
+  </EntityType>
+  <Association Name="FK_Historique_Historique">
+    <End Type="TCFLoginModel.Utilisateur" Role="Utilisateur" Multiplicity="1" />
+    <End Type="TCFLoginModel.Historique" Role="Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="id_utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

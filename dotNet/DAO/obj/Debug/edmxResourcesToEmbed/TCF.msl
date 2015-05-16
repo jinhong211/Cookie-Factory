@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TCFLoginModelStoreContainer" CdmEntityContainer="TCFModele">
+    <EntitySetMapping Name="Infomation">
+      <EntityTypeMapping TypeName="TCFLoginModel.Infomation">
+        <MappingFragment StoreEntitySet="Infomation">
+          <ScalarProperty Name="id_Utilisateur" ColumnName="id_Utilisateur" />
+          <ScalarProperty Name="cryptogramme" ColumnName="cryptogramme" />
+          <ScalarProperty Name="expiration" ColumnName="expiration" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateur">
+      <EntityTypeMapping TypeName="TCFLoginModel.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="passward" ColumnName="passward" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historique">
+      <EntityTypeMapping TypeName="TCFLoginModel.Historique">
+        <MappingFragment StoreEntitySet="Historique">
+          <ScalarProperty Name="command" ColumnName="command" />
+          <ScalarProperty Name="quantite" ColumnName="quantite" />
+          <ScalarProperty Name="id_utilisateur" ColumnName="id_utilisateur" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="recette" ColumnName="recette" />
+          <ScalarProperty Name="boutique" ColumnName="boutique" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

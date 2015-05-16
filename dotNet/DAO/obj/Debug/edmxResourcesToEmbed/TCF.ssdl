@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TCFLoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Historique">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="boutique" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="recette" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="time" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_utilisateur" Type="int" Nullable="false" />
+    <Property Name="quantite" Type="int" Nullable="false" />
+    <Property Name="command" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Infomation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="prenom" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="numero" Type="int" Nullable="false" />
+    <Property Name="adress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="expiration" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="cryptogramme" Type="int" Nullable="false" />
+    <Property Name="id_Utilisateur" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="passward" Type="varchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Historique_Historique">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Historique" Type="Self.Historique" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Historique">
+        <PropertyRef Name="id_utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Infomation_Utilisateur">
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+    <End Role="Infomation" Type="Self.Infomation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Utilisateur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Infomation">
+        <PropertyRef Name="id_Utilisateur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TCFLoginModelStoreContainer">
+    <EntitySet Name="Historique" EntityType="Self.Historique" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Infomation" EntityType="Self.Infomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Historique_Historique" Association="Self.FK_Historique_Historique">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Historique" EntitySet="Historique" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Infomation_Utilisateur" Association="Self.FK_Infomation_Utilisateur">
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+      <End Role="Infomation" EntitySet="Infomation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

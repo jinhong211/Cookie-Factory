@@ -3,3 +3,4 @@ j2e/.idea/*
 j2e/target/*
 client/.idea/*
 client/target/*
+dotNet/packages/*

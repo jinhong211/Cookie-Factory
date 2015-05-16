@@ -1,0 +1,11 @@
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\Test.dll.config
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\Test.dll
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\Test.pdb
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\DAO.dll
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\EntityFramework.dll
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\DAO.pdb
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\EntityFramework.xml
+C:\Users\user\Source\Repos\private\dotNet\Test\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\user\Source\Repos\private\dotNet\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\user\Source\Repos\private\dotNet\Test\obj\Debug\Test.dll
+C:\Users\user\Source\Repos\private\dotNet\Test\obj\Debug\Test.pdb
